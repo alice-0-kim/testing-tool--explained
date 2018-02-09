@@ -1,0 +1,17 @@
+# A sample .blackfire.yml
+# metrics specific to testing Drupal 8 websites: metrics.drupal8.*
+# for more information, visit [here](https://blackfire.io/docs/24-days/11-writing-assertions)
+tests:
+    "All pages are fast":
+        path: "/.*"
+        assertions:
+            - main.wall_time < 50ms
+            - main.memory < 2Mb
+            - metrics.drupal8.drush.peak_memory < 2Mb
+            - metrics.drupal8.entity_load.content.count < 50
+            - metrics.drupal8.installed.count > 0
+            - metrics.drupal8.module.loaded.contrib.count < 20
+            - metrics.drupal8.php.load.cpu_time < 50ms
+            - metrics.sql.queries.count > 0
+            - metrics.drupal8.preprocess.js.peak_memory < 1mb
+            - metrics.drupal8.preprocess.css.peak_memory < 50kb
