@@ -1,6 +1,6 @@
 # A sample .blackfire.yml
 # metrics specific to testing Drupal 8 websites: metrics.drupal8.*
-# for more information, visit [here](https://blackfire.io/docs/24-days/11-writing-assertions)
+# for more information, visit here: https://blackfire.io/docs/24-days/11-writing-assertions
 tests:
     "All pages are fast":
         path: "/.*"
