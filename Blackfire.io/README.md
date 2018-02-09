@@ -1,4 +1,4 @@
-# Testing Drupal 8 website using Blackfire.io
+# <span id="top">Testing Drupal 8 website using Blackfire.io</span>
 > For more information about Blackfire.io, please visit [here](https://blackfire.io/docs/introduction).
 
 ## Blackfire PHP SDK
@@ -37,3 +37,9 @@ class IntegrationTest extends \PHPUnit_Framework_TestCase
 }
 ```
 Source: https://blackfire.io/docs/integrations/phpunit
+
+## Sample .blackfire.yml file
+For more information about .blackfire.yml file, visit [here](https://blackfire.io/docs/cookbooks/tests).
+Blackfire.io provides their own [.blackfire.yml validator](https://blackfire.io/docs/validator).
+
+Back to [Top](#top)
