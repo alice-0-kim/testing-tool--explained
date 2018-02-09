@@ -40,6 +40,7 @@ Source: https://blackfire.io/docs/integrations/phpunit
 
 ## Sample .blackfire.yml file
 For more information about .blackfire.yml file, visit [here](https://blackfire.io/docs/cookbooks/tests).
+
 Blackfire.io provides their own [.blackfire.yml validator](https://blackfire.io/docs/validator).
 
 Back to [Top](#top)
