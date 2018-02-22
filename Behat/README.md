@@ -2,16 +2,16 @@
 Behat is a test framework for behavior-driven development written in the PHP programming language.
 
 ## Directory Structure for a Simple Project Directory
-Demo
-|__ __behat.yml__
-|__ bin
-|__ __composer.json__
-|__ composer.lock
-|__ __features__
-|     |__ bootstrap
-|     |     |__ __FeatureContext.php__
-|     |__ __demo.feature__
-|__ vendor
+Demo<br>
+|-- __behat.yml__<br><br>
+|-- bin<br>
+|-- __composer.json__<br>
+|-- composer.lock<br>
+'-- __features__<br>
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-- bootstrap<br>
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'-- __FeatureContext.php__<br>
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'-- __demo.feature__<br>
+'-- vendor<br>
 
 ## To Run Test from Terminal
 Run __bin/behat__ from the root(__Demo__ directory in our demo).
