@@ -12,7 +12,7 @@ Behat is a test framework for behavior-driven development written in the PHP pro
 3. Run `composer install` from __new-dir__ directory.
 
 ## Directory Structure for a Simple Project Directory
-Demo<br>
+___Demo___<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-- __behat.yml__<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-- bin<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-- __composer.json__<br>
