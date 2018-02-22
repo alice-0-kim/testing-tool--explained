@@ -16,4 +16,5 @@ Demo<br>
 ## To Run Test from Terminal
 Run __bin/behat__ from the root(__Demo__ directory in our demo).
 It will look smiliar to:
-![screenshot](Screen Shot 2018-02-22 at 12.48.31 PM.png)
+
+![screenshot](screenshot001.png)
