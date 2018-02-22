@@ -1,6 +1,16 @@
 # Behat
 Behat is a test framework for behavior-driven development written in the PHP programming language.
 
+## Requirements
+* __Composer__
+* __PHP__ 5.3.5+
+* __Selenium__ latest version
+
+## Get Started
+1. Create a new directory called __new-dir__. Note that this is __Demo__ directory in our demo.
+2. Create __composer.json__ file. Copy and paste from [here](https://github.com/alice-0-kim/testing-tool-explained/edit/master/Behat/Demo/composer.json).
+3. Run `composer install` from __new-dir__ directory.
+
 ## Directory Structure for a Simple Project Directory
 Demo<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-- __behat.yml__<br>
