@@ -3,7 +3,7 @@ Behat is a test framework for behavior-driven development written in the PHP pro
 
 ## Directory Structure for a Simple Project Directory
 Demo<br>
-|-- __behat.yml__<br><br>
+|-- __behat.yml__<br>
 |-- bin<br>
 |-- __composer.json__<br>
 |-- composer.lock<br>
