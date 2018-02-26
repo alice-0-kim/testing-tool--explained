@@ -31,3 +31,11 @@ Run __bin/behat__ from the root(__Demo__ directory in our demo).
 It will look smiliar to:
 
 ![screenshot](screenshot001.png)
+
+## Example output for irenebae.feature file
+
+### When the test fails:
+![screenshot](screenshot003.png)
+
+### When the test succeeds:
+![screenshot](screenshot004.png)
