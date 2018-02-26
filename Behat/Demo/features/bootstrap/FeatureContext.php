@@ -43,18 +43,10 @@ class FeatureContext implements Context
     }
 }
 
-<?php
-/**
- * @Note: This is for irenebae.feature
- */
-use Behat\Behat\Tester\Exception\PendingException;
-use Behat\Behat\Context\TranslatableContext;
-use Behat\Mink\Element\Element;
+	/**
+	 * @Note: This is a code snippet for irenebae.feature
+	 */
 
-use Behat\Gherkin\Node\TableNode;
-
-class FeatureContext extends \Drupal\DrupalExtension\Context\DrupalContext
-{
     /**
      * @Given I am at :arg1
      *
@@ -131,4 +123,3 @@ class FeatureContext extends \Drupal\DrupalExtension\Context\DrupalContext
         	throw new \Exception(sprintf("The text '%s' does not contain the text '%s' in the page '%s'", $text, $arg1, $this->getSession()->getCurrentUrl()));
         }        
     }
-}
