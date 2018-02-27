@@ -48,11 +48,11 @@ class FeatureContext implements Context
 
 
 <?php
-	
-	/**
-	 * @Note: This is a code snippet for irenebae.feature
-	 */
-	
+
+/**
+ * @Note: This is a code snippet for irenebae.feature
+ */
+	 
 use Drupal\DrupalExtension\Context\DrupalContext,
 	Drupal\DrupalExtension\Context\RawDrupalContext,
     Drupal\DrupalExtension\Event\EntityEvent,
@@ -65,6 +65,8 @@ use Behat\Behat\Context\BehatContext,
     Behat\Gherkin\Node\TableNode;
 
 class FeatureContext extends RawDrupalContext {
+
+    protected $base_url = 'http://drupal-8-4-4-clone.dd:8083/';
 	
 	public function __construct() {
     	// Initiliaze subcontexts.
@@ -78,7 +80,7 @@ class FeatureContext extends RawDrupalContext {
     public function iAmAt($arg1)
     {
         echo "I want to be at.. " . $arg1;
-        $this->getSession()->visit('http://drupal-8-4-4-clone.dd:8083/' . $arg1);
+        $this->getSession()->visit($this->base_url . $arg1);
         $url = $this->getSession()->getCurrentUrl();
         $parsed_url = parse_url($url);
         
@@ -120,13 +122,13 @@ class FeatureContext extends RawDrupalContext {
 
     /**
      * @Then /^I should not see:$/
+     * @Then I should not see the node title :arg1
      *
      */
     public function iShouldNotSee($arg1)
     {
         echo "I should not see.. " . $arg1;
         
-        $this->iAmAt("node/3");
         $css_selector = ".field--name-title";
         
         $element = $this->getSession()->getPage()->find("css", $css_selector);
@@ -138,10 +140,10 @@ class FeatureContext extends RawDrupalContext {
         $text = $element->getText();
         echo "\nNow I see.. " . $text;
         
-        if (strpos($text, $arg1) === false) {
-        	echo "\nIt is no where to be seen!!!";
+        if (strpos($text, $arg1) !== false) {
+        	throw new \Exception(sprintf("The text '%s' contains the text '%s' in the page '%s'", $text, $arg1, $this->getSession()->getCurrentUrl()));
         } else {
-        	throw new \Exception(sprintf("The text '%s' does not contain the text '%s' in the page '%s'", $text, $arg1, $this->getSession()->getCurrentUrl()));
+        	echo "\nIt is no where to be seen!!!";
         }        
     }
     
@@ -150,9 +152,9 @@ class FeatureContext extends RawDrupalContext {
      */
     public function iAmOnTheHomepage()
     {
-    	$base_url = 'http://drupal-8-4-4-clone.dd:8083';
-        if($this->getSession()->getCurrentUrl() !== $base_url) {
-        	$this->getSession()->visit($base_url);
+    	//$base_url = 'http://drupal-8-4-4-clone.dd:8083';
+        if($this->getSession()->getCurrentUrl() !== $this->base_url) {
+        	$this->getSession()->visit($this->base_url);
         }
     }
     
@@ -161,7 +163,7 @@ class FeatureContext extends RawDrupalContext {
      */
     public function iAmLoggedInAsAUserWithThe($role)
     {
-        $this->getSession()->visit('http://drupal-8-4-4-clone.dd:8083');
+        $this->getSession()->visit($this->base_url);
         if (!$this->loggedInWithRole($role)) {
             // Create user (and project)
             $user = (object) array(
@@ -189,31 +191,62 @@ class FeatureContext extends RawDrupalContext {
      */
     public function iVisit($arg1)
     {
-        throw new PendingException();
+        echo "I am going to visit " . $arg1;
+
+        $this->getSession()->visit($this->base_url . $arg1);
+
+        echo "\nNow I am at " . $this->getSession()->getCurrentUrl();
     }
 
     /**
      * @Then I should see the node title :arg1
+     *
+     * @AfteriVisit
      */
     public function iShouldSeeTheNodeTitle($arg1)
     {
-        throw new PendingException();
-    }
-
-    /**
-     * @Then I should not see the node title :arg1
-     */
-    public function iShouldNotSeeTheNodeTitle($arg1)
-    {
-        throw new PendingException();
+        echo "I should see the node title " . $arg1;
+        
+        //$this->iVisit("node/4");
+        $css_selector = ".field--name-title";
+        
+        $element = $this->getSession()->getPage()->find("css", $css_selector);
+        
+        if (empty($element)) {
+            throw new \Exception(sprintf("The page '%s' does not contain the css selector '%s'", $this->getSession()->getCurrentUrl(), $css_selector));
+        }
+        
+        $text = $element->getText();
+        echo "\nNow I see.. " . $text;
+        
+        if (strpos($text, $arg1) !== false) {
+        	echo "\nIt matches!!!";
+        } else {
+        	throw new \Exception(sprintf("The text '%s' does not contain the text '%s' in the page '%s'", $text, $arg1, $this->getSession()->getCurrentUrl()));
+        }        
     }
 
     /**
      * @Then I should not find the node title
+     *
+     * @AfteriShouldNotSeeTheNodeTitle
      */
     public function iShouldNotFindTheNodeTitle()
     {
-        throw new PendingException();
+        echo "I should not find the node title ";
+        
+        $css_selector = ".field--name-title";
+        try
+        {
+    		$element = $this->getSession()->getPage()->find("css", $css_selector);
+    		throw new \Exception(sprintf("Oh no, I see it..."));
+        }
+        catch (Exception $e)
+        {
+        	echo "I don't see the node title. Succeed!";
+        	
+        }
+
     }
 
     /**
@@ -221,6 +254,24 @@ class FeatureContext extends RawDrupalContext {
      */
     public function iShouldSeeThePageTitle($arg1)
     {
-        throw new PendingException();
-    }   
+        echo "I should see the page title " . $arg1;
+        
+        $css_selector = ".page-title";
+   		$element = $this->getSession()->getPage()->find("css", $css_selector);
+   		
+   		if (empty($element)) {
+            throw new \Exception(sprintf("The page '%s' does not contain the css selector '%s'", $this->getSession()->getCurrentUrl(), $css_selector));
+        }
+        
+        $text = $element->getText();
+        echo "\nNow I see.. " . $text;
+        
+        if (strpos($text, $arg1) !== false) {
+        	echo "\nIt matches!!!";
+        } else {
+        	throw new \Exception(sprintf("The text '%s' does not contain the text '%s' in the page '%s'", $text, $arg1, $this->getSession()->getCurrentUrl()));
+        } 
+        
+    }
+    
 }
