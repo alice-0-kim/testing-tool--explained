@@ -43,6 +43,8 @@ It will look smiliar to:
 ### UPDATE: test run with multiple scenarios
 ![screenshot](screenshot005.png)
 
+![screenshot](test.gif)
+
 ## Drush/Drupal API Driver
 * use to add users, reset passwords, and log in to websites
 ### Set up
