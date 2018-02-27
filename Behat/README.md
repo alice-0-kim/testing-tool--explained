@@ -39,3 +39,31 @@ It will look smiliar to:
 
 ### When the test succeeds:
 ![screenshot](screenshot004.png)
+
+### UPDATE: test run with multiple scenarios
+![screenshot](screenshot005.png)
+
+## Drush/Drupal API Driver
+* use to add users, reset passwords, and log in to websites
+### Set up
+  Locate to the local project directory and run:
+```
+drush sa
+```
+  Grab one alias to use in your behat.yml:
+```
+Drupal\DrupalExtension:
+  blackbox: ~
+  api_driver: 'drush' 
+  drush:
+    root: YOUR_PROJECT_ROOT
+    alias: 'YOUR_ALIAS'
+  region_map:
+    footer: "#footer"
+```
+  Then in your .feature file, add @api tag:
+```
+@api
+  Scenario: Check that Administrator has access to ...
+```
+  Run using `bin/behat` to make sure no error is being thrown
