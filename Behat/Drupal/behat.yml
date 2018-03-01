@@ -1,0 +1,21 @@
+default:
+  suites:
+    default:
+      contexts:
+        - FeatureContext
+        - Drupal\DrupalExtension\Context\DrupalContext
+  extensions:
+    Behat\MinkExtension:
+      goutte: ~
+      selenium2: ~
+      base_url: 'http://d8-demo.dd:8083/'
+      javascript_session: 'selenium2'
+      browser_name: 'chrome'
+    Drupal\DrupalExtension:
+      blackbox: ~
+      api_driver: 'drush' 
+      drush:
+        root: ../drupal-8.4.5
+        alias: 'loc.drupal-8-4-5'
+      region_map:
+        footer: "#footer"
