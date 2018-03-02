@@ -1,20 +1,12 @@
 <?php
 
 /**
- * @Note: This is a code snippet for testing Drupal 8 UBC CLF Theme 1.0.1
+ * @Note: This is a code snippet for header.feature
  */
 
-use Drupal\DrupalExtension\Context\DrupalContext,
-    Drupal\DrupalExtension\Context\RawDrupalContext,
-    Drupal\DrupalExtension\Event\EntityEvent,
-    Drupal\Component\Utility\Random;
+use Drupal\DrupalExtension\Context\DrupalContext, Drupal\DrupalExtension\Context\RawDrupalContext, Drupal\DrupalExtension\Event\EntityEvent, Drupal\Component\Utility\Random, Behat\MinkExtension\Context\MinkContext;
 
-use Behat\Behat\Context\BehatContext,
-    Behat\Behat\Context\Step,
-    Behat\Behat\Context\Step\Given,
-    Behat\Gherkin\Node\PyStringNode,
-    Behat\Gherkin\Node\TableNode,
-    Behat\Behat\Tester\Exception\PendingException;
+use Behat\Behat\Context\BehatContext, Behat\Behat\Context\Step, Behat\Behat\Context\Step\Given, Behat\Gherkin\Node\PyStringNode, Behat\Gherkin\Node\TableNode, Behat\Behat\Tester\Exception\PendingException;
 
 class FeatureContext extends RawDrupalContext
 {
@@ -100,6 +92,7 @@ class FeatureContext extends RawDrupalContext
         
         if (strpos($current_url, $arg1) !== false) {
             echo "The current url: " . $current_url;
+            echo "\n*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*";
         } else {
             echo $arg1;
             throw new \Exception("Oh no, I am on " . $current_url);
@@ -119,14 +112,95 @@ class FeatureContext extends RawDrupalContext
     
     /**
      * @When I click :arg1
+     * @When I click the link :arg1
      */
     public function iClick($arg1)
     {
         echo "Before I click: " . $this->getSession()->getCurrentUrl();
         
-        $links = $this->getSession()->getPage()->findAll('css', "a");
+        $this->getSession()->wait(5000);
+        
+        $page  = $this->getSession()->getPage();
+        $links = $page->findAll('css', "a");
+        
+        echo "Originally 24, now it is: " . sizeof($links);
+        
+        $test_links = $page->findAll('css', "a[href^='http']");
+        echo "size of test_links: " . sizeof($test_links);
+        
         $index = $arg1;
         $link  = $links[$index];
+        
+        echo "\n" . $link->getText();
+        
+        $link->click();
+        
+        $current_url = $this->getSession()->getCurrentUrl();
+        
+        echo "\n" . "After I click: " . $current_url;
+        
+    }
+    
+    
+    /**
+     * @When I click the link that ends with :arg1
+     */
+    public function iClickTheLinkThatEndsWith($arg1)
+    {
+        
+        echo "Before I click: " . $this->getSession()->getCurrentUrl();
+        
+        $this->getSession()->wait(5000);
+        
+        $page = $this->getSession()->getPage();
+        
+        $link = $page->find('css', "a[href$=" . $arg1 . "]");
+        
+        echo "\n" . $link->getText();
+        
+        $link->click();
+        
+        $current_url = $this->getSession()->getCurrentUrl();
+        
+        echo "\n" . "After I click: " . $current_url;
+    }
+    
+    /**
+     * @When I click the link in global footer that ends with :arg1
+     */
+    public function iClickTheLinkInGlobalFooterThatEndsWith($arg1)
+    {
+        
+        echo "Before I click: " . $this->getSession()->getCurrentUrl();
+        
+        $this->getSession()->wait(5000);
+        
+        $page = $this->getSession()->getPage();
+        
+        $link = $page->find('css', "#ubc7-global-footer a[href$=" . $arg1 . "]");
+        
+        echo "\n" . $link->getText();
+        
+        $link->click();
+        
+        $current_url = $this->getSession()->getCurrentUrl();
+        
+        echo "\n" . "After I click: " . $current_url;
+    }
+    
+    /**
+     * @When I click the link in minimal footer that ends with :arg1
+     */
+    public function iClickTheLinkInMinimalFooterThatEndsWith($arg1)
+    {
+        
+        echo "Before I click: " . $this->getSession()->getCurrentUrl();
+        
+        $this->getSession()->wait(5000);
+        
+        $page = $this->getSession()->getPage();
+        
+        $link = $page->find('css', "#ubc7-minimal-footer a[href$=" . $arg1 . "]");
         
         echo "\n" . $link->getText();
         
