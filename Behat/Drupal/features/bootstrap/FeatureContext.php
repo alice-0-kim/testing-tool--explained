@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @Note: This is a code snippet for header.feature
+ * @Note: This is a code snippet for header.feature, footer.feature, link.feature
  */
 
 use Drupal\DrupalExtension\Context\DrupalContext, Drupal\DrupalExtension\Context\RawDrupalContext, Drupal\DrupalExtension\Event\EntityEvent, Drupal\Component\Utility\Random, Behat\MinkExtension\Context\MinkContext;
