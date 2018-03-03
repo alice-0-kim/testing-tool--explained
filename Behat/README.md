@@ -79,7 +79,7 @@ Drupal\DrupalExtension:
 ### Selenium installation
 1. Download __Selenium Standalone Server__ from [here](https://www.seleniumhq.org/download/). As of today, the current download version is 3.9.1.<br> The file name should be similar to this:__selenium-server-standalone-3.9.1.jar__. Replace the version number if necessary.
 2. Download __ChromeDriver__ from [here](https://chromedriver.storage.googleapis.com/index.html?path=2.35/). Click one of the links depending on your local environment.
-3. Once you have the ZIP file downloaded on your machine, unzip it and move it to __/usr/local/bin__ directory, or run:
+3. Once you have the ZIP file downloaded on your machine, unzip it and move the executible to __/usr/local/bin__ directory, or run:
 ```
 mv PATH-TO-CHROMEDRIVER/chromedriver /usr/local/bin
 ```
@@ -98,8 +98,9 @@ Feature: Check link functionality of website
     Given I am on "/"
     ...
 ```
-8. Run below line to start Selenium Server.
+8. Run below lines to start Selenium Server.
 ```
+java -jar ~/Downloads/selenium-server-standalone-3.9.1.jar -role hub
 java -jar ~/Downloads/selenium-server-standalone-3.9.1.jar -port 4444
 ```
 9. Open up a new terminal to run `bin/behat`. You should see that Google Chrome web browser is launched whenever any scenarios with @javascript tag attached.
