@@ -1,0 +1,219 @@
+Feature: Check footer region UBC CLF Theme 1.0.1
+  In order to check footer region of UBC CLF Theme 1.0.1
+  As an administrator
+  I want to be able to check rendering, functionalities, etc.
+
+  Scenario: Should be redirected to www.ubc.ca when #ubc7-signature is clicked # features/footer.feature:6
+    Given I am on "/"                                                          # FeatureContext::iAmOn()
+      │ The current URL: http://d8-demo.dd:8083/
+    When I click the "#ubc7-signature a"                                       # FeatureContext::iClickThe()
+      │ CSS selector: #ubc7-signature a
+    Then I should be on "https://www.ubc.ca"                                   # FeatureContext::iShouldBeOn()
+      │ The current url: https://www.ubc.ca/
+      │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+
+Feature: Check header region UBC CLF Theme 1.0.1
+  In order to check header region of UBC CLF Theme 1.0.1
+  As an administrator
+  I want to be able to check rendering, functionalities, etc.
+
+  Scenario: Check if front page unit name contains the text Demo # features/header.feature:6
+    Given I am on "/"                                            # FeatureContext::iAmOn()
+      │ The current URL: http://d8-demo.dd:8083/
+    Then I should see the text "Demo" as the unit name           # FeatureContext::iShouldSeeTheTextAsTheUnitName()
+      │ The text 'Demo' matches with the unit name 'Demo'
+
+  Scenario: Should be redirected to homepage when unit name is clicked # features/header.feature:10
+    Given I am on "/"                                                  # FeatureContext::iAmOn()
+      │ The current URL: http://d8-demo.dd:8083/
+    When I click the unit name "#ubc7-unit-name a"                     # FeatureContext::iClickThe()
+      │ CSS selector: #ubc7-unit-name a
+    Then I should be on "/"                                            # FeatureContext::iShouldBeOn()
+      │ The current url: http://d8-demo.dd:8083/
+      │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+
+  Scenario: Should be redirected to www.ubc.ca when #ubc7-wordmark is clicked # features/header.feature:15
+    Given I am on "/"                                                         # FeatureContext::iAmOn()
+      │ The current URL: http://d8-demo.dd:8083/
+    When I click the "#ubc7-wordmark a"                                       # FeatureContext::iClickThe()
+      │ CSS selector: #ubc7-wordmark a
+    Then I should be on "https://www.ubc.ca"                                  # FeatureContext::iShouldBeOn()
+      │ The current url: https://www.ubc.ca/
+      │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+
+  Scenario: Should be redirected to www.ubc.ca when #ubc7-logo is clicked # features/header.feature:20
+    Given I am on "/"                                                     # FeatureContext::iAmOn()
+      │ The current URL: http://d8-demo.dd:8083/
+    When I click the "#ubc7-logo a"                                       # FeatureContext::iClickThe()
+      │ CSS selector: #ubc7-logo a
+    Then I should be on "https://www.ubc.ca"                              # FeatureContext::iShouldBeOn()
+      │ The current url: https://www.ubc.ca/
+      │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+
+  Scenario: Should be redirected to search result page when submitted                                   # features/header.feature:25
+    Given I am on "/"                                                                                   # FeatureContext::iAmOn()
+      │ The current URL: http://d8-demo.dd:8083/
+    And I fill in ".form-search input[type=text]" with "computer science"                               # FeatureContext::iFillInWith()
+    When I click the button "#ubc7-search-box button"                                                   # FeatureContext::iClickThe()
+      │ CSS selector: #ubc7-search-box button
+    Then I should be on "https://www.ubc.ca/search/refine/?q=computer%20science&label=&site=%2A.ubc.ca" # FeatureContext::iShouldBeOn()
+      │ The current url: https://www.ubc.ca/search/refine/?q=computer%20science&label=&site=%2A.ubc.ca
+      │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+
+Feature: Check link functionality UBC CLF Theme 1.0.1
+  In order to check link functionality of UBC CLF Theme 1.0.1
+  As an administrator
+  I want to be able to check URL's when each link is clicked
+
+  @javascript
+  Scenario: Should be redirected to "http://d8-demo.dd:8083/rss.xml" when I click "Subscribe to" # features/link.feature:7
+    Given I am on "/"                                                                            # FeatureContext::iAmOn()
+      │ The current URL: http://d8-demo.dd:8083/
+    When I click the link that ends with "xml"                                                   # FeatureContext::iClickTheLinkThatEndsWith()
+      │ Before I click: http://d8-demo.dd:8083/
+      │ Subscribe to
+      │ After I click: http://d8-demo.dd:8083/rss.xml
+    Then I should be on "/rss.xml"                                                               # FeatureContext::iShouldBeOn()
+      │ The current url: http://d8-demo.dd:8083/rss.xml
+      │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+
+  @javascript
+  Scenario Outline: Should be redirected to a "page" when I click the link that ends with "end" # features/link.feature:13
+    Given I am on "/"                                                                           # FeatureContext::iAmOn()
+    When I click the link in global footer that ends with <end>                                 # FeatureContext::iClickTheLinkInGlobalFooterThatEndsWith()
+    Then I should be on <page>                                                                  # FeatureContext::iShouldBeOn()
+
+    Examples:
+      | end       | page                                                                                                   |
+      | contact   | 'https://www.ubc.ca/about/contact.html?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source='  |
+        │ The current URL: http://d8-demo.dd:8083/
+        │ Before I click: http://d8-demo.dd:8083/
+        │ Contact UBC
+        │ After I click: https://www.ubc.ca/about/contact.html?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
+        │ The current url: https://www.ubc.ca/about/contact.html?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
+        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+      | about     | 'https://www.ubc.ca/about/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source='              |
+        │ The current URL: http://d8-demo.dd:8083/
+        │ Before I click: http://d8-demo.dd:8083/
+        │ About the University
+        │ After I click: https://www.ubc.ca/about/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
+        │ The current url: https://www.ubc.ca/about/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
+        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+      | news      | 'https://www.ubc.ca/landing/news.html?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source='   |
+        │ The current URL: http://d8-demo.dd:8083/
+        │ Before I click: http://d8-demo.dd:8083/
+        │ News
+        │ After I click: https://www.ubc.ca/landing/news.html?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
+        │ The current url: https://www.ubc.ca/landing/news.html?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
+        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+      | events    | 'https://www.ubc.ca/landing/events.html?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=' |
+        │ The current URL: http://d8-demo.dd:8083/
+        │ Before I click: http://d8-demo.dd:8083/
+        │ Events
+        │ After I click: https://www.ubc.ca/landing/events.html?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
+        │ The current url: https://www.ubc.ca/landing/events.html?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
+        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+      | careers   | 'http://www.hr.ubc.ca/careers/?utm_campaign=UBC%20CLF&utm_medium=CLF%20Global%20Footer&utm_source='    |
+        │ The current URL: http://d8-demo.dd:8083/
+        │ Before I click: http://d8-demo.dd:8083/
+        │ Careers
+        │ After I click: http://www.hr.ubc.ca/careers/?utm_campaign=UBC%20CLF&utm_medium=CLF%20Global%20Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
+        │ The current url: http://www.hr.ubc.ca/careers/?utm_campaign=UBC%20CLF&utm_medium=CLF%20Global%20Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
+        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+      | gift      | 'https://support.ubc.ca/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source='                |
+        │ The current URL: http://d8-demo.dd:8083/
+        │ Before I click: http://d8-demo.dd:8083/
+        │ Make a Gift
+        │ After I click: https://support.ubc.ca/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
+        │ The current url: https://support.ubc.ca/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
+        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+      | search    | 'https://www.ubc.ca/search/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source='             |
+        │ The current URL: http://d8-demo.dd:8083/
+        │ Before I click: http://d8-demo.dd:8083/
+        │ Search UBC.ca
+        │ After I click: https://www.ubc.ca/search/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F#gsc.tab=0
+        │ The current url: https://www.ubc.ca/search/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F#gsc.tab=0
+        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+      | vancouver | 'https://www.ubc.ca/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source='                    |
+        │ The current URL: http://d8-demo.dd:8083/
+        │ Before I click: http://d8-demo.dd:8083/
+        │ Vancouver Campus
+        │ After I click: https://www.ubc.ca/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
+        │ The current url: https://www.ubc.ca/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
+        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+      | okanagan  | 'https://ok.ubc.ca/'                                                                                   |
+        │ The current URL: http://d8-demo.dd:8083/
+        │ Before I click: http://d8-demo.dd:8083/
+        │ Okanagan Campus
+        │ After I click: https://ok.ubc.ca/
+        │ The current url: https://ok.ubc.ca/
+        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+      | robson    | 'https://robsonsquare.ubc.ca/?utm_campaign=UBC%20CLF&utm_medium=CLF%20Global%20Footer&utm_source='     |
+        │ The current URL: http://d8-demo.dd:8083/
+        │ Before I click: http://d8-demo.dd:8083/
+        │ Robson Square
+        │ After I click: https://robsonsquare.ubc.ca/?utm_campaign=UBC%20CLF&utm_medium=CLF%20Global%20Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
+        │ The current url: https://robsonsquare.ubc.ca/?utm_campaign=UBC%20CLF&utm_medium=CLF%20Global%20Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
+        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+      | media     | 'https://www.thecdm.ca/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source='                 |
+        │ The current URL: http://d8-demo.dd:8083/
+        │ Before I click: http://d8-demo.dd:8083/
+        │ Centre for Digital Media
+        │ After I click: https://www.thecdm.ca/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
+        │ The current url: https://www.thecdm.ca/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
+        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+      | medicine  | 'http://www.med.ubc.ca/about/campuses/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source='  |
+        │ The current URL: http://d8-demo.dd:8083/
+        │ Before I click: http://d8-demo.dd:8083/
+        │ Faculty of Medicine Across BC
+        │ After I click: http://www.med.ubc.ca/about/campuses/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
+        │ The current url: http://www.med.ubc.ca/about/campuses/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
+        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+      | asia      | 'http://ubcapro.hk/?utm_campaign=UBC%20CLF&utm_medium=CLF%20Global%20Footer&utm_source='               |
+        │ The current URL: http://d8-demo.dd:8083/
+        │ Before I click: http://d8-demo.dd:8083/
+        │ Asia Pacific Regional Office
+        │ After I click: http://ubcapro.hk/?utm_campaign=UBC%20CLF&utm_medium=CLF%20Global%20Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
+        │ The current url: http://ubcapro.hk/?utm_campaign=UBC%20CLF&utm_medium=CLF%20Global%20Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
+        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+
+  @javascript
+  Scenario Outline: Should be redirected to a "page" when I click the link that ends with "end" # features/link.feature:35
+    Given I am on "/"                                                                           # FeatureContext::iAmOn()
+    When I click the link in minimal footer that ends with <end>                                # FeatureContext::iClickTheLinkInMinimalFooterThatEndsWith()
+    Then I should be on <page>                                                                  # FeatureContext::iShouldBeOn()
+
+    Examples:
+      | end           | page                                                                                                                |
+      | emergency     | 'https://www.ubc.ca/landing/emergencyprocedures.html?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=' |
+        │ The current URL: http://d8-demo.dd:8083/
+        │ Before I click: http://d8-demo.dd:8083/
+        │ Emergency Procedures
+        │ After I click: https://www.ubc.ca/landing/emergencyprocedures.html?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
+        │ The current url: https://www.ubc.ca/landing/emergencyprocedures.html?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
+        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+      | terms         | 'https://www.ubc.ca/site/legal.html?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source='                  |
+        │ The current URL: http://d8-demo.dd:8083/
+        │ Before I click: http://d8-demo.dd:8083/
+        │ Terms of Use
+        │ After I click: https://www.ubc.ca/site/legal.html?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
+        │ The current url: https://www.ubc.ca/site/legal.html?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
+        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+      | copyright     | 'https://copyright.ubc.ca/?utm_campaign=UBC%20CLF&utm_medium=CLF%20Global%20Footer&utm_source='                     |
+        │ The current URL: http://d8-demo.dd:8083/
+        │ Before I click: http://d8-demo.dd:8083/
+        │ UBC Copyright
+        │ After I click: https://copyright.ubc.ca/?utm_campaign=UBC%20CLF&utm_medium=CLF%20Global%20Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
+        │ The current url: https://copyright.ubc.ca/?utm_campaign=UBC%20CLF&utm_medium=CLF%20Global%20Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
+        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+      | accessibility | 'https://www.ubc.ca/accessibility/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source='                   |
+        │ The current URL: http://d8-demo.dd:8083/
+        │ Before I click: http://d8-demo.dd:8083/
+        │ Accessibility
+        │ After I click: https://www.ubc.ca/accessibility/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
+        │ The current url: https://www.ubc.ca/accessibility/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
+        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+
+24 scenarios (24 passed)
+72 steps (72 passed)
+2m1.30s (11.77Mb)
