@@ -214,6 +214,124 @@ Feature: Check link functionality UBC CLF Theme 1.0.1
         │ The current url: https://www.ubc.ca/accessibility/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
         │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
 
-24 scenarios (24 passed)
-72 steps (72 passed)
-2m1.30s (11.77Mb)
+Feature: Check theme setting page UBC CLF Theme 1.0.1
+  In order to check theme setting page of UBC CLF Theme 1.0.1
+  As an administrator
+  I want to be able to check rendering, functionalities, etc.
+
+  @api @admin @javascript
+  Scenario: Should have access to admin/appearance page # features/theme-setting.feature:9
+    Given I am on "/"                                   # FeatureContext::iAmOn()
+      │ The current URL: http://d8-demo.dd:8083/
+    Given I am logged in as an "administrator"          # Drupal\DrupalExtension\Context\DrupalContext::assertAuthenticatedByRole()
+    When I visit "/admin/appearance"                    # FeatureContext::iAmOn()
+      │ The current URL: http://d8-demo.dd:8083/admin/appearance
+    Then I should be on "/admin/appearance"             # FeatureContext::iShouldBeOn()
+      │ The current url: http://d8-demo.dd:8083/admin/appearance
+      │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+    And I should see "Appearance" with a tag name "h1"  # FeatureContext::iShouldSeeWithATagName()
+      │ The element with a tag name 'h1' contains a text 'Appearance'Appearance matches Appearance
+
+  @api @admin @javascript @temp
+  Scenario: Should be default theme            # features/theme-setting.feature:20
+    Given I am logged in as an "administrator" # Drupal\DrupalExtension\Context\DrupalContext::assertAuthenticatedByRole()
+    And I am on "/admin/appearance"            # FeatureContext::iAmOn()
+      │ The current URL: http://d8-demo.dd:8083/admin/appearance
+    Then ".theme-default" should contain "CLF" # FeatureContext::shouldContain()
+      │ CLF (default theme) A child theme for UBC-branded units using the CLF (Common Look and Feel). This theme relies on the Galactus parent theme. We recommend using this theme for any customizations or modifications. Settings
+
+  @api @admin @javascript @temp
+  Scenario: Should be redirected to admin/appearance/settings/clf when I click settings # features/theme-setting.feature:29
+    Given I am logged in as an "administrator"                                          # Drupal\DrupalExtension\Context\DrupalContext::assertAuthenticatedByRole()
+    And I am on "/admin/appearance"                                                     # FeatureContext::iAmOn()
+      │ The current URL: http://d8-demo.dd:8083/admin/appearance
+    When I click the link that ends with "clf" in the ".theme-default" region           # FeatureContext::iClickTheLinkThatEndsWithInTheRegion()
+      │ Before I click: http://d8-demo.dd:8083/admin/appearance
+      │ Settings
+      │ After I click: http://d8-demo.dd:8083/admin/appearance/settings/clf
+    Then I should be on "/admin/appearance/settings/clf"                                # FeatureContext::iShouldBeOn()
+      │ The current url: http://d8-demo.dd:8083/admin/appearance/settings/clf
+      │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+    And I should see "CLF" with a tag name "h1"                                         # FeatureContext::iShouldSeeWithATagName()
+      │ The element with a tag name 'h1' contains a text 'CLF'CLF matches CLF
+
+  @api @admin @javascript
+  Scenario: Should see all menu items in vertical tabs      # features/theme-setting.feature:39
+    Given I am logged in as an "administrator"              # Drupal\DrupalExtension\Context\DrupalContext::assertAuthenticatedByRole()
+    And I am on "/admin/appearance/settings/clf"            # FeatureContext::iAmOn()
+      │ The current URL: http://d8-demo.dd:8083/admin/appearance/settings/clf
+    Then I should see "settings" in ".vertical-tabs__menu": # FeatureContext::iShouldSeeIn()
+      | settings                      |
+      | General Settings              |
+      | Unit Settings                 |
+      | Location and Contact Settings |
+      | Social Media Settings         |
+      | Search Settings               |
+      | Navigation Settings           |
+      | Layout Settings               |
+      | Extra Settings                |
+
+Feature: Check UBC Drupal 8 Configuration Module
+  As an admin, I want to be able to create and have access to contents of type Announcement, Landing Page, and Page.
+  As a user, I want to see Announcements on menu tab as default.
+
+  @announcement @javascript
+  Scenario: Should have /announcements on menu tab titled Announcements # features/ubc-config.feature:7
+    Given I am an anonymous user                                        # Drupal\DrupalExtension\Context\DrupalContext::assertAnonymousUser()
+    And I am on "/"                                                     # FeatureContext::iAmOn()
+      │ The current URL: http://d8-demo.dd:8083/
+    Then "#ubc7-unit-menu" should contain "Announcements"               # FeatureContext::shouldContain()
+      │ Main navigation Announcements Home Menu ☰
+
+  @announcement @javascript
+  Scenario: Should be redirected to /announcements when Announcements is clicked # features/ubc-config.feature:14
+    Given I am an anonymous user                                                 # Drupal\DrupalExtension\Context\DrupalContext::assertAnonymousUser()
+    And I am on "/"                                                              # FeatureContext::iAmOn()
+      │ The current URL: http://d8-demo.dd:8083/
+    When I click "Announcements" on "#ubc7-unit-menu" region                     # FeatureContext::iClickOnRegion()
+      │ Before I click: http://d8-demo.dd:8083/Announcements
+      │ After I click: http://d8-demo.dd:8083/announcements
+    Then I should be on "/announcements"                                         # FeatureContext::iShouldBeOn()
+      │ The current url: http://d8-demo.dd:8083/announcements
+      │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+
+  @api @announcement @javascript
+  Scenario: Should be able to create a content type of Announcement # features/ubc-config.feature:23
+    Given I am logged in as an "administrator"                      # Drupal\DrupalExtension\Context\DrupalContext::assertAuthenticatedByRole()
+    When I visit "/node/add/ubc_announcement"                       # FeatureContext::iAmOn()
+      │ The current URL: http://d8-demo.dd:8083/node/add/ubc_announcement
+    Then I should be on "/node/add/ubc_announcement"                # FeatureContext::iShouldBeOn()
+      │ The current url: http://d8-demo.dd:8083/node/add/ubc_announcement
+      │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+    And I should see "Create Announcement" with a tag name "h1"     # FeatureContext::iShouldSeeWithATagName()
+      │ The element with a tag name 'h1' contains a text 'Create Announcement'Create Announcement matches Create Announcement
+    And I should not see "Page not found" with a tag name "h1"      # FeatureContext::iShouldNotSeeWithATagName()
+      │ The element with a tag name 'h1' contains a text 'Create Announcement'Page not found does not match Create Announcement
+
+  @api @landing @javascript
+  Scenario: Should be able to create a content type of Landing page # features/ubc-config.feature:33
+    Given I am logged in as an "administrator"                      # Drupal\DrupalExtension\Context\DrupalContext::assertAuthenticatedByRole()
+    When I visit "/node/add/ubc_landing_page"                       # FeatureContext::iAmOn()
+      │ The current URL: http://d8-demo.dd:8083/node/add/ubc_landing_page
+    Then I should be on "/node/add/ubc_landing_page"                # FeatureContext::iShouldBeOn()
+      │ The current url: http://d8-demo.dd:8083/node/add/ubc_landing_page
+      │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+    And I should see "Create Landing Page" with a tag name "h1"     # FeatureContext::iShouldSeeWithATagName()
+      │ The element with a tag name 'h1' contains a text 'Create Landing Page'Create Landing Page matches Create Landing Page
+    And I should not see "Page not found" with a tag name "h1"      # FeatureContext::iShouldNotSeeWithATagName()
+      │ The element with a tag name 'h1' contains a text 'Create Landing Page'Page not found does not match Create Landing Page
+
+  @api @javascript
+  Scenario: Should be redirected to Page not found page     # features/ubc-config.feature:42
+    Given I am logged in as an "administrator"              # Drupal\DrupalExtension\Context\DrupalContext::assertAuthenticatedByRole()
+    When I visit "/node/add/not_a_real_content_type"        # FeatureContext::iAmOn()
+      │ The current URL: http://d8-demo.dd:8083/node/add/not_a_real_content_type
+    Then I should be on "/node/add/not_a_real_content_type" # FeatureContext::iShouldBeOn()
+      │ The current url: http://d8-demo.dd:8083/node/add/not_a_real_content_type
+      │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+    And I should see "Page not found" with a tag name "h1"  # FeatureContext::iShouldSeeWithATagName()
+      │ The element with a tag name 'h1' contains a text 'Page not found'Page not found matches Page not found
+
+33 scenarios (33 passed)
+109 steps (109 passed)
+4m35.19s (12.03Mb)
