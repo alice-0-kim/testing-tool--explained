@@ -9,8 +9,8 @@ Feature: Check footer region UBC CLF Theme 1.0.1
     When I click the "#ubc7-signature a"                                       # FeatureContext::iClickThe()
       │ CSS selector: #ubc7-signature a
     Then I should be on "https://www.ubc.ca"                                   # FeatureContext::iShouldBeOn()
-      │ The current url: https://www.ubc.ca/
-      │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+      │ 
+      │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
 
 Feature: Check header region UBC CLF Theme 1.0.1
   In order to check header region of UBC CLF Theme 1.0.1
@@ -29,8 +29,8 @@ Feature: Check header region UBC CLF Theme 1.0.1
     When I click the unit name "#ubc7-unit-name a"                     # FeatureContext::iClickThe()
       │ CSS selector: #ubc7-unit-name a
     Then I should be on "/"                                            # FeatureContext::iShouldBeOn()
-      │ The current url: http://d8-demo.dd:8083/
-      │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+      │ 
+      │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
 
   Scenario: Should be redirected to www.ubc.ca when #ubc7-wordmark is clicked # features/header.feature:15
     Given I am on "/"                                                         # FeatureContext::iAmOn()
@@ -38,8 +38,8 @@ Feature: Check header region UBC CLF Theme 1.0.1
     When I click the "#ubc7-wordmark a"                                       # FeatureContext::iClickThe()
       │ CSS selector: #ubc7-wordmark a
     Then I should be on "https://www.ubc.ca"                                  # FeatureContext::iShouldBeOn()
-      │ The current url: https://www.ubc.ca/
-      │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+      │ 
+      │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
 
   Scenario: Should be redirected to www.ubc.ca when #ubc7-logo is clicked # features/header.feature:20
     Given I am on "/"                                                     # FeatureContext::iAmOn()
@@ -47,8 +47,8 @@ Feature: Check header region UBC CLF Theme 1.0.1
     When I click the "#ubc7-logo a"                                       # FeatureContext::iClickThe()
       │ CSS selector: #ubc7-logo a
     Then I should be on "https://www.ubc.ca"                              # FeatureContext::iShouldBeOn()
-      │ The current url: https://www.ubc.ca/
-      │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+      │ 
+      │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
 
   Scenario: Should be redirected to search result page when submitted                                   # features/header.feature:25
     Given I am on "/"                                                                                   # FeatureContext::iAmOn()
@@ -57,8 +57,8 @@ Feature: Check header region UBC CLF Theme 1.0.1
     When I click the button "#ubc7-search-box button"                                                   # FeatureContext::iClickThe()
       │ CSS selector: #ubc7-search-box button
     Then I should be on "https://www.ubc.ca/search/refine/?q=computer%20science&label=&site=%2A.ubc.ca" # FeatureContext::iShouldBeOn()
-      │ The current url: https://www.ubc.ca/search/refine/?q=computer%20science&label=&site=%2A.ubc.ca
-      │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+      │ 
+      │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
 
 Feature: Check link functionality UBC CLF Theme 1.0.1
   In order to check link functionality of UBC CLF Theme 1.0.1
@@ -74,8 +74,8 @@ Feature: Check link functionality UBC CLF Theme 1.0.1
       │ Subscribe to
       │ After I click: http://d8-demo.dd:8083/rss.xml
     Then I should be on "/rss.xml"                                                               # FeatureContext::iShouldBeOn()
-      │ The current url: http://d8-demo.dd:8083/rss.xml
-      │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+      │ 
+      │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
 
   @javascript
   Scenario Outline: Should be redirected to a "page" when I click the link that ends with "end" # features/link.feature:13
@@ -90,92 +90,92 @@ Feature: Check link functionality UBC CLF Theme 1.0.1
         │ Before I click: http://d8-demo.dd:8083/
         │ Contact UBC
         │ After I click: https://www.ubc.ca/about/contact.html?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
-        │ The current url: https://www.ubc.ca/about/contact.html?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
-        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+        │ 
+        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
       | about     | 'https://www.ubc.ca/about/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source='              |
         │ The current URL: http://d8-demo.dd:8083/
         │ Before I click: http://d8-demo.dd:8083/
         │ About the University
         │ After I click: https://www.ubc.ca/about/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
-        │ The current url: https://www.ubc.ca/about/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
-        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+        │ 
+        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
       | news      | 'https://www.ubc.ca/landing/news.html?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source='   |
         │ The current URL: http://d8-demo.dd:8083/
         │ Before I click: http://d8-demo.dd:8083/
         │ News
         │ After I click: https://www.ubc.ca/landing/news.html?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
-        │ The current url: https://www.ubc.ca/landing/news.html?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
-        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+        │ 
+        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
       | events    | 'https://www.ubc.ca/landing/events.html?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=' |
         │ The current URL: http://d8-demo.dd:8083/
         │ Before I click: http://d8-demo.dd:8083/
         │ Events
         │ After I click: https://www.ubc.ca/landing/events.html?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
-        │ The current url: https://www.ubc.ca/landing/events.html?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
-        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+        │ 
+        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
       | careers   | 'http://www.hr.ubc.ca/careers/?utm_campaign=UBC%20CLF&utm_medium=CLF%20Global%20Footer&utm_source='    |
         │ The current URL: http://d8-demo.dd:8083/
         │ Before I click: http://d8-demo.dd:8083/
         │ Careers
         │ After I click: http://www.hr.ubc.ca/careers/?utm_campaign=UBC%20CLF&utm_medium=CLF%20Global%20Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
-        │ The current url: http://www.hr.ubc.ca/careers/?utm_campaign=UBC%20CLF&utm_medium=CLF%20Global%20Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
-        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+        │ 
+        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
       | gift      | 'https://support.ubc.ca/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source='                |
         │ The current URL: http://d8-demo.dd:8083/
         │ Before I click: http://d8-demo.dd:8083/
         │ Make a Gift
         │ After I click: https://support.ubc.ca/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
-        │ The current url: https://support.ubc.ca/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
-        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+        │ 
+        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
       | search    | 'https://www.ubc.ca/search/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source='             |
         │ The current URL: http://d8-demo.dd:8083/
         │ Before I click: http://d8-demo.dd:8083/
         │ Search UBC.ca
         │ After I click: https://www.ubc.ca/search/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F#gsc.tab=0
-        │ The current url: https://www.ubc.ca/search/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F#gsc.tab=0
-        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+        │ 
+        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
       | vancouver | 'https://www.ubc.ca/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source='                    |
         │ The current URL: http://d8-demo.dd:8083/
         │ Before I click: http://d8-demo.dd:8083/
         │ Vancouver Campus
         │ After I click: https://www.ubc.ca/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
-        │ The current url: https://www.ubc.ca/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
-        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+        │ 
+        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
       | okanagan  | 'https://ok.ubc.ca/'                                                                                   |
         │ The current URL: http://d8-demo.dd:8083/
         │ Before I click: http://d8-demo.dd:8083/
         │ Okanagan Campus
         │ After I click: https://ok.ubc.ca/
-        │ The current url: https://ok.ubc.ca/
-        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+        │ 
+        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
       | robson    | 'https://robsonsquare.ubc.ca/?utm_campaign=UBC%20CLF&utm_medium=CLF%20Global%20Footer&utm_source='     |
         │ The current URL: http://d8-demo.dd:8083/
         │ Before I click: http://d8-demo.dd:8083/
         │ Robson Square
         │ After I click: https://robsonsquare.ubc.ca/?utm_campaign=UBC%20CLF&utm_medium=CLF%20Global%20Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
-        │ The current url: https://robsonsquare.ubc.ca/?utm_campaign=UBC%20CLF&utm_medium=CLF%20Global%20Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
-        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+        │ 
+        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
       | media     | 'https://www.thecdm.ca/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source='                 |
         │ The current URL: http://d8-demo.dd:8083/
         │ Before I click: http://d8-demo.dd:8083/
         │ Centre for Digital Media
         │ After I click: https://www.thecdm.ca/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
-        │ The current url: https://www.thecdm.ca/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
-        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+        │ 
+        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
       | medicine  | 'http://www.med.ubc.ca/about/campuses/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source='  |
         │ The current URL: http://d8-demo.dd:8083/
         │ Before I click: http://d8-demo.dd:8083/
         │ Faculty of Medicine Across BC
         │ After I click: http://www.med.ubc.ca/about/campuses/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
-        │ The current url: http://www.med.ubc.ca/about/campuses/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
-        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+        │ 
+        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
       | asia      | 'http://ubcapro.hk/?utm_campaign=UBC%20CLF&utm_medium=CLF%20Global%20Footer&utm_source='               |
         │ The current URL: http://d8-demo.dd:8083/
         │ Before I click: http://d8-demo.dd:8083/
         │ Asia Pacific Regional Office
         │ After I click: http://ubcapro.hk/?utm_campaign=UBC%20CLF&utm_medium=CLF%20Global%20Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
-        │ The current url: http://ubcapro.hk/?utm_campaign=UBC%20CLF&utm_medium=CLF%20Global%20Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
-        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+        │ 
+        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
 
   @javascript
   Scenario Outline: Should be redirected to a "page" when I click the link that ends with "end" # features/link.feature:35
@@ -190,29 +190,58 @@ Feature: Check link functionality UBC CLF Theme 1.0.1
         │ Before I click: http://d8-demo.dd:8083/
         │ Emergency Procedures
         │ After I click: https://www.ubc.ca/landing/emergencyprocedures.html?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
-        │ The current url: https://www.ubc.ca/landing/emergencyprocedures.html?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
-        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+        │ 
+        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
       | terms         | 'https://www.ubc.ca/site/legal.html?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source='                  |
         │ The current URL: http://d8-demo.dd:8083/
         │ Before I click: http://d8-demo.dd:8083/
         │ Terms of Use
         │ After I click: https://www.ubc.ca/site/legal.html?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
-        │ The current url: https://www.ubc.ca/site/legal.html?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
-        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+        │ 
+        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
       | copyright     | 'https://copyright.ubc.ca/?utm_campaign=UBC%20CLF&utm_medium=CLF%20Global%20Footer&utm_source='                     |
         │ The current URL: http://d8-demo.dd:8083/
         │ Before I click: http://d8-demo.dd:8083/
         │ UBC Copyright
         │ After I click: https://copyright.ubc.ca/?utm_campaign=UBC%20CLF&utm_medium=CLF%20Global%20Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
-        │ The current url: https://copyright.ubc.ca/?utm_campaign=UBC%20CLF&utm_medium=CLF%20Global%20Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
-        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+        │ 
+        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
       | accessibility | 'https://www.ubc.ca/accessibility/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source='                   |
         │ The current URL: http://d8-demo.dd:8083/
         │ Before I click: http://d8-demo.dd:8083/
         │ Accessibility
         │ After I click: https://www.ubc.ca/accessibility/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
-        │ The current url: https://www.ubc.ca/accessibility/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
-        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+        │ 
+        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+
+@api @javascript @node
+Feature: Check ability to create, edit nodes
+  As an admin, I want to be able to create and have access to contents of type Announcement, Landing Page, and Page.
+
+  @announcement
+  Scenario: Should be able to create nodes of type Announcement # features/node.feature:7
+    Given I am logged in as an "administrator"                  # Drupal\DrupalExtension\Context\DrupalContext::assertAuthenticatedByRole()
+    When I create "ubc_announcement" with the following:        # FeatureContext::iCreateWithTheFollowing()
+      | id                 | value |
+      | edit-title-0-value | A001  |
+      | edit-title-0-value | A002  |
+      | edit-title-0-value | A003  |
+    And I visit "/announcements"                                # FeatureContext::iAmOn()
+      │ The current URL: http://d8-demo.dd:8083/announcements
+    Then I should see "announcements" in ".view-content":       # FeatureContext::iShouldSeeIn()
+      | announcements |
+      | A001          |
+      | A002          |
+      | A003          |
+
+  @landing
+  Scenario: Should be able to create nodes of type Landing Page # features/node.feature:22
+    Given I am logged in as an "administrator"                  # Drupal\DrupalExtension\Context\DrupalContext::assertAuthenticatedByRole()
+    When I create "ubc_landing_page" with the following:        # FeatureContext::iCreateWithTheFollowing()
+      | id                 | value |
+      | edit-title-0-value | L001  |
+      | edit-title-0-value | L002  |
+      | edit-title-0-value | L003  |
 
 Feature: Check theme setting page UBC CLF Theme 1.0.1
   In order to check theme setting page of UBC CLF Theme 1.0.1
@@ -227,8 +256,8 @@ Feature: Check theme setting page UBC CLF Theme 1.0.1
     When I visit "/admin/appearance"                    # FeatureContext::iAmOn()
       │ The current URL: http://d8-demo.dd:8083/admin/appearance
     Then I should be on "/admin/appearance"             # FeatureContext::iShouldBeOn()
-      │ The current url: http://d8-demo.dd:8083/admin/appearance
-      │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+      │ 
+      │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
     And I should see "Appearance" with a tag name "h1"  # FeatureContext::iShouldSeeWithATagName()
       │ The element with a tag name 'h1' contains a text 'Appearance'Appearance matches Appearance
 
@@ -250,8 +279,8 @@ Feature: Check theme setting page UBC CLF Theme 1.0.1
       │ Settings
       │ After I click: http://d8-demo.dd:8083/admin/appearance/settings/clf
     Then I should be on "/admin/appearance/settings/clf"                                # FeatureContext::iShouldBeOn()
-      │ The current url: http://d8-demo.dd:8083/admin/appearance/settings/clf
-      │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+      │ 
+      │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
     And I should see "CLF" with a tag name "h1"                                         # FeatureContext::iShouldSeeWithATagName()
       │ The element with a tag name 'h1' contains a text 'CLF'CLF matches CLF
 
@@ -281,7 +310,7 @@ Feature: Check UBC Drupal 8 Configuration Module
     And I am on "/"                                                     # FeatureContext::iAmOn()
       │ The current URL: http://d8-demo.dd:8083/
     Then "#ubc7-unit-menu" should contain "Announcements"               # FeatureContext::shouldContain()
-      │ Main navigation Announcements Home Menu ☰
+      │ Main navigation Home Announcements Menu ☰
 
   @announcement @javascript
   Scenario: Should be redirected to /announcements when Announcements is clicked # features/ubc-config.feature:14
@@ -292,8 +321,8 @@ Feature: Check UBC Drupal 8 Configuration Module
       │ Before I click: http://d8-demo.dd:8083/Announcements
       │ After I click: http://d8-demo.dd:8083/announcements
     Then I should be on "/announcements"                                         # FeatureContext::iShouldBeOn()
-      │ The current url: http://d8-demo.dd:8083/announcements
-      │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+      │ 
+      │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
 
   @api @announcement @javascript
   Scenario: Should be able to create a content type of Announcement # features/ubc-config.feature:23
@@ -301,8 +330,8 @@ Feature: Check UBC Drupal 8 Configuration Module
     When I visit "/node/add/ubc_announcement"                       # FeatureContext::iAmOn()
       │ The current URL: http://d8-demo.dd:8083/node/add/ubc_announcement
     Then I should be on "/node/add/ubc_announcement"                # FeatureContext::iShouldBeOn()
-      │ The current url: http://d8-demo.dd:8083/node/add/ubc_announcement
-      │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+      │ 
+      │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
     And I should see "Create Announcement" with a tag name "h1"     # FeatureContext::iShouldSeeWithATagName()
       │ The element with a tag name 'h1' contains a text 'Create Announcement'Create Announcement matches Create Announcement
     And I should not see "Page not found" with a tag name "h1"      # FeatureContext::iShouldNotSeeWithATagName()
@@ -314,8 +343,8 @@ Feature: Check UBC Drupal 8 Configuration Module
     When I visit "/node/add/ubc_landing_page"                       # FeatureContext::iAmOn()
       │ The current URL: http://d8-demo.dd:8083/node/add/ubc_landing_page
     Then I should be on "/node/add/ubc_landing_page"                # FeatureContext::iShouldBeOn()
-      │ The current url: http://d8-demo.dd:8083/node/add/ubc_landing_page
-      │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+      │ 
+      │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
     And I should see "Create Landing Page" with a tag name "h1"     # FeatureContext::iShouldSeeWithATagName()
       │ The element with a tag name 'h1' contains a text 'Create Landing Page'Create Landing Page matches Create Landing Page
     And I should not see "Page not found" with a tag name "h1"      # FeatureContext::iShouldNotSeeWithATagName()
@@ -327,11 +356,11 @@ Feature: Check UBC Drupal 8 Configuration Module
     When I visit "/node/add/not_a_real_content_type"        # FeatureContext::iAmOn()
       │ The current URL: http://d8-demo.dd:8083/node/add/not_a_real_content_type
     Then I should be on "/node/add/not_a_real_content_type" # FeatureContext::iShouldBeOn()
-      │ The current url: http://d8-demo.dd:8083/node/add/not_a_real_content_type
-      │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+      │ 
+      │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
     And I should see "Page not found" with a tag name "h1"  # FeatureContext::iShouldSeeWithATagName()
       │ The element with a tag name 'h1' contains a text 'Page not found'Page not found matches Page not found
 
-33 scenarios (33 passed)
-109 steps (109 passed)
-4m35.19s (12.03Mb)
+35 scenarios (35 passed)
+115 steps (115 passed)
+6m33.40s (12.04Mb)
