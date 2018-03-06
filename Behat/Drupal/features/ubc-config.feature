@@ -1,21 +1,5 @@
 Feature: Check UBC Drupal 8 Configuration Module
   As an admin, I want to be able to create and have access to contents of type Announcement, Landing Page, and Page.
-  As a user, I want to see Announcements on menu tab as default.
-
-  @announcement
-  @javascript
-  Scenario: Should have /announcements on menu tab titled Announcements
-    Given I am an anonymous user
-    And I am on "/"
-    Then "#ubc7-unit-menu" should contain "Announcements"
-
-  @announcement
-  @javascript
-  Scenario: Should be redirected to /announcements when Announcements is clicked
-    Given I am an anonymous user
-    And I am on "/"
-    When I click "Announcements" on "#ubc7-unit-menu" region
-    Then I should be on "/announcements"
 
   @api
   @announcement
