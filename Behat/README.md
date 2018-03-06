@@ -112,3 +112,17 @@ java -jar ~/Downloads/selenium-server-standalone-3.9.1.jar -port 4444
 09:21:55.237 INFO - Nodes should register to http://128.189.64.164:4444/grid/register/
 09:21:55.237 INFO - Clients should connect to http://128.189.64.164:4444/wd/hub
 ```
+
+## To Run Scenarios with \<Tag\>
+### To Run Scenarios with @admin
+```
+bin/behat --tags="@admin"
+```
+### To Run Scenarios with @node and @javascript
+```
+bin/behat --tags="@node&&@javascript"
+```
+### To Run Scenarios with @node, @api, or @announcement
+```
+bin/behat --tags="@node,@api,@announcement"
+```
