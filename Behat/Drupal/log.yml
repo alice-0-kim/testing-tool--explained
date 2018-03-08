@@ -1,71 +1,68 @@
+@footer @api @javascript
 Feature: Check footer region UBC CLF Theme 1.0.1
   In order to check footer region of UBC CLF Theme 1.0.1
   As an administrator
   I want to be able to check rendering, functionalities, etc.
 
-  Scenario: Should be redirected to www.ubc.ca when #ubc7-signature is clicked # features/footer.feature:6
+  Scenario: Should be redirected to www.ubc.ca when #ubc7-signature is clicked # features/footer.feature:9
     Given I am on "/"                                                          # FeatureContext::iAmOn()
       │ The current URL: http://d8-demo.dd:8083/
     When I click the "#ubc7-signature a"                                       # FeatureContext::iClickThe()
-      │ CSS selector: #ubc7-signature a
     Then I should be on "https://www.ubc.ca"                                   # FeatureContext::iShouldBeOn()
-      │ 
       │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
 
+@header @api @javascript
 Feature: Check header region UBC CLF Theme 1.0.1
   In order to check header region of UBC CLF Theme 1.0.1
   As an administrator
   I want to be able to check rendering, functionalities, etc.
 
-  Scenario: Check if front page unit name contains the text Demo # features/header.feature:6
+  Scenario: Check if front page unit name contains the text Demo # features/header.feature:9
     Given I am on "/"                                            # FeatureContext::iAmOn()
       │ The current URL: http://d8-demo.dd:8083/
     Then I should see the text "Demo" as the unit name           # FeatureContext::iShouldSeeTheTextAsTheUnitName()
       │ The text 'Demo' matches with the unit name 'Demo'
 
-  Scenario: Should be redirected to homepage when unit name is clicked # features/header.feature:10
+  Scenario: Should be redirected to homepage when unit name is clicked # features/header.feature:13
     Given I am on "/"                                                  # FeatureContext::iAmOn()
       │ The current URL: http://d8-demo.dd:8083/
     When I click the unit name "#ubc7-unit-name a"                     # FeatureContext::iClickThe()
-      │ CSS selector: #ubc7-unit-name a
     Then I should be on "/"                                            # FeatureContext::iShouldBeOn()
-      │ 
       │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
 
-  Scenario: Should be redirected to www.ubc.ca when #ubc7-wordmark is clicked # features/header.feature:15
+  Scenario: Should be redirected to www.ubc.ca when #ubc7-wordmark is clicked # features/header.feature:18
     Given I am on "/"                                                         # FeatureContext::iAmOn()
       │ The current URL: http://d8-demo.dd:8083/
     When I click the "#ubc7-wordmark a"                                       # FeatureContext::iClickThe()
-      │ CSS selector: #ubc7-wordmark a
     Then I should be on "https://www.ubc.ca"                                  # FeatureContext::iShouldBeOn()
-      │ 
       │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
 
-  Scenario: Should be redirected to www.ubc.ca when #ubc7-logo is clicked # features/header.feature:20
+  Scenario: Should be redirected to www.ubc.ca when #ubc7-logo is clicked # features/header.feature:23
     Given I am on "/"                                                     # FeatureContext::iAmOn()
       │ The current URL: http://d8-demo.dd:8083/
     When I click the "#ubc7-logo a"                                       # FeatureContext::iClickThe()
-      │ CSS selector: #ubc7-logo a
     Then I should be on "https://www.ubc.ca"                              # FeatureContext::iShouldBeOn()
-      │ 
       │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
 
-  Scenario: Should be redirected to search result page when submitted                                   # features/header.feature:25
-    Given I am on "/"                                                                                   # FeatureContext::iAmOn()
+  @search
+  Scenario: Should be redirected to search result page when submitted     # features/header.feature:29
+    Given I am on "/"                                                     # FeatureContext::iAmOn()
       │ The current URL: http://d8-demo.dd:8083/
-    And I fill in ".form-search input[type=text]" with "computer science"                               # FeatureContext::iFillInWith()
-    When I click the button "#ubc7-search-box button"                                                   # FeatureContext::iClickThe()
-      │ CSS selector: #ubc7-search-box button
-    Then I should be on "https://www.ubc.ca/search/refine/?q=computer%20science&label=&site=%2A.ubc.ca" # FeatureContext::iShouldBeOn()
-      │ 
+    Given UBC Search is open                                              # FeatureContext::ubcSearchIsOpen()
+      │ UBC Search
+    Given I fill in "input[type=text]" with "computer science"            # FeatureContext::iFillInWith()
+    When I click the button "#ubc7-search-box button"                     # FeatureContext::iClickThe()
+    Then I should be on "https://www.ubc.ca/search"                       # FeatureContext::iShouldBeOn()
       │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+    Then the current URL should contain search keyword "computer science" # FeatureContext::theCurrentUrlShouldContainSearchKeyword()
+      │ computer+sciencehttps://www.ubc.ca/search/refine/?q=computer+science&label=&site=*.ubc.ca#gsc.tab=0&gsc.q=computer%20science&gsc.page=1 contains computer science
 
+@javascript
 Feature: Check link functionality UBC CLF Theme 1.0.1
   In order to check link functionality of UBC CLF Theme 1.0.1
   As an administrator
   I want to be able to check URL's when each link is clicked
 
-  @javascript
   Scenario: Should be redirected to "http://d8-demo.dd:8083/rss.xml" when I click "Subscribe to" # features/link.feature:7
     Given I am on "/"                                                                            # FeatureContext::iAmOn()
       │ The current URL: http://d8-demo.dd:8083/
@@ -74,11 +71,9 @@ Feature: Check link functionality UBC CLF Theme 1.0.1
       │ Subscribe to
       │ After I click: http://d8-demo.dd:8083/rss.xml
     Then I should be on "/rss.xml"                                                               # FeatureContext::iShouldBeOn()
-      │ 
       │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
 
-  @javascript
-  Scenario Outline: Should be redirected to a "page" when I click the link that ends with "end" # features/link.feature:13
+  Scenario Outline: Should be redirected to a "page" when I click the link that ends with "end" # features/link.feature:12
     Given I am on "/"                                                                           # FeatureContext::iAmOn()
     When I click the link in global footer that ends with <end>                                 # FeatureContext::iClickTheLinkInGlobalFooterThatEndsWith()
     Then I should be on <page>                                                                  # FeatureContext::iShouldBeOn()
@@ -90,95 +85,81 @@ Feature: Check link functionality UBC CLF Theme 1.0.1
         │ Before I click: http://d8-demo.dd:8083/
         │ Contact UBC
         │ After I click: https://www.ubc.ca/about/contact.html?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
-        │ 
         │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
       | about     | 'https://www.ubc.ca/about/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source='              |
         │ The current URL: http://d8-demo.dd:8083/
         │ Before I click: http://d8-demo.dd:8083/
         │ About the University
         │ After I click: https://www.ubc.ca/about/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
-        │ 
         │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
       | news      | 'https://www.ubc.ca/landing/news.html?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source='   |
         │ The current URL: http://d8-demo.dd:8083/
         │ Before I click: http://d8-demo.dd:8083/
         │ News
         │ After I click: https://www.ubc.ca/landing/news.html?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
-        │ 
         │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
       | events    | 'https://www.ubc.ca/landing/events.html?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=' |
         │ The current URL: http://d8-demo.dd:8083/
         │ Before I click: http://d8-demo.dd:8083/
         │ Events
         │ After I click: https://www.ubc.ca/landing/events.html?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
-        │ 
         │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
       | careers   | 'http://www.hr.ubc.ca/careers/?utm_campaign=UBC%20CLF&utm_medium=CLF%20Global%20Footer&utm_source='    |
         │ The current URL: http://d8-demo.dd:8083/
         │ Before I click: http://d8-demo.dd:8083/
         │ Careers
         │ After I click: http://www.hr.ubc.ca/careers/?utm_campaign=UBC%20CLF&utm_medium=CLF%20Global%20Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
-        │ 
         │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
       | gift      | 'https://support.ubc.ca/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source='                |
         │ The current URL: http://d8-demo.dd:8083/
         │ Before I click: http://d8-demo.dd:8083/
         │ Make a Gift
         │ After I click: https://support.ubc.ca/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
-        │ 
         │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
       | search    | 'https://www.ubc.ca/search/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source='             |
         │ The current URL: http://d8-demo.dd:8083/
         │ Before I click: http://d8-demo.dd:8083/
         │ Search UBC.ca
         │ After I click: https://www.ubc.ca/search/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F#gsc.tab=0
-        │ 
         │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
       | vancouver | 'https://www.ubc.ca/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source='                    |
         │ The current URL: http://d8-demo.dd:8083/
         │ Before I click: http://d8-demo.dd:8083/
         │ Vancouver Campus
         │ After I click: https://www.ubc.ca/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
-        │ 
         │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
       | okanagan  | 'https://ok.ubc.ca/'                                                                                   |
         │ The current URL: http://d8-demo.dd:8083/
         │ Before I click: http://d8-demo.dd:8083/
         │ Okanagan Campus
         │ After I click: https://ok.ubc.ca/
-        │ 
         │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
       | robson    | 'https://robsonsquare.ubc.ca/?utm_campaign=UBC%20CLF&utm_medium=CLF%20Global%20Footer&utm_source='     |
         │ The current URL: http://d8-demo.dd:8083/
         │ Before I click: http://d8-demo.dd:8083/
         │ Robson Square
         │ After I click: https://robsonsquare.ubc.ca/?utm_campaign=UBC%20CLF&utm_medium=CLF%20Global%20Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
-        │ 
         │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
       | media     | 'https://www.thecdm.ca/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source='                 |
         │ The current URL: http://d8-demo.dd:8083/
         │ Before I click: http://d8-demo.dd:8083/
         │ Centre for Digital Media
         │ After I click: https://www.thecdm.ca/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
-        │ 
         │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
       | medicine  | 'http://www.med.ubc.ca/about/campuses/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source='  |
         │ The current URL: http://d8-demo.dd:8083/
         │ Before I click: http://d8-demo.dd:8083/
         │ Faculty of Medicine Across BC
         │ After I click: http://www.med.ubc.ca/about/campuses/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
-        │ 
         │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
       | asia      | 'http://ubcapro.hk/?utm_campaign=UBC%20CLF&utm_medium=CLF%20Global%20Footer&utm_source='               |
         │ The current URL: http://d8-demo.dd:8083/
         │ Before I click: http://d8-demo.dd:8083/
         │ Asia Pacific Regional Office
         │ After I click: http://ubcapro.hk/?utm_campaign=UBC%20CLF&utm_medium=CLF%20Global%20Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
-        │ 
         │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
 
-  @javascript
-  Scenario Outline: Should be redirected to a "page" when I click the link that ends with "end" # features/link.feature:35
+  Scenario Outline: Should be redirected to a "page" when I click the link that ends with "end" # features/link.feature:33
     Given I am on "/"                                                                           # FeatureContext::iAmOn()
     When I click the link in minimal footer that ends with <end>                                # FeatureContext::iClickTheLinkInMinimalFooterThatEndsWith()
     Then I should be on <page>                                                                  # FeatureContext::iShouldBeOn()
@@ -190,28 +171,24 @@ Feature: Check link functionality UBC CLF Theme 1.0.1
         │ Before I click: http://d8-demo.dd:8083/
         │ Emergency Procedures
         │ After I click: https://www.ubc.ca/landing/emergencyprocedures.html?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
-        │ 
         │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
       | terms         | 'https://www.ubc.ca/site/legal.html?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source='                  |
         │ The current URL: http://d8-demo.dd:8083/
         │ Before I click: http://d8-demo.dd:8083/
         │ Terms of Use
         │ After I click: https://www.ubc.ca/site/legal.html?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
-        │ 
         │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
       | copyright     | 'https://copyright.ubc.ca/?utm_campaign=UBC%20CLF&utm_medium=CLF%20Global%20Footer&utm_source='                     |
         │ The current URL: http://d8-demo.dd:8083/
         │ Before I click: http://d8-demo.dd:8083/
         │ UBC Copyright
         │ After I click: https://copyright.ubc.ca/?utm_campaign=UBC%20CLF&utm_medium=CLF%20Global%20Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
-        │ 
         │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
       | accessibility | 'https://www.ubc.ca/accessibility/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source='                   |
         │ The current URL: http://d8-demo.dd:8083/
         │ Before I click: http://d8-demo.dd:8083/
         │ Accessibility
         │ After I click: https://www.ubc.ca/accessibility/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
-        │ 
         │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
 
 @api @javascript @node
@@ -219,20 +196,20 @@ Feature: Check ability to create, edit nodes
   As an admin, I want to be able to create and have access to contents of type Announcement, Landing Page, and Page.
 
   @announcement
-  Scenario: Should be able to create nodes of type Announcement # features/node.feature:7
-    Given I am logged in as an "administrator"                  # Drupal\DrupalExtension\Context\DrupalContext::assertAuthenticatedByRole()
-    When I create "ubc_announcement" with the following:        # FeatureContext::iCreateWithTheFollowing()
+  Scenario: Should be able to create nodes of type Announcement              # features/node.feature:7
+    Given I am logged in as an "administrator"                               # Drupal\DrupalExtension\Context\DrupalContext::assertAuthenticatedByRole()
+    When I create "ubc_announcement" with the following:                     # FeatureContext::iCreateWithTheFollowing()
       | id                 | value |
       | edit-title-0-value | A001  |
       | edit-title-0-value | A002  |
       | edit-title-0-value | A003  |
-    And I visit "/announcements"                                # FeatureContext::iAmOn()
+    And I visit "/announcements"                                             # FeatureContext::iAmOn()
       │ The current URL: http://d8-demo.dd:8083/announcements
-    Then I should see "announcements" in ".view-content":       # FeatureContext::iShouldSeeIn()
-      | announcements |
-      | A001          |
-      | A002          |
-      | A003          |
+    Then I should see "ANNOUNCEMENT" in ".view-content" with a tag name "a": # FeatureContext::iShouldSeeInWithATagName()
+      | ANNOUNCEMENT |
+      | A001         |
+      | A002         |
+      | A003         |
 
   @landing
   Scenario: Should be able to create nodes of type Landing Page # features/node.feature:22
@@ -243,12 +220,21 @@ Feature: Check ability to create, edit nodes
       | edit-title-0-value | L002  |
       | edit-title-0-value | L003  |
 
+  @page
+  Scenario: Should be able to create nodes of type Page # features/node.feature:31
+    Given I am logged in as an "administrator"          # Drupal\DrupalExtension\Context\DrupalContext::assertAuthenticatedByRole()
+    When I create "ubc_page" with the following:        # FeatureContext::iCreateWithTheFollowing()
+      | id                 | value |
+      | edit-title-0-value | P001  |
+      | edit-title-0-value | P002  |
+      | edit-title-0-value | P003  |
+
+@api @admin @javascript
 Feature: Check theme setting page UBC CLF Theme 1.0.1
   In order to check theme setting page of UBC CLF Theme 1.0.1
   As an administrator
   I want to be able to check rendering, functionalities, etc.
 
-  @api @admin @javascript
   Scenario: Should have access to admin/appearance page # features/theme-setting.feature:9
     Given I am on "/"                                   # FeatureContext::iAmOn()
       │ The current URL: http://d8-demo.dd:8083/
@@ -256,21 +242,18 @@ Feature: Check theme setting page UBC CLF Theme 1.0.1
     When I visit "/admin/appearance"                    # FeatureContext::iAmOn()
       │ The current URL: http://d8-demo.dd:8083/admin/appearance
     Then I should be on "/admin/appearance"             # FeatureContext::iShouldBeOn()
-      │ 
       │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
     And I should see "Appearance" with a tag name "h1"  # FeatureContext::iShouldSeeWithATagName()
-      │ The element with a tag name 'h1' contains a text 'Appearance'Appearance matches Appearance
+      │ Appearance matches Appearance
 
-  @api @admin @javascript @temp
-  Scenario: Should be default theme            # features/theme-setting.feature:20
+  Scenario: Should be default theme            # features/theme-setting.feature:16
     Given I am logged in as an "administrator" # Drupal\DrupalExtension\Context\DrupalContext::assertAuthenticatedByRole()
     And I am on "/admin/appearance"            # FeatureContext::iAmOn()
       │ The current URL: http://d8-demo.dd:8083/admin/appearance
     Then ".theme-default" should contain "CLF" # FeatureContext::shouldContain()
       │ CLF (default theme) A child theme for UBC-branded units using the CLF (Common Look and Feel). This theme relies on the Galactus parent theme. We recommend using this theme for any customizations or modifications. Settings
 
-  @api @admin @javascript @temp
-  Scenario: Should be redirected to admin/appearance/settings/clf when I click settings # features/theme-setting.feature:29
+  Scenario: Should be redirected to admin/appearance/settings/clf when I click settings # features/theme-setting.feature:21
     Given I am logged in as an "administrator"                                          # Drupal\DrupalExtension\Context\DrupalContext::assertAuthenticatedByRole()
     And I am on "/admin/appearance"                                                     # FeatureContext::iAmOn()
       │ The current URL: http://d8-demo.dd:8083/admin/appearance
@@ -279,18 +262,16 @@ Feature: Check theme setting page UBC CLF Theme 1.0.1
       │ Settings
       │ After I click: http://d8-demo.dd:8083/admin/appearance/settings/clf
     Then I should be on "/admin/appearance/settings/clf"                                # FeatureContext::iShouldBeOn()
-      │ 
       │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
     And I should see "CLF" with a tag name "h1"                                         # FeatureContext::iShouldSeeWithATagName()
-      │ The element with a tag name 'h1' contains a text 'CLF'CLF matches CLF
+      │ CLF matches CLF
 
-  @api @admin @javascript
-  Scenario: Should see all menu items in vertical tabs      # features/theme-setting.feature:39
-    Given I am logged in as an "administrator"              # Drupal\DrupalExtension\Context\DrupalContext::assertAuthenticatedByRole()
-    And I am on "/admin/appearance/settings/clf"            # FeatureContext::iAmOn()
+  Scenario: Should see all menu items in vertical tabs                              # features/theme-setting.feature:28
+    Given I am logged in as an "administrator"                                      # Drupal\DrupalExtension\Context\DrupalContext::assertAuthenticatedByRole()
+    And I am on "/admin/appearance/settings/clf"                                    # FeatureContext::iAmOn()
       │ The current URL: http://d8-demo.dd:8083/admin/appearance/settings/clf
-    Then I should see "settings" in ".vertical-tabs__menu": # FeatureContext::iShouldSeeIn()
-      | settings                      |
+    Then I should see "SETTING" in ".vertical-tabs__menu" with a tag name "strong": # FeatureContext::iShouldSeeInWithATagName()
+      | SETTING                       |
       | General Settings              |
       | Unit Settings                 |
       | Location and Contact Settings |
@@ -300,67 +281,218 @@ Feature: Check theme setting page UBC CLF Theme 1.0.1
       | Layout Settings               |
       | Extra Settings                |
 
+@api @javascript @ckeditor
+Feature: Check UBC CKEditor Widget functionality
+
+  @filtered
+  Scenario: Should be able to see all buttons available on CKeditor in Filtered Text format # features/ubc-ckeditor.feature:7
+    Given I am logged in as an "administrator"                                              # Drupal\DrupalExtension\Context\DrupalContext::assertAuthenticatedByRole()
+    Given I am on "/node/add/ubc_page"                                                      # FeatureContext::iAmOn()
+      │ The current URL: http://d8-demo.dd:8083/node/add/ubc_page
+    When I select "#edit-body-0-format--2" with "filtered_text"                             # FeatureContext::iFillInWith()
+    Then I should see "TOOL" in ".form-item-body-0-value" with a tag name "span":           # FeatureContext::iShouldSeeInWithATagName()
+      | TOOL                 |
+      | Bold                 |
+      | Italic               |
+      | Link                 |
+      | Unlink               |
+      | CLF button           |
+      | Bulleted List        |
+      | Numbered List        |
+      | Block Quote          |
+      | Image                |
+      | Accordion            |
+      | Insert a card        |
+      | Insert two cards     |
+      | Insert three cards   |
+      | Format               |
+      | Styles               |
+      | Insert Two Columns   |
+      | Insert Three Columns |
+      | Horizontal Line      |
+      | Table                |
+      | Paste as plain text  |
+      | Maximize             |
+      | Show Blocks          |
+      | Source               |
+    Then I should see class name "TOOL" in ".form-item-body-0-value":                       # FeatureContext::iShouldSeeClassNameIn()
+      | TOOL                               |
+      | .cke_button__accordiontoggle_label |
+      | .cke_button__bs3-2columns_icon     |
+      | .cke_button__bs3-2columns-1-2_icon |
+      | .cke_button__bs3-2columns-2-1_icon |
+      | .cke_button__source_label          |
+
+  @full
+  Scenario: Should be able to see all buttons available on CKeditor in Full HTML format # features/ubc-ckeditor.feature:46
+    Given I am logged in as an "administrator"                                          # Drupal\DrupalExtension\Context\DrupalContext::assertAuthenticatedByRole()
+    Given I am on "/node/add/ubc_page"                                                  # FeatureContext::iAmOn()
+      │ The current URL: http://d8-demo.dd:8083/node/add/ubc_page
+    When I select "#edit-body-0-format--2" with "full_html"                             # FeatureContext::iFillInWith()
+    Then I should see "TOOL" in ".form-item-body-0-value" with a tag name "span":       # FeatureContext::iShouldSeeInWithATagName()
+      | TOOL            |
+      | Bold            |
+      | Italic          |
+      | Strikethrough   |
+      | Superscript     |
+      | Subscript       |
+      | Remove Format   |
+      | Link            |
+      | Unlink          |
+      | Bulleted List   |
+      | Numbered List   |
+      | Block Quote     |
+      | Image           |
+      | Table           |
+      | Horizontal Line |
+      | Format          |
+      | Show Blocks     |
+      | Source          |
+
+  @basic
+  Scenario: Should be able to see all buttons available on CKeditor in Basic HTML format # features/ubc-ckeditor.feature:71
+    Given I am logged in as an "administrator"                                           # Drupal\DrupalExtension\Context\DrupalContext::assertAuthenticatedByRole()
+    Given I am on "/node/add/ubc_page"                                                   # FeatureContext::iAmOn()
+      │ The current URL: http://d8-demo.dd:8083/node/add/ubc_page
+    When I select "#edit-body-0-format--2" with "basic_html"                             # FeatureContext::iFillInWith()
+    Then I should see "TOOL" in ".form-item-body-0-value" with a tag name "span":        # FeatureContext::iShouldSeeInWithATagName()
+      | TOOL          |
+      | Bold          |
+      | Italic        |
+      | Link          |
+      | Unlink        |
+      | Bulleted List |
+      | Numbered List |
+      | Block Quote   |
+      | Image         |
+      | Format        |
+      | Source        |
+
+  @button
+  Scenario: Should see three tabs: Info, Target, Icons           # features/ubc-ckeditor.feature:89
+    Given I am logged in as an "administrator"                   # Drupal\DrupalExtension\Context\DrupalContext::assertAuthenticatedByRole()
+    Given I am on "/node/add/ubc_page"                           # FeatureContext::iAmOn()
+      │ The current URL: http://d8-demo.dd:8083/node/add/ubc_page
+    When I select "#edit-body-0-format--2" with "filtered_text"  # FeatureContext::iFillInWith()
+    And I click "CLF button" on ".form-item-body-0-value" region # FeatureContext::iClickOnRegion()
+      │ Before I click: http://d8-demo.dd:8083/node/add/ubc_page
+      │ After I click: http://d8-demo.dd:8083/node/add/ubc_page
+    Then I should see "TAB" with a role "tab":                   # FeatureContext::iShouldSeeWithARole()
+      | TAB    |
+      | Info   |
+      | Target |
+      | Icons  |
+      │ Info has a role: tabTarget has a role: tabIcons has a role: tab
+
+  @button @temp
+  Scenario: Should see the list of attributes depending on the designated tab         # features/ubc-ckeditor.feature:102
+    Given I am logged in as an "administrator"                                        # Drupal\DrupalExtension\Context\DrupalContext::assertAuthenticatedByRole()
+    Given I am on "/node/add/ubc_page"                                                # FeatureContext::iAmOn()
+      │ The current URL: http://d8-demo.dd:8083/node/add/ubc_page
+    When I select "#edit-body-0-format--2" with "filtered_text"                       # FeatureContext::iFillInWith()
+    And I click "CLF button" on ".form-item-body-0-value" region                      # FeatureContext::iClickOnRegion()
+      │ Before I click: http://d8-demo.dd:8083/node/add/ubc_page
+      │ After I click: http://d8-demo.dd:8083/node/add/ubc_page
+    And I click "Info" on ".cke_dialog_body" region                                   # FeatureContext::iClickOnRegion()
+      │ Before I click: http://d8-demo.dd:8083/node/add/ubc_page
+      │ After I click: http://d8-demo.dd:8083/node/add/ubc_page
+    Then ".cke_dialog_tab_selected" should contain the text "Info"                    # FeatureContext::shouldContainTheText()
+      │ Info == Info
+    And I should see "ATTRIBUTE" in ".cke_dialog_contents_body" with a tag name "td": # FeatureContext::iShouldSeeInWithATagName()
+      | ATTRIBUTE             |
+      | Button Style          |
+      | Button Text           |
+      | Button Width          |
+      | Button Size           |
+      | Button Width          |
+      | Button Link           |
+      | Button Text Alignment |
+    And I click "Target" on ".cke_dialog_body" region                                 # FeatureContext::iClickOnRegion()
+      │ Before I click: http://d8-demo.dd:8083/node/add/ubc_page
+      │ After I click: http://d8-demo.dd:8083/node/add/ubc_page
+    Then ".cke_dialog_tab_selected" should contain the text "Target"                  # FeatureContext::shouldContainTheText()
+      │ Target == Target
+    And I should see "ATTRIBUTE" in ".cke_dialog_contents_body" with a tag name "td": # FeatureContext::iShouldSeeInWithATagName()
+      | ATTRIBUTE   |
+      | Link Target |
+    And I click "Icons" on ".cke_dialog_body" region                                  # FeatureContext::iClickOnRegion()
+      │ Before I click: http://d8-demo.dd:8083/node/add/ubc_page
+      │ After I click: http://d8-demo.dd:8083/node/add/ubc_page
+    Then ".cke_dialog_tab_selected" should contain the text "Icons"                   # FeatureContext::shouldContainTheText()
+      │ Icons == Icons
+    And I should see "ATTRIBUTE" in ".cke_dialog_contents_body" with a tag name "td": # FeatureContext::iShouldSeeInWithATagName()
+      | ATTRIBUTE                 |
+      | Add an Icon to the Button |
+      | Add an optional icon      |
+      | Required when using icon  |
+      | Icon Alignment            |
+
+@api @javascript
 Feature: Check UBC Drupal 8 Configuration Module
   As an admin, I want to be able to create and have access to contents of type Announcement, Landing Page, and Page.
-  As a user, I want to see Announcements on menu tab as default.
 
-  @announcement @javascript
-  Scenario: Should have /announcements on menu tab titled Announcements # features/ubc-config.feature:7
-    Given I am an anonymous user                                        # Drupal\DrupalExtension\Context\DrupalContext::assertAnonymousUser()
-    And I am on "/"                                                     # FeatureContext::iAmOn()
-      │ The current URL: http://d8-demo.dd:8083/
-    Then "#ubc7-unit-menu" should contain "Announcements"               # FeatureContext::shouldContain()
-      │ Main navigation Home Announcements Menu ☰
+  @module
+  Scenario: Should be able to see all the module names in UBC Configuration module # features/ubc-config.feature:7
+    Given I am logged in as an "administrator"                                     # Drupal\DrupalExtension\Context\DrupalContext::assertAuthenticatedByRole()
+    When I visit "/admin/modules"                                                  # FeatureContext::iAmOn()
+      │ The current URL: http://d8-demo.dd:8083/admin/modules
+    Then I should see "UBC WEB SERVICES" with a tag name "summary"                 # FeatureContext::iShouldSeeWithATagName()
+      │ UBC WEB SERVICES matches UBC WEB SERVICES
+    And I should see "MODULE NAME" in "html" with a tag name "label":              # FeatureContext::iShouldSeeInWithATagName()
+      | MODULE NAME                   |
+      | UBC Announcement Content Type |
+      | UBC Announcement Views        |
+      | UBC CKEditor Widgets          |
+      | UBC Editor Configuration      |
+      | UBC Landing Page Content Type |
+      | UBC Landing Page Views        |
+      | UBC Layout Configuration      |
+      | UBC Page Content Type         |
+      | UBC Page Views                |
+    And "MODULE NAME" should be enabled:                                           # FeatureContext::shouldBeEnabled()
+      | MODULE NAME                   |
+      | UBC Announcement Content Type |
+      | UBC Announcement Views        |
+      | UBC CKEditor Widgets          |
+      | UBC Editor Configuration      |
+      | UBC Landing Page Content Type |
+      | UBC Landing Page Views        |
+      | UBC Layout Configuration      |
+      | UBC Page Content Type         |
+      | UBC Page Views                |
+      TODO: write pending definition
 
-  @announcement @javascript
-  Scenario: Should be redirected to /announcements when Announcements is clicked # features/ubc-config.feature:14
-    Given I am an anonymous user                                                 # Drupal\DrupalExtension\Context\DrupalContext::assertAnonymousUser()
-    And I am on "/"                                                              # FeatureContext::iAmOn()
-      │ The current URL: http://d8-demo.dd:8083/
-    When I click "Announcements" on "#ubc7-unit-menu" region                     # FeatureContext::iClickOnRegion()
-      │ Before I click: http://d8-demo.dd:8083/Announcements
-      │ After I click: http://d8-demo.dd:8083/announcements
-    Then I should be on "/announcements"                                         # FeatureContext::iShouldBeOn()
-      │ 
-      │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
-
-  @api @announcement @javascript
-  Scenario: Should be able to create a content type of Announcement # features/ubc-config.feature:23
+  @announcement
+  Scenario: Should be able to create a content type of Announcement # features/ubc-config.feature:35
     Given I am logged in as an "administrator"                      # Drupal\DrupalExtension\Context\DrupalContext::assertAuthenticatedByRole()
     When I visit "/node/add/ubc_announcement"                       # FeatureContext::iAmOn()
       │ The current URL: http://d8-demo.dd:8083/node/add/ubc_announcement
     Then I should be on "/node/add/ubc_announcement"                # FeatureContext::iShouldBeOn()
-      │ 
       │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
     And I should see "Create Announcement" with a tag name "h1"     # FeatureContext::iShouldSeeWithATagName()
-      │ The element with a tag name 'h1' contains a text 'Create Announcement'Create Announcement matches Create Announcement
+      │ Create Announcement matches Create Announcement
     And I should not see "Page not found" with a tag name "h1"      # FeatureContext::iShouldNotSeeWithATagName()
-      │ The element with a tag name 'h1' contains a text 'Create Announcement'Page not found does not match Create Announcement
 
-  @api @landing @javascript
-  Scenario: Should be able to create a content type of Landing page # features/ubc-config.feature:33
+  @landing
+  Scenario: Should be able to create a content type of Landing page # features/ubc-config.feature:43
     Given I am logged in as an "administrator"                      # Drupal\DrupalExtension\Context\DrupalContext::assertAuthenticatedByRole()
     When I visit "/node/add/ubc_landing_page"                       # FeatureContext::iAmOn()
       │ The current URL: http://d8-demo.dd:8083/node/add/ubc_landing_page
     Then I should be on "/node/add/ubc_landing_page"                # FeatureContext::iShouldBeOn()
-      │ 
       │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
     And I should see "Create Landing Page" with a tag name "h1"     # FeatureContext::iShouldSeeWithATagName()
-      │ The element with a tag name 'h1' contains a text 'Create Landing Page'Create Landing Page matches Create Landing Page
+      │ Create Landing Page matches Create Landing Page
     And I should not see "Page not found" with a tag name "h1"      # FeatureContext::iShouldNotSeeWithATagName()
-      │ The element with a tag name 'h1' contains a text 'Create Landing Page'Page not found does not match Create Landing Page
 
-  @api @javascript
-  Scenario: Should be redirected to Page not found page     # features/ubc-config.feature:42
+  Scenario: Should be redirected to Page not found page     # features/ubc-config.feature:50
     Given I am logged in as an "administrator"              # Drupal\DrupalExtension\Context\DrupalContext::assertAuthenticatedByRole()
     When I visit "/node/add/not_a_real_content_type"        # FeatureContext::iAmOn()
       │ The current URL: http://d8-demo.dd:8083/node/add/not_a_real_content_type
     Then I should be on "/node/add/not_a_real_content_type" # FeatureContext::iShouldBeOn()
-      │ 
       │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
     And I should see "Page not found" with a tag name "h1"  # FeatureContext::iShouldSeeWithATagName()
-      │ The element with a tag name 'h1' contains a text 'Page not found'Page not found matches Page not found
+      │ Page not found matches Page not found
 
-35 scenarios (35 passed)
-115 steps (115 passed)
-6m33.40s (12.04Mb)
+40 scenarios (39 passed, 1 pending)
+148 steps (147 passed, 1 pending)
+11m31.71s (11.10Mb)
