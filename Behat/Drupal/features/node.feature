@@ -12,11 +12,11 @@ Feature: Check ability to create, edit nodes
       | edit-title-0-value | A002  |
       | edit-title-0-value | A003  |
     And I visit "/announcements"
-    Then I should see "announcements" in ".view-content":
-      | announcements |
-      | A001 |
-      | A002 |
-      | A003 |
+    Then I should see "ANNOUNCEMENT" in ".view-content" with a tag name "a":
+      | ANNOUNCEMENT |
+      | A001         |
+      | A002         |
+      | A003         |
 
   @landing
   Scenario: Should be able to create nodes of type Landing Page
@@ -26,3 +26,12 @@ Feature: Check ability to create, edit nodes
       | edit-title-0-value | L001  |
       | edit-title-0-value | L002  |
       | edit-title-0-value | L003  |
+
+  @page
+  Scenario: Should be able to create nodes of type Page
+    Given I am logged in as an "administrator"
+    When I create "ubc_page" with the following:
+      |         id         | value |
+      | edit-title-0-value | P001  |
+      | edit-title-0-value | P002  |
+      | edit-title-0-value | P003  |
