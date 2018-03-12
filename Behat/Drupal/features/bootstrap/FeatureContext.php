@@ -310,9 +310,8 @@ class FeatureContext extends RawDrupalContext {
             throw new \Exception($current_url . " does not contain " . $arg1);
         }
     }
-    /** *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~* 
-     				                PRIVATE  METHODS
-     *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+    /**
+     * Private Methods
      */
     /**
      * Returns the element on page with :selector
