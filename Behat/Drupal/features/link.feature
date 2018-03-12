@@ -1,15 +1,14 @@
+@javascript
 Feature: Check link functionality UBC CLF Theme 1.0.1
   In order to check link functionality of UBC CLF Theme 1.0.1
   As an administrator
   I want to be able to check URL's when each link is clicked
 
-  @javascript
   Scenario: Should be redirected to "http://d8-demo.dd:8083/rss.xml" when I click "Subscribe to"
     Given I am on "/"
     When I click the link that ends with "xml"
     Then I should be on "/rss.xml"
 
-  @javascript
   Scenario Outline: Should be redirected to a "page" when I click the link that ends with "end"
     Given I am on "/"
     When I click the link in global footer that ends with <end>
@@ -31,7 +30,6 @@ Feature: Check link functionality UBC CLF Theme 1.0.1
       | medicine                  | 'http://www.med.ubc.ca/about/campuses/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source='  |
       | asia                      | 'http://ubcapro.hk/?utm_campaign=UBC%20CLF&utm_medium=CLF%20Global%20Footer&utm_source='               |
 
-  @javascript
   Scenario Outline: Should be redirected to a "page" when I click the link that ends with "end"
     Given I am on "/"
     When I click the link in minimal footer that ends with <end>
