@@ -1,4 +1,4 @@
-# Travis CI (Continuous Integratin)
+# Travis CI (Continuous Integration)
 A hosted, distributed continuous integration service used to build and test software projects hosted at GitHub.
 
 [travis-ci.com](https://travis-ci.com/) ➜ testing private projects under different plans<br>
