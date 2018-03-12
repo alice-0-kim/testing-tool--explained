@@ -1,9 +1,11 @@
-# features/header.feature
+@header
+@api
+@javascript
 Feature: Check header region UBC CLF Theme 1.0.1
   In order to check header region of UBC CLF Theme 1.0.1
   As an administrator
   I want to be able to check rendering, functionalities, etc.
-   
+
   Scenario: Check if front page unit name contains the text Demo 
     Given I am on "/"
     Then I should see the text "Demo" as the unit name
@@ -23,8 +25,11 @@ Feature: Check header region UBC CLF Theme 1.0.1
     When I click the "#ubc7-logo a"
     Then I should be on "https://www.ubc.ca"
 
+  @search
   Scenario: Should be redirected to search result page when submitted
     Given I am on "/"
-    And I fill in ".form-search input[type=text]" with "computer science"
+    Given UBC Search is open
+    Given I fill in "input[type=text]" with "computer science"
     When I click the button "#ubc7-search-box button"
-    Then I should be on "https://www.ubc.ca/search/refine/?q=computer+science&label=Search&site=%2A.ubc.ca"
+    Then I should be on "https://www.ubc.ca/search"
+    Then the current URL should contain search keyword "computer science"
