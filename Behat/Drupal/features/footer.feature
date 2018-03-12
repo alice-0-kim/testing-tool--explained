@@ -1,4 +1,6 @@
-# features/footer.feature
+@footer
+@api
+@javascript
 Feature: Check footer region UBC CLF Theme 1.0.1
   In order to check footer region of UBC CLF Theme 1.0.1
   As an administrator
