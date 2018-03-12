@@ -13,7 +13,6 @@ use Behat\Behat\Context\BehatContext,
     Behat\Gherkin\Node\PyStringNode,
     Behat\Gherkin\Node\TableNode,
     Behat\Behat\Tester\Exception\PendingException;
-
 class FeatureContext extends RawDrupalContext {
     protected $base_url = 'http://d8-demo.dd:8083';
     //    protected $base_url = 'https://www.ubc.ca'; //live website with UBC CLF theme
@@ -245,12 +244,20 @@ class FeatureContext extends RawDrupalContext {
             $save->click();
         }
     }
+    
     /**
-     * @Then :arg1 should be enabled:
+     * @Then :arg1 should be enabled
      */
-    public function shouldBeEnabled($arg1, TableNode $table) {
-        throw new PendingException();
+    public function shouldBeEnabled($arg1) {
+    	$ubc_web_services = $this->findOnPage("#edit-modules-ubc-web-services");
+    	$checkboxes = $ubc_web_services->findAll("css", "input");
+    	foreach ($checkboxes as $checkbox) {
+    		if (!$checkbox->getAttribute("checked")) {
+    			throw new \Exception($checkbox->getAttribute("id") . " is not enabled");
+    		}
+    	}
     }
+    
     /**
      * @Then I should see :arg1 with a role :arg2:
      */
@@ -304,7 +311,7 @@ class FeatureContext extends RawDrupalContext {
         }
     }
     /** *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~* 
-     				     PRIVATE  METHODS
+     				                PRIVATE  METHODS
      *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
      */
     /**
