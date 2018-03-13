@@ -4,11 +4,6 @@ Feature: Check link functionality UBC CLF Theme 1.0.1
   As an administrator
   I want to be able to check URL's when each link is clicked
 
-  Scenario: Should be redirected to "http://d8-demo.dd:8083/rss.xml" when I click "Subscribe to"
-    Given I am on "/"
-    When I click the link that ends with "xml"
-    Then I should be on "/rss.xml"
-
   Scenario Outline: Should be redirected to a "page" when I click the link that ends with "end"
     Given I am on "/"
     When I click the link in global footer that ends with <end>
