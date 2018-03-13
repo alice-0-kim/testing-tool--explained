@@ -67,11 +67,8 @@ Feature: Check link functionality UBC CLF Theme 1.0.1
     Given I am on "/"                                                                            # FeatureContext::iAmOn()
       │ The current URL: http://d8-demo.dd:8083/
     When I click the link that ends with "xml"                                                   # FeatureContext::iClickTheLinkThatEndsWith()
-      │ Before I click: http://d8-demo.dd:8083/
-      │ Subscribe to
-      │ After I click: http://d8-demo.dd:8083/rss.xml
+      Fatal error: Call to a member function getText() on null (Behat\Testwork\Call\Exception\FatalThrowableError)
     Then I should be on "/rss.xml"                                                               # FeatureContext::iShouldBeOn()
-      │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
 
   Scenario Outline: Should be redirected to a "page" when I click the link that ends with "end" # features/link.feature:12
     Given I am on "/"                                                                           # FeatureContext::iAmOn()
@@ -432,13 +429,13 @@ Feature: Check UBC Drupal 8 Configuration Module
   As an admin, I want to be able to create and have access to contents of type Announcement, Landing Page, and Page.
 
   @module
-  Scenario: Should be able to see all the module names in UBC Configuration module # features/ubc-config.feature:7
-    Given I am logged in as an "administrator"                                     # Drupal\DrupalExtension\Context\DrupalContext::assertAuthenticatedByRole()
-    When I visit "/admin/modules"                                                  # FeatureContext::iAmOn()
+  Scenario: Should be able to see all the module names in UBC Configuration module and should be enabled # features/ubc-config.feature:7
+    Given I am logged in as an "administrator"                                                           # Drupal\DrupalExtension\Context\DrupalContext::assertAuthenticatedByRole()
+    When I visit "/admin/modules"                                                                        # FeatureContext::iAmOn()
       │ The current URL: http://d8-demo.dd:8083/admin/modules
-    Then I should see "UBC WEB SERVICES" with a tag name "summary"                 # FeatureContext::iShouldSeeWithATagName()
+    Then I should see "UBC WEB SERVICES" with a tag name "summary"                                       # FeatureContext::iShouldSeeWithATagName()
       │ UBC WEB SERVICES matches UBC WEB SERVICES
-    And I should see "MODULE NAME" in "html" with a tag name "label":              # FeatureContext::iShouldSeeInWithATagName()
+    And I should see "MODULE NAME" in "html" with a tag name "label":                                    # FeatureContext::iShouldSeeInWithATagName()
       | MODULE NAME                   |
       | UBC Announcement Content Type |
       | UBC Announcement Views        |
@@ -449,21 +446,10 @@ Feature: Check UBC Drupal 8 Configuration Module
       | UBC Layout Configuration      |
       | UBC Page Content Type         |
       | UBC Page Views                |
-    And "MODULE NAME" should be enabled:                                           # FeatureContext::shouldBeEnabled()
-      | MODULE NAME                   |
-      | UBC Announcement Content Type |
-      | UBC Announcement Views        |
-      | UBC CKEditor Widgets          |
-      | UBC Editor Configuration      |
-      | UBC Landing Page Content Type |
-      | UBC Landing Page Views        |
-      | UBC Layout Configuration      |
-      | UBC Page Content Type         |
-      | UBC Page Views                |
-      TODO: write pending definition
+    And "#edit-modules-ubc-web-services" should be enabled                                               # FeatureContext::shouldBeEnabled()
 
   @announcement
-  Scenario: Should be able to create a content type of Announcement # features/ubc-config.feature:35
+  Scenario: Should be able to create a content type of Announcement # features/ubc-config.feature:25
     Given I am logged in as an "administrator"                      # Drupal\DrupalExtension\Context\DrupalContext::assertAuthenticatedByRole()
     When I visit "/node/add/ubc_announcement"                       # FeatureContext::iAmOn()
       │ The current URL: http://d8-demo.dd:8083/node/add/ubc_announcement
@@ -474,7 +460,7 @@ Feature: Check UBC Drupal 8 Configuration Module
     And I should not see "Page not found" with a tag name "h1"      # FeatureContext::iShouldNotSeeWithATagName()
 
   @landing
-  Scenario: Should be able to create a content type of Landing page # features/ubc-config.feature:43
+  Scenario: Should be able to create a content type of Landing page # features/ubc-config.feature:33
     Given I am logged in as an "administrator"                      # Drupal\DrupalExtension\Context\DrupalContext::assertAuthenticatedByRole()
     When I visit "/node/add/ubc_landing_page"                       # FeatureContext::iAmOn()
       │ The current URL: http://d8-demo.dd:8083/node/add/ubc_landing_page
@@ -484,7 +470,7 @@ Feature: Check UBC Drupal 8 Configuration Module
       │ Create Landing Page matches Create Landing Page
     And I should not see "Page not found" with a tag name "h1"      # FeatureContext::iShouldNotSeeWithATagName()
 
-  Scenario: Should be redirected to Page not found page     # features/ubc-config.feature:50
+  Scenario: Should be redirected to Page not found page     # features/ubc-config.feature:40
     Given I am logged in as an "administrator"              # Drupal\DrupalExtension\Context\DrupalContext::assertAuthenticatedByRole()
     When I visit "/node/add/not_a_real_content_type"        # FeatureContext::iAmOn()
       │ The current URL: http://d8-demo.dd:8083/node/add/not_a_real_content_type
@@ -493,6 +479,10 @@ Feature: Check UBC Drupal 8 Configuration Module
     And I should see "Page not found" with a tag name "h1"  # FeatureContext::iShouldSeeWithATagName()
       │ Page not found matches Page not found
 
-40 scenarios (39 passed, 1 pending)
-148 steps (147 passed, 1 pending)
-11m31.71s (11.10Mb)
+--- Failed scenarios:
+
+    features/link.feature:7
+
+40 scenarios (39 passed, 1 failed)
+148 steps (146 passed, 1 failed, 1 skipped)
+11m53.24s (11.14Mb)
