@@ -63,14 +63,7 @@ Feature: Check link functionality UBC CLF Theme 1.0.1
   As an administrator
   I want to be able to check URL's when each link is clicked
 
-  Scenario: Should be redirected to "http://d8-demo.dd:8083/rss.xml" when I click "Subscribe to" # features/link.feature:7
-    Given I am on "/"                                                                            # FeatureContext::iAmOn()
-      │ The current URL: http://d8-demo.dd:8083/
-    When I click the link that ends with "xml"                                                   # FeatureContext::iClickTheLinkThatEndsWith()
-      Fatal error: Call to a member function getText() on null (Behat\Testwork\Call\Exception\FatalThrowableError)
-    Then I should be on "/rss.xml"                                                               # FeatureContext::iShouldBeOn()
-
-  Scenario Outline: Should be redirected to a "page" when I click the link that ends with "end" # features/link.feature:12
+  Scenario Outline: Should be redirected to a "page" when I click the link that ends with "end" # features/link.feature:7
     Given I am on "/"                                                                           # FeatureContext::iAmOn()
     When I click the link in global footer that ends with <end>                                 # FeatureContext::iClickTheLinkInGlobalFooterThatEndsWith()
     Then I should be on <page>                                                                  # FeatureContext::iShouldBeOn()
@@ -141,8 +134,9 @@ Feature: Check link functionality UBC CLF Theme 1.0.1
         │ The current URL: http://d8-demo.dd:8083/
         │ Before I click: http://d8-demo.dd:8083/
         │ Centre for Digital Media
-        │ After I click: https://www.thecdm.ca/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
-        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+        │ After I click: https://thecdm.ca/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%253A%252F%252Fd8-demo.dd%253A8083%252F
+        │ https://www.thecdm.ca/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=
+        Oh no, I am on https://thecdm.ca/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%253A%252F%252Fd8-demo.dd%253A8083%252F (Exception)
       | medicine  | 'http://www.med.ubc.ca/about/campuses/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source='  |
         │ The current URL: http://d8-demo.dd:8083/
         │ Before I click: http://d8-demo.dd:8083/
@@ -156,7 +150,7 @@ Feature: Check link functionality UBC CLF Theme 1.0.1
         │ After I click: http://ubcapro.hk/?utm_campaign=UBC%20CLF&utm_medium=CLF%20Global%20Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
         │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
 
-  Scenario Outline: Should be redirected to a "page" when I click the link that ends with "end" # features/link.feature:33
+  Scenario Outline: Should be redirected to a "page" when I click the link that ends with "end" # features/link.feature:28
     Given I am on "/"                                                                           # FeatureContext::iAmOn()
     When I click the link in minimal footer that ends with <end>                                # FeatureContext::iClickTheLinkInMinimalFooterThatEndsWith()
     Then I should be on <page>                                                                  # FeatureContext::iShouldBeOn()
@@ -187,6 +181,61 @@ Feature: Check link functionality UBC CLF Theme 1.0.1
         │ Accessibility
         │ After I click: https://www.ubc.ca/accessibility/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fd8-demo.dd%3A8083%2F
         │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+
+@api @javascript @nav
+Feature: To check navigation options in UBC CLF Theme
+
+  Scenario: Navigation placement option should be visible               # features/navigation.feature:6
+    Given I am logged in as an "administrator"                          # Drupal\DrupalExtension\Context\DrupalContext::assertAuthenticatedByRole()
+    Given I am on "/admin/appearance/settings/clf"                      # FeatureContext::iAmOn()
+      │ The current URL: http://d8-demo.dd:8083/admin/appearance/settings/clf
+    When I click "Navigation Settings" on ".vertical-tabs__menu" region # FeatureContext::iClickOnRegion()
+      │ Before I click: http://d8-demo.dd:8083/admin/appearance/settings/clf
+      │ After I click: http://d8-demo.dd:8083/admin/appearance/settings/clf
+    Then I should see "#edit-clf-navigation-placement"                  # FeatureContext::iShouldSee()
+      │ #edit-clf-navigation-placement is visible
+    And I should see "option[value='default']"                          # FeatureContext::iShouldSee()
+      │ option[value='default'] is visible
+    And I should see "option[value='double']"                           # FeatureContext::iShouldSee()
+      │ option[value='double'] is visible
+    And I should see "option[value='higher']"                           # FeatureContext::iShouldSee()
+      │ option[value='higher'] is visible
+    And I should see "option[value='slidein']"                          # FeatureContext::iShouldSee()
+      │ option[value='slidein'] is visible
+    But I should not see "option[value='bello']"                        # FeatureContext::iShouldNotSee()
+      │ option[value='bello'] is not visible
+
+  Scenario: Navigation sticky option should be visible                  # features/navigation.feature:17
+    Given I am logged in as an "administrator"                          # Drupal\DrupalExtension\Context\DrupalContext::assertAuthenticatedByRole()
+    Given I am on "/admin/appearance/settings/clf"                      # FeatureContext::iAmOn()
+      │ The current URL: http://d8-demo.dd:8083/admin/appearance/settings/clf
+    When I click "Navigation Settings" on ".vertical-tabs__menu" region # FeatureContext::iClickOnRegion()
+      │ Before I click: http://d8-demo.dd:8083/admin/appearance/settings/clf
+      │ After I click: http://d8-demo.dd:8083/admin/appearance/settings/clf
+    Then I should see "#edit-clf-navigation-sticky"                     # FeatureContext::iShouldSee()
+      │ #edit-clf-navigation-sticky is visible
+
+  Scenario: Navigation mobile placement option should be visible        # features/navigation.feature:23
+    Given I am logged in as an "administrator"                          # Drupal\DrupalExtension\Context\DrupalContext::assertAuthenticatedByRole()
+    Given I am on "/admin/appearance/settings/clf"                      # FeatureContext::iAmOn()
+      │ The current URL: http://d8-demo.dd:8083/admin/appearance/settings/clf
+    When I click "Navigation Settings" on ".vertical-tabs__menu" region # FeatureContext::iClickOnRegion()
+      │ Before I click: http://d8-demo.dd:8083/admin/appearance/settings/clf
+      │ After I click: http://d8-demo.dd:8083/admin/appearance/settings/clf
+    Then I should see "#edit-clf-navoption"                             # FeatureContext::iShouldSee()
+      │ #edit-clf-navoption is visible
+
+  @yay
+  Scenario: Navigation placement mode should be applied correctly       # features/navigation.feature:30
+    Given I am logged in as an "administrator"                          # Drupal\DrupalExtension\Context\DrupalContext::assertAuthenticatedByRole()
+    Given I am on "/admin/appearance/settings/clf"                      # FeatureContext::iAmOn()
+      │ The current URL: http://d8-demo.dd:8083/admin/appearance/settings/clf
+    When I click "Navigation Settings" on ".vertical-tabs__menu" region # FeatureContext::iClickOnRegion()
+      │ Before I click: http://d8-demo.dd:8083/admin/appearance/settings/clf
+      │ After I click: http://d8-demo.dd:8083/admin/appearance/settings/clf
+    Then I should be able to check navigation mode                      # FeatureContext::iShouldBeAbleToCheckNavigationMode()
+      │ slidein is selected
+      │ The current URL: http://d8-demo.dd:8083/Menu ☰ matches Menu ☰
 
 @api @javascript @node
 Feature: Check ability to create, edit nodes
@@ -481,8 +530,8 @@ Feature: Check UBC Drupal 8 Configuration Module
 
 --- Failed scenarios:
 
-    features/link.feature:7
+    features/link.feature:24
 
-40 scenarios (39 passed, 1 failed)
-148 steps (146 passed, 1 failed, 1 skipped)
-11m53.24s (11.14Mb)
+43 scenarios (42 passed, 1 failed)
+166 steps (165 passed, 1 failed)
+13m54.60s (11.12Mb)
