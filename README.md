@@ -1,4 +1,4 @@
-# testing-tool-explained
+# Testing Tool Explained
 A list of testing tools (functional, unit, performance testing) explained.
 
 
