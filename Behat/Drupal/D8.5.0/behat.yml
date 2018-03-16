@@ -6,10 +6,11 @@ default:
         - Drupal\DrupalExtension\Context\DrupalContext
   extensions:
     Behat\MinkExtension:
+      files_path: '%paths.base%/'
       base_url: 'http://drupal-8-5-0.dd:8083'
       goutte: ~
       selenium2:
-        wd_host: http://128.189.64.144:4444/wd/hub
+        wd_host: http://128.189.69.158:4444/wd/hub
         capabilities:
           marionette: null
           browserName: chrome

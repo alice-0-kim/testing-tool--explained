@@ -8,7 +8,7 @@ Feature: Check header region UBC CLF Theme 1.0.1
 
   Scenario: Check if front page unit name contains the text Demo 
     Given I am on "/"
-    Then I should see the text "Demo" as the unit name
+    Then I should see the text "Unit Name" as the unit name
 
   Scenario: Should be redirected to homepage when unit name is clicked
     Given I am on "/"

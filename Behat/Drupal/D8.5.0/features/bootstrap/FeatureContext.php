@@ -174,6 +174,32 @@ class FeatureContext extends RawDrupalContext {
         }
     }
     /**
+     * @Then I should see :arg1
+     */
+    public function iShouldSee($arg1)
+    {
+        $element = $this->findOnPage($arg1);
+        if (!isset($element)) {
+        	throw new \Exception($arg1 . " is not visible!");
+        }
+        
+        echo $arg1 . " is visible";
+    }
+    
+    /**
+     * @Then I should not see :arg1
+     */
+    public function iShouldNotSee($arg1)
+    {
+        $element = $this->findOnPage($arg1);
+        if (isset($element)) {
+        	throw new \Exception($arg1 . " is visible!");
+        }
+        
+        echo $arg1 . " is not visible";
+    }
+    
+    /**
      * @Then I should see :arg1 in :arg2 with a tag name :arg3:
      */
     public function iShouldSeeInWithATagName($arg1, $arg2, $arg3, TableNode $table) {
@@ -309,10 +335,59 @@ class FeatureContext extends RawDrupalContext {
         } else {
             throw new \Exception($current_url . " does not contain " . $arg1);
         }
-    }
+    }    
     /**
-     * Private Methods
+     * @Then I should be able to check navigation mode
      */
+    public function iShouldBeAbleToCheckNavigationMode()
+    {
+        $selected = $this->findOnPage("#edit-clf-navigation-placement")->getAttribute("value");
+        
+        echo $selected . " is selected\n";
+        
+        $this->iAmOn('/');
+        switch($selected) {
+        	case 'default':
+        		$this->iShouldSee('#ubc7-unit-menu');
+        		$height = $this->findOnPage('#ubc7-unit-menu')->getAttribute('height');
+        		echo $height;
+        		break;
+        	case 'double':
+        		$this->iShouldSee('#ubc7-unit-menu');
+        		break;
+        	case 'higher':
+        		$this->iShouldSee('#ubc7-unit-menu');
+        		$height = $this->findOnPage('#ubc7-unit-menu')->getAttribute('height');
+        		echo $height;
+        		break;
+        	case 'slidein':
+        		//$target = $this->findOnPage('#ubc7-unit-menu');
+        		//echo $target->getAttribute('display');
+        		//if (strcmp($target->getAttribute('display'), 'none') != 0) {
+        		//	throw new \Exception('#ubc7-unit-menu is visible!');
+        		//}
+        		$this->iShouldSeeWithATagName('Menu ☰','button');
+        		break;
+        	default:
+        		throw new \Exception($selected . ' is not applicable!');
+        }
+    }
+    
+    /**
+     * Example: When I attach the file "flower_1200x600.jpg" to "#edit-field-landing-feature-image-0-upload"
+     *
+     * @When I attach the file :arg1 to :arg2
+     */
+    public function iAttachTheFileTo($arg1, $arg2)
+    {
+    	$element = $this->findOnPage($arg2);
+    	$path = $this->getMinkParameter('files_path').DIRECTORY_SEPARATOR. $arg1;
+		$element->attachFile($path);
+    }
+    
+    // ##################################################################################
+    // ##################################################################################
+
     /**
      * Returns the element on page with :selector
      */

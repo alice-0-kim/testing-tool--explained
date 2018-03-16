@@ -28,7 +28,7 @@ Feature: Check footer region UBC CLF Theme 1.0.1
       | vancouver                 | 'https://www.ubc.ca/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source='                    |
       | okanagan                  | 'https://ok.ubc.ca/'                                                                                   |
       | robson                    | 'https://robsonsquare.ubc.ca/?utm_campaign=UBC%20CLF&utm_medium=CLF%20Global%20Footer&utm_source='     |
-      | media                     | 'https://www.thecdm.ca/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source='                 |
+      | media                     | 'https://thecdm.ca/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source='                 |
       | medicine                  | 'http://www.med.ubc.ca/about/campuses/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source='  |
       | asia                      | 'http://ubcapro.hk/?utm_campaign=UBC%20CLF&utm_medium=CLF%20Global%20Footer&utm_source='               |
 
