@@ -1,0 +1,180 @@
+@footer @api @javascript
+Feature: Check footer region UBC CLF Theme 1.0.1
+  In order to check footer region of UBC CLF Theme 1.0.1
+  As an administrator
+  I want to be able to check rendering, functionalities, etc.
+
+  Scenario: Should be redirected to www.ubc.ca when #ubc7-signature is clicked # features/footer.feature:9
+    Given I am on "/"                                                          # FeatureContext::iAmOn()
+      │ The current URL: http://drupal-8-5-0.dd:8083/
+    When I click the "#ubc7-signature a"                                       # FeatureContext::iClickThe()
+    Then I should be on "https://www.ubc.ca"                                   # FeatureContext::iShouldBeOn()
+      │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+
+  Scenario Outline: Should be redirected to a "page" when I click the link that ends with "end" # features/footer.feature:14
+    Given I am on "/"                                                                           # FeatureContext::iAmOn()
+    When I click the link in global footer that ends with <end>                                 # FeatureContext::iClickTheLinkInGlobalFooterThatEndsWith()
+    Then I should be on <page>                                                                  # FeatureContext::iShouldBeOn()
+
+    Examples:
+      | end       | page                                                                                                   |
+      | contact   | 'https://www.ubc.ca/about/contact.html?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source='  |
+        │ The current URL: http://drupal-8-5-0.dd:8083/
+        │ Before I click: http://drupal-8-5-0.dd:8083/
+        │ Contact UBC
+        │ After I click: https://www.ubc.ca/about/contact.html?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fdrupal-8-5-0.dd%3A8083%2F
+        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+      | about     | 'https://www.ubc.ca/about/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source='              |
+        │ The current URL: http://drupal-8-5-0.dd:8083/
+        │ Before I click: http://drupal-8-5-0.dd:8083/
+        │ About the University
+        │ After I click: https://www.ubc.ca/about/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fdrupal-8-5-0.dd%3A8083%2F
+        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+      | news      | 'https://www.ubc.ca/landing/news.html?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source='   |
+        │ The current URL: http://drupal-8-5-0.dd:8083/
+        │ Before I click: http://drupal-8-5-0.dd:8083/
+        │ News
+        │ After I click: https://www.ubc.ca/landing/news.html?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fdrupal-8-5-0.dd%3A8083%2F
+        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+      | events    | 'https://www.ubc.ca/landing/events.html?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=' |
+        │ The current URL: http://drupal-8-5-0.dd:8083/
+        │ Before I click: http://drupal-8-5-0.dd:8083/
+        │ Events
+        │ After I click: https://www.ubc.ca/landing/events.html?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fdrupal-8-5-0.dd%3A8083%2F
+        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+      | careers   | 'http://www.hr.ubc.ca/careers/?utm_campaign=UBC%20CLF&utm_medium=CLF%20Global%20Footer&utm_source='    |
+        │ The current URL: http://drupal-8-5-0.dd:8083/
+        │ Before I click: http://drupal-8-5-0.dd:8083/
+        │ Careers
+        │ After I click: http://www.hr.ubc.ca/careers/?utm_campaign=UBC%20CLF&utm_medium=CLF%20Global%20Footer&utm_source=http%3A%2F%2Fdrupal-8-5-0.dd%3A8083%2F
+        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+      | gift      | 'https://support.ubc.ca/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source='                |
+        │ The current URL: http://drupal-8-5-0.dd:8083/
+        │ Before I click: http://drupal-8-5-0.dd:8083/
+        │ Make a Gift
+        │ After I click: https://support.ubc.ca/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fdrupal-8-5-0.dd%3A8083%2F
+        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+      | search    | 'https://www.ubc.ca/search/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source='             |
+        │ The current URL: http://drupal-8-5-0.dd:8083/
+        │ Before I click: http://drupal-8-5-0.dd:8083/
+        │ Search UBC.ca
+        │ After I click: https://www.ubc.ca/search/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fdrupal-8-5-0.dd%3A8083%2F#gsc.tab=0
+        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+      | vancouver | 'https://www.ubc.ca/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source='                    |
+        │ The current URL: http://drupal-8-5-0.dd:8083/
+        │ Before I click: http://drupal-8-5-0.dd:8083/
+        │ Vancouver Campus
+        │ After I click: https://www.ubc.ca/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fdrupal-8-5-0.dd%3A8083%2F
+        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+      | okanagan  | 'https://ok.ubc.ca/'                                                                                   |
+        │ The current URL: http://drupal-8-5-0.dd:8083/
+        │ Before I click: http://drupal-8-5-0.dd:8083/
+        │ Okanagan Campus
+        │ After I click: https://ok.ubc.ca/
+        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+      | robson    | 'https://robsonsquare.ubc.ca/?utm_campaign=UBC%20CLF&utm_medium=CLF%20Global%20Footer&utm_source='     |
+        │ The current URL: http://drupal-8-5-0.dd:8083/
+        │ Before I click: http://drupal-8-5-0.dd:8083/
+        │ Robson Square
+        │ After I click: https://robsonsquare.ubc.ca/?utm_campaign=UBC%20CLF&utm_medium=CLF%20Global%20Footer&utm_source=http%3A%2F%2Fdrupal-8-5-0.dd%3A8083%2F
+        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+      | media     | 'https://thecdm.ca/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source='                     |
+        │ The current URL: http://drupal-8-5-0.dd:8083/
+        │ Before I click: http://drupal-8-5-0.dd:8083/
+        │ Centre for Digital Media
+        │ After I click: https://thecdm.ca/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%253A%252F%252Fdrupal-8-5-0.dd%253A8083%252F
+        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+      | medicine  | 'http://www.med.ubc.ca/about/campuses/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source='  |
+        │ The current URL: http://drupal-8-5-0.dd:8083/
+        │ Before I click: http://drupal-8-5-0.dd:8083/
+        │ Faculty of Medicine Across BC
+        │ After I click: http://www.med.ubc.ca/about/campuses/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fdrupal-8-5-0.dd%3A8083%2F
+        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+      | asia      | 'http://ubcapro.hk/?utm_campaign=UBC%20CLF&utm_medium=CLF%20Global%20Footer&utm_source='               |
+        │ The current URL: http://drupal-8-5-0.dd:8083/
+        │ Before I click: http://drupal-8-5-0.dd:8083/
+        │ Asia Pacific Regional Office
+        │ After I click: http://ubcapro.hk/?utm_campaign=UBC%20CLF&utm_medium=CLF%20Global%20Footer&utm_source=http%3A%2F%2Fdrupal-8-5-0.dd%3A8083%2F
+        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+
+  Scenario Outline: Should be redirected to a "page" when I click the link that ends with "end" # features/footer.feature:35
+    Given I am on "/"                                                                           # FeatureContext::iAmOn()
+    When I click the link in minimal footer that ends with <end>                                # FeatureContext::iClickTheLinkInMinimalFooterThatEndsWith()
+    Then I should be on <page>                                                                  # FeatureContext::iShouldBeOn()
+
+    Examples:
+      | end           | page                                                                                                                |
+      | emergency     | 'https://www.ubc.ca/landing/emergencyprocedures.html?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=' |
+        │ The current URL: http://drupal-8-5-0.dd:8083/
+        │ Before I click: http://drupal-8-5-0.dd:8083/
+        │ Emergency Procedures
+        │ After I click: https://www.ubc.ca/landing/emergencyprocedures.html?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fdrupal-8-5-0.dd%3A8083%2F
+        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+      | terms         | 'https://www.ubc.ca/site/legal.html?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source='                  |
+        │ The current URL: http://drupal-8-5-0.dd:8083/
+        │ Before I click: http://drupal-8-5-0.dd:8083/
+        │ Terms of Use
+        │ After I click: https://www.ubc.ca/site/legal.html?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fdrupal-8-5-0.dd%3A8083%2F
+        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+      | copyright     | 'https://copyright.ubc.ca/?utm_campaign=UBC%20CLF&utm_medium=CLF%20Global%20Footer&utm_source='                     |
+        │ The current URL: http://drupal-8-5-0.dd:8083/
+        │ Before I click: http://drupal-8-5-0.dd:8083/
+        │ UBC Copyright
+        │ After I click: https://copyright.ubc.ca/?utm_campaign=UBC%20CLF&utm_medium=CLF%20Global%20Footer&utm_source=http%3A%2F%2Fdrupal-8-5-0.dd%3A8083%2F
+        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+      | accessibility | 'https://www.ubc.ca/accessibility/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source='                   |
+        │ The current URL: http://drupal-8-5-0.dd:8083/
+        │ Before I click: http://drupal-8-5-0.dd:8083/
+        │ Accessibility
+        │ After I click: https://www.ubc.ca/accessibility/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=http%3A%2F%2Fdrupal-8-5-0.dd%3A8083%2F
+        │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+
+@header @api @javascript
+Feature: Check header region UBC CLF Theme 1.0.1
+  In order to check header region of UBC CLF Theme 1.0.1
+  As an administrator
+  I want to be able to check rendering, functionalities, etc.
+
+  Scenario: Check if front page unit name contains the text Demo # features/header.feature:9
+    Given I am on "/"                                            # FeatureContext::iAmOn()
+      │ The current URL: http://drupal-8-5-0.dd:8083/
+    Then I should see the text "Unit Name" as the unit name      # FeatureContext::iShouldSeeTheTextAsTheUnitName()
+      │ The text 'Unit Name' matches with the unit name 'Unit Name'
+
+  Scenario: Should be redirected to homepage when unit name is clicked # features/header.feature:13
+    Given I am on "/"                                                  # FeatureContext::iAmOn()
+      │ The current URL: http://drupal-8-5-0.dd:8083/
+    When I click the unit name "#ubc7-unit-name a"                     # FeatureContext::iClickThe()
+    Then I should be on "/"                                            # FeatureContext::iShouldBeOn()
+      │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+
+  Scenario: Should be redirected to www.ubc.ca when #ubc7-wordmark is clicked # features/header.feature:18
+    Given I am on "/"                                                         # FeatureContext::iAmOn()
+      │ The current URL: http://drupal-8-5-0.dd:8083/
+    When I click the "#ubc7-wordmark a"                                       # FeatureContext::iClickThe()
+    Then I should be on "https://www.ubc.ca"                                  # FeatureContext::iShouldBeOn()
+      │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+
+  Scenario: Should be redirected to www.ubc.ca when #ubc7-logo is clicked # features/header.feature:23
+    Given I am on "/"                                                     # FeatureContext::iAmOn()
+      │ The current URL: http://drupal-8-5-0.dd:8083/
+    When I click the "#ubc7-logo a"                                       # FeatureContext::iClickThe()
+    Then I should be on "https://www.ubc.ca"                              # FeatureContext::iShouldBeOn()
+      │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+
+  @search
+  Scenario: Should be redirected to search result page when submitted     # features/header.feature:29
+    Given I am on "/"                                                     # FeatureContext::iAmOn()
+      │ The current URL: http://drupal-8-5-0.dd:8083/
+    Given UBC Search is open                                              # FeatureContext::ubcSearchIsOpen()
+      │ UBC Search
+    Given I fill in "input[type=text]" with "computer science"            # FeatureContext::iFillInWith()
+    When I click the button "#ubc7-search-box button"                     # FeatureContext::iClickThe()
+    Then I should be on "https://www.ubc.ca/search"                       # FeatureContext::iShouldBeOn()
+      │ *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+    Then the current URL should contain search keyword "computer science" # FeatureContext::theCurrentUrlShouldContainSearchKeyword()
+      │ computer+sciencehttps://www.ubc.ca/search/refine/?q=computer+science&label=Search&site=*.ubc.ca#gsc.tab=0&gsc.q=computer%20science&gsc.page=1 contains computer science
+
+23 scenarios (23 passed)
+71 steps (71 passed)
+2m36.72s (11.10Mb)
