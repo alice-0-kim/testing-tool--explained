@@ -18,7 +18,7 @@ default | Given I am an anonymous user
 default | Given I am not logged in
 default | Given I am logged in as a user with the :role role(s)
 ```
-
+6. Create __behat.yml__ file. You can choose to simply copy and paste from [here](https://github.com/alice-0-kim/testing-tool-explained/blob/master/Behat/Drupal/behat.yml).<br>There are several lines that are specific to the environment (e.x. wd_host, alias, directory path, etc). Make sure to check that all the information is pointing to your local environment.
 ## Directory Structure for a Simple Project Directory
 ___Demo___<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-- __behat.yml__<br>
