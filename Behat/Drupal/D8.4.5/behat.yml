@@ -2,14 +2,14 @@ default:
   suites:
     default:
       contexts:
-        - FeatureContext
         - Drupal\DrupalExtension\Context\DrupalContext
+        - FeatureContext
   extensions:
     Behat\MinkExtension:
       base_url: 'http://d8-demo.dd:8083'
       goutte: ~
       selenium2:
-        wd_host: http://128.189.64.164:4444/wd/hub
+        wd_host: http://128.189.67.49:4444/wd/hub
         capabilities:
           marionette: null
           browserName: chrome
@@ -19,9 +19,9 @@ default:
       browser_name: chrome
     Drupal\DrupalExtension:
       blackbox: ~
-      api_driver: 'drush' 
+      api_driver: 'drush'
       drush:
         root: ../drupal-8.4.5
-        alias: 'loc.drupal-8-4-5'
+        alias: 'loc.d8-demo'
       region_map:
         footer: "#footer"

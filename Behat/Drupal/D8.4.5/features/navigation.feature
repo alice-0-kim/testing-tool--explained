@@ -26,6 +26,7 @@ Feature: To check navigation options in UBC CLF Theme
     When I click "Navigation Settings" on ".vertical-tabs__menu" region
     Then I should see "#edit-clf-navoption"
 
+  @yay
   Scenario: Navigation placement mode should be applied correctly
     Given I am logged in as an "administrator"
     Given I am on "/admin/appearance/settings/clf"
