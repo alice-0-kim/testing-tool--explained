@@ -7,8 +7,8 @@ Behat is a test framework for behavior-driven development written in the PHP pro
 * __Selenium__ latest version
 
 ## Get Started
-1. Create a new directory called __new-dir__. Note that this is __Demo__ directory in our demo.
-2. Create __composer.json__ file. Copy and paste from [here](https://github.com/alice-0-kim/testing-tool-explained/blob/master/Behat/Demo/composer.json).
+1. Create a new directory. Note that this is __Demo__ directory in our demo.
+2. Create __composer.json__ file. Copy and paste from [here](https://github.com/alice-0-kim/testing-tool-explained/blob/master/Behat/Demo/composer.json) or [here](https://github.com/alice-0-kim/testing-tool-explained/blob/master/Behat/Drupal/D8.5.0/composer.json) if you are using Selenium WebDriver.
 3. Run `composer install` from __new-dir__ directory.
 4. Run `bin/behat --init`. This will create a features/ directory.
 5. Run `bin/behat -dl` to make sure everything has been configured. The output should look similar to:
