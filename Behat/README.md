@@ -126,3 +126,7 @@ bin/behat --tags="@node&&@javascript"
 ```
 bin/behat --tags="@node,@api,@announcement"
 ```
+### To Run Scenarios without @exclude
+```
+bin/behat --tags="~@exclude"
+```
