@@ -1,0 +1,29 @@
+default:
+  suites:
+    default:
+      contexts:
+        - FeatureContext
+        - Drupal\DrupalExtension\Context\RawDrupalContext
+        - Drupal\DrupalExtension\Context\DrupalContext
+        - Behat\MinkExtension\Context\MinkContext
+  extensions:
+    Behat\MinkExtension:
+      files_path: '%paths.base%/'
+      base_url: 'http://drupal-8-5-0-2.dd:8083'
+      goutte: ~
+      selenium2:
+        wd_host: http://128.189.71.81:4444/wd/hub
+        capabilities:
+          marionette: null
+          browserName: chrome
+          browser: chrome
+          version: ''
+      javascript_session: selenium2
+      browser_name: chrome
+    Drupal\DrupalExtension:
+      blackbox: ~
+      api_driver: 'drush' 
+      drush:
+        alias: self
+      region_map:
+        footer: "#footer"
