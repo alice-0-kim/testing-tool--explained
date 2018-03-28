@@ -12,12 +12,13 @@ Behat is a test framework for behavior-driven development written in the PHP pro
 * To Run Scenarios with \<Tag\> [&#10172;](#h)
 * Resources & Pages [&#10172;](#i)
 
-## Requirements <p id="a"></p>
+<p id="a"></p>
+## Requirements
 * __Composer__
 * __PHP__ 5.3.5+
 * __Selenium__ latest version
-
-## Get Started <p id="b"></p>
+<p id="b"></p>
+## Get Started
 1. Create a new directory. This will be your root directory.
 2. Create __composer.json__ file. Copy and paste from [here](https://github.com/alice-0-kim/testing-tool-explained/blob/master/Behat/Demo/composer.json) or [here](https://github.com/alice-0-kim/testing-tool-explained/blob/master/Behat/Drupal/D8.5.0/composer.json) if you are using Selenium WebDriver.
 3. Run `composer install` from the root directory.
@@ -30,7 +31,8 @@ default | Given I am an anonymous user
 default | Given I am not logged in
 default | Given I am logged in as a user with the :role role(s)
 ```
-## Directory Structure of a Simple Project Directory <p id="c"></p>
+<p id="c"></p>
+## Directory Structure of a Simple Project Directory
 __root directory__<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-- __behat.yml__<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-- bin<br>
@@ -41,8 +43,8 @@ __root directory__<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'-- __FeatureContext.php__<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'-- __demo.feature__<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'-- vendor<br>
-
-## To Run Test from the Terminal <p id="d"></p>
+<p id="d"></p>
+## To Run Test from the Terminal
 Run __bin/behat__ from the root directory.
 ```
 $ bin/behat
@@ -50,8 +52,8 @@ $ bin/behat
 It will look smiliar to:
 
 ![screenshot](screenshot001.png)
-
-## Example output <p id="e"></p>
+<p id="e"></p>
+## Example output 
 
 ### When the test fails:
 ![screenshot](screenshot003.png)
@@ -63,8 +65,8 @@ It will look smiliar to:
 ![screenshot](screenshot005.png)
 
 ![screenshot](test.gif)
-
-## Drush/Drupal API Driver <p id="f"></p>
+<p id="f"></p>
+## Drush/Drupal API Driver 
 * use to add users, reset passwords, and log in to websites
 ### Set up
   Locate to the local project directory and run:
@@ -88,8 +90,8 @@ Drupal\DrupalExtension:
   Scenario: Check that Administrator has access to ...
 ```
   Run using `bin/behat` to make sure no error is being thrown
-
-## Using Selenium2 and ChromeDriver <p id="g"></p>
+<p id="g"></p>
+## Using Selenium2 and ChromeDriver 
 ### Selenium installation
 1. Download __Selenium Standalone Server__ from [here](https://www.seleniumhq.org/download/). As of today, the current download version is 3.9.1.<br> The file name should be similar to this:__selenium-server-standalone-3.9.1.jar__. Replace the version number if necessary.
 2. Download __ChromeDriver__ from [here](https://chromedriver.storage.googleapis.com/index.html?path=2.35/). Click one of the links depending on your local environment.
@@ -126,8 +128,8 @@ java -jar ~/Downloads/selenium-server-standalone-3.9.1.jar -port 4444
 09:21:55.237 INFO - Nodes should register to http://128.189.64.164:4444/grid/register/
 09:21:55.237 INFO - Clients should connect to http://128.189.64.164:4444/wd/hub
 ```
-
-## To Run Scenarios with \<Tag\> <p id="h"></p>
+<p id="h"></p>
+## To Run Scenarios with \<Tag\> 
 ### To Run Scenarios with @admin
 ```
 bin/behat --tags="@admin"
@@ -144,8 +146,8 @@ bin/behat --tags="@node,@api,@announcement"
 ```
 bin/behat --tags="~@exclude"
 ```
-
-## Resources & Pages <p id="i"></p>
+<p id="i"></p>
+## Resources & Pages 
 * A brief summary of different testing tools including Behat/Mink Extension, Travis CI, and more [&#10172;](https://affinitybridge.com/blog/testing-drupal-distributions-using-behat-mink-drupal-extension-and-travis-ci)
 * The Drupal Extension to Behat and Mink’s documentation [&#10172;](https://behat-drupal-extension.readthedocs.io/en/3.1)
 * A list of Whens, Thens, and Givens for Drupal Behat testing [&#10172;](https://gist.github.com/mikecrittenden/618e57a41286e555dea8)
