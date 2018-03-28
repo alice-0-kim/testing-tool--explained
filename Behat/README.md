@@ -1,4 +1,4 @@
-# Behat
+# Behat Mink Extension
 Behat is a test framework for behavior-driven development written in the PHP programming language.
 
 ## Requirements
@@ -7,7 +7,7 @@ Behat is a test framework for behavior-driven development written in the PHP pro
 * __Selenium__ latest version
 
 ## Get Started
-1. Create a new directory. Note that this is __Demo__ directory in our demo.
+1. Create a new directory. This will be your root directory.
 2. Create __composer.json__ file. Copy and paste from [here](https://github.com/alice-0-kim/testing-tool-explained/blob/master/Behat/Demo/composer.json) or [here](https://github.com/alice-0-kim/testing-tool-explained/blob/master/Behat/Drupal/D8.5.0/composer.json) if you are using Selenium WebDriver.
 3. Run `composer install` from the root directory.
 4. Create __behat.yml__ file. You can choose to simply copy and paste from [here](https://github.com/alice-0-kim/testing-tool-explained/blob/master/Behat/Drupal/D8.5.0/behat.yml).<br>There are several lines that are specific to the environment (e.x. wd_host, alias, directory path, etc). Make sure to check that all the information is pointing to your local environment.
@@ -20,7 +20,7 @@ default | Given I am not logged in
 default | Given I am logged in as a user with the :role role(s)
 ```
 ## Directory Structure for a Simple Project Directory
-___Demo___<br>
+__root directory__<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-- __behat.yml__<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-- bin<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-- __composer.json__<br>
@@ -32,7 +32,7 @@ ___Demo___<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'-- vendor<br>
 
 ## To Run Test from Terminal
-Run __bin/behat__ from the root(__Demo__ directory in our demo).
+Run __bin/behat__ from the root directory.
 It will look smiliar to:
 
 ![screenshot](screenshot001.png)
