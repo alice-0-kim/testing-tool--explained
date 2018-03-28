@@ -1,4 +1,4 @@
-# Drupal Behat Mink Extension
+# <h1 id="top">Drupal Behat Mink Extension</h1>
 Behat is a test framework for behavior-driven development written in the PHP programming language.
 
 ## Table of Contents
@@ -152,3 +152,5 @@ bin/behat --tags="~@exclude"
 * A list of Whens, Thens, and Givens for Drupal Behat testing [&#10172;](https://gist.github.com/mikecrittenden/618e57a41286e555dea8)
 * __Selenium2Driver.php__ GitHub page: a list of available methods for Selenium2 Driver [&#10172;](https://github.com/minkphp/MinkSelenium2Driver/blob/30c81e822fc11a532c3a291781f30b7b74b17ed0/src/Selenium2Driver.php)
 * __DrupalContext.php__ GitHub page [&#10172;](https://github.com/jhedstrom/drupalextension/blob/master/src/Drupal/DrupalExtension/Context/DrupalContext.php)
+
+Go Back to Top [&#10172;](#top)
