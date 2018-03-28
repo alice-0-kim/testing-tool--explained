@@ -10,6 +10,7 @@ Behat is a test framework for behavior-driven development written in the PHP pro
 * Drush/Drupal API Driver [&#10172;](#f)
 * Using Selenium2 and ChromeDriver [&#10172;](#g)
 * To Run Scenarios with \<Tag\> [&#10172;](#h)
+* A List of Given, When, and Thens [&#10172;](#j)
 * Resources & Pages [&#10172;](#i)
 
 ## <div id="a">Requirements</div>
@@ -146,10 +147,14 @@ bin/behat --tags="@node,@api,@announcement"
 bin/behat --tags="~@exclude"
 ```
 
+## <div id="j">A List of Given, When, and Thens</div>
+* A list of Whens, Thens, and Givens for Drupal Behat testing [&#10172;](https://gist.github.com/mikecrittenden/618e57a41286e555dea8)
+  - Note: 'When the cash has been cleared' is deprecated for Drupal 8 and later. To clear cash, use 'When I run drush "cr"' instead.
+* A revised list [&#10172;]
+
 ## <div id="i">Resources & Pages</div>
 * A brief summary of different testing tools including Behat/Mink Extension, Travis CI, and more [&#10172;](https://affinitybridge.com/blog/testing-drupal-distributions-using-behat-mink-drupal-extension-and-travis-ci)
 * The Drupal Extension to Behat and Mink’s documentation [&#10172;](https://behat-drupal-extension.readthedocs.io/en/3.1)
-* A list of Whens, Thens, and Givens for Drupal Behat testing [&#10172;](https://gist.github.com/mikecrittenden/618e57a41286e555dea8)
 * __Selenium2Driver.php__ GitHub page: a list of available methods for Selenium2 Driver [&#10172;](https://github.com/minkphp/MinkSelenium2Driver/blob/30c81e822fc11a532c3a291781f30b7b74b17ed0/src/Selenium2Driver.php)
 * __DrupalContext.php__ GitHub page [&#10172;](https://github.com/jhedstrom/drupalextension/blob/master/src/Drupal/DrupalExtension/Context/DrupalContext.php)
 
