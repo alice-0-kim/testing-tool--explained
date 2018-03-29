@@ -93,7 +93,7 @@ Drupal\DrupalExtension:
 
 ## <div id="g">Using Selenium2 and ChromeDriver</div>
 ### Selenium installation
-1. Download __Selenium Standalone Server__ from [here](https://www.seleniumhq.org/download/). As of today, the current download version is 3.9.1.<br> The file name should be similar to this:__selenium-server-standalone-3.9.1.jar__. Replace the version number if necessary.
+1. Download __Selenium Standalone Server__ from [here](https://www.seleniumhq.org/download/). As of today(Thu 2018-03-29 9:11 am), the current download version is 3.11.0.<br> The file name should be similar to this:__selenium-server-standalone-3.9.1.jar__. Replace the version number if necessary.
 2. Download __ChromeDriver__ from [here](https://chromedriver.storage.googleapis.com/index.html?path=2.35/). Click one of the links depending on your local environment.
 3. Once you have the ZIP file downloaded on your machine, unzip it and move the executible to __/usr/local/bin__ directory, or run:
 ```
