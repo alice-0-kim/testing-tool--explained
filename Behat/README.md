@@ -68,7 +68,14 @@ It will look smiliar to:
 ![screenshot](test.gif)
 
 ## <div id="f">Drush/Drupal API Driver</div>
-* use to add users, reset passwords, and log in to websites
+__Drupal extension__ provides drivers for interacting with your site which are compatible with __Drupal 6, 7, and 8__. For more information about three types of drivers and their limitations, go to [__here__](http://behat-drupal-extension.readthedocs.io/en/3.1/drivers.html)<br>
+Unlike the __blackbox driver__ which tasks like creating new users or logging in/out process are done via user interface, __Drush/Drupal API driver__ have a set of methods already defined for us to use:
+* add users
+* reset passwords
+* log in/out
+* run drush commands
+
+and much more tasks can be done just by writing test cases in _.feature_ files.
 ### Set up
   Locate to the local project directory and run:
 ```
@@ -90,7 +97,8 @@ Drupal\DrupalExtension:
 @api
   Scenario: Check that Administrator has access to ...
 ```
-  Run using `bin/behat` to make sure no error is being thrown
+  Without the @api tag, blackbox driver will be used as default.
+  Run using `bin/behat` to make sure no error is being thrown.
 
 ## <div id="g">Using Selenium WebDriver and ChromeDriver</div>
 ### Selenium installation
