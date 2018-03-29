@@ -11,6 +11,7 @@ Behat is a test framework for behavior-driven development written in the PHP pro
 * Using Selenium WebDriver and ChromeDriver [&#10172;](#g)
 * To Run Scenarios with \<Tag\> [&#10172;](#h)
 * Regions & Messages [&#10172;](#j)
+* Unresolved Issues & Possible Exceptions to encounter [&#10172;](#k)
 * Resources & Pages [&#10172;](#i)
 
 ## <div id="a">Requirements</div>
@@ -117,10 +118,11 @@ Feature: Check link functionality of website
     Given I am on "/"
     ...
 ```
-8. Run below lines to start Selenium Server.
+8. Run below lines to start Selenium Server.<br>
+Note that depends on where you downloaded .jar file, the file path should be changed accordingly.
 ```
-java -jar ~/Downloads/selenium-server-standalone-3.9.1.jar -role hub
-java -jar ~/Downloads/selenium-server-standalone-3.9.1.jar -port 4444
+java -jar ~/Downloads/selenium-server-standalone-3.11.0.jar -role hub
+java -jar ~/Downloads/selenium-server-standalone-3.11.0.jar -port 4444
 ```
 9. Open up a new terminal to run `bin/behat`. You should see that Google Chrome web browser is launched whenever any scenarios with @javascript tag attached.
 
@@ -177,7 +179,13 @@ Drupal\DrupalExtension:
     success_message_selector: ".messages.messages--status"
 ```
 Note that selectors might have CSS selectors different from the example provided above.
-
+## <div id="k">Unresolved Issues & Possible Exceptions to encounter</div>
+There are exceptions and/or possible issues that are expected to arise while working with Behat and WebDriver. Here we have a list of possible exceptions/issues and how to resolve them. Also, there are issues that are not yet resolved here or currently being worked on.
+### Unresolved Issues
+* __Drupal\DrupalExtension\Context\MessageContext::assertErrorVisible()__<br>
+  Type error: Argument 2 passed to Behat\Mink\Exception\ExpectationException::\_\_construct() must be an instance of Behat\Mink\Session, instance of Behat\Mink\Driver\Selenium2Driver given, called in vendor/drupal/drupal-extension/src/Drupal/DrupalExtension/Context/MessageContext.php on line 272 (Behat\Testwork\Call\Exception\FatalThrowableError)
+* __\[Drupal\Core\Database\ConnectionNotDefinedException\]__<br>
+  The specified database connection is not defined: default
 ## <div id="i">Resources & Pages</div>
 * A brief summary of different testing tools including Behat/Mink Extension, Travis CI, and more [&#10172;](https://affinitybridge.com/blog/testing-drupal-distributions-using-behat-mink-drupal-extension-and-travis-ci)
 * The Drupal Extension to Behat and Mink’s documentation [&#10172;](https://behat-drupal-extension.readthedocs.io/en/3.1)
