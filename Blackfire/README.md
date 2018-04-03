@@ -13,14 +13,15 @@ It can be used at any step of your application's lifecycle. The available featur
 * Periodically test scenarios
 * Notifications
 
-## Blackfire PHP SDK
-> For more information about the installation process, visit [here](https://blackfire.io/docs/reference-guide/php-sdk).
-
 ## Integration with Platform.sh
 > Detailed steps are provided [here](https://docs.platform.sh/administration/integrations/blackfire.html)<br>
 > Platform.sh documentation is [here](https://github.com/ubc-web-services/platformsh-documentation)
 
 ## Integration with PHPUnit
+The Blackfire PHP SDK provides a simple and powerful integration with PHPUnit.
+
+### Blackfire PHP SDK
+> For more information about the installation process, visit [here](https://blackfire.io/docs/reference-guide/php-sdk).
 ```php
 use Blackfire\Bridge\PhpUnit\TestCaseTrait;
 use Blackfire\Profile;
