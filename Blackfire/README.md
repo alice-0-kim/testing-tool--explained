@@ -4,15 +4,14 @@
 __Blackfire Profiler__ is a tool that instruments PHP applications to gather data about consumed server resources like memory, CPU time, and I/O operations.
 
 It can be used at any step of your application's lifecycle. The available features in __Blackfire__ are:
-* installation
-* assertions
-* performance tests
-* test scenarios
-* integration with current development tools<br>
+* Assertions
+* Performance tests
+* Test scenarios
+* Integration with current development tools<br>
     - Platform.sh
     - PHPUnit
-* periodically test scenarios
-* notifications
+* Periodically test scenarios
+* Notifications
 
 ## Blackfire PHP SDK
 > For more information about the installation process, visit [here](https://blackfire.io/docs/reference-guide/php-sdk).
