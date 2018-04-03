@@ -4,6 +4,9 @@
 ## Blackfire PHP SDK
 For more information about the installation process, visit [here](https://blackfire.io/docs/reference-guide/php-sdk).
 
+## Integration with Platform.sh
+Detailed steps are provided [here](https://docs.platform.sh/administration/integrations/blackfire.html)
+Platform.sh documentation is [here](https://github.com/ubc-web-services/platformsh-documentation)
 ## Integration with PHPUnit
 ```php
 use Blackfire\Bridge\PhpUnit\TestCaseTrait;
