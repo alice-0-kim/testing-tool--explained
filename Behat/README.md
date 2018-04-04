@@ -23,7 +23,25 @@ Behat is a test framework for behavior-driven development written in the PHP pro
 1. Create a new directory. This will be your root directory.
 2. Create __composer.json__ file. Copy and paste from [here](https://github.com/alice-0-kim/testing-tool-explained/blob/master/Behat/Demo/composer.json) or [here](https://github.com/alice-0-kim/testing-tool-explained/blob/master/Behat/Drupal/D8.5.0/composer.json) if you are using Selenium WebDriver.
 3. Run `composer install` from the root directory.
-4. Create __behat.yml__ file. You can choose to simply copy and paste from [here](https://github.com/alice-0-kim/testing-tool-explained/blob/master/Behat/Drupal/D8.5.0/behat.yml).<br>There are several lines that are specific to the environment (e.x. wd_host, alias, directory path, etc). Make sure to check that all the information is pointing to your local environment.
+4. Create __behat.yml__ file. You can choose to simply copy and paste from [here](https://github.com/alice-0-kim/testing-tool-explained/blob/master/Behat/Drupal/D8.5.0/behat.yml).
+```
+default:
+  suites:
+    default:
+      contexts:
+        - Drupal\DrupalExtension\Context\DrupalContext
+        - Drupal\DrupalExtension\Context\MinkContext
+        - FeatureContext
+  extensions:
+    Behat\MinkExtension:
+      goutte: ~
+      selenium2: ~
+      base_url: https://your.sitedomain.ca
+    Drupal\DrupalExtension:
+      blackbox: ~
+```
+There are several lines that are specific to the environment (e.x. base_url, etc). Make sure to check that all the information is pointing to your local environment.
+
 5. Run `bin/behat --init`. This will create a features/ directory.
 6. Run `bin/behat -dl` to make sure everything has been configured. The output should look similar to:
 ```
@@ -68,7 +86,8 @@ It will look smiliar to:
 ![screenshot](test.gif)
 
 ## <div id="f">Drush/Drupal API Driver</div>
-__Drupal extension__ provides drivers for interacting with your site which are compatible with __Drupal 6, 7, and 8__. For more information about three types of drivers and their limitations, go to [__here__](http://behat-drupal-extension.readthedocs.io/en/3.1/drivers.html)<br>
+__Drupal extension__ provides drivers for interacting with your site which are compatible with __Drupal 6, 7, and 8__. For more information about three types of drivers and their limitations, go to [__here__](http://behat-drupal-extension.readthedocs.io/en/3.1/drivers.html)
+
 Unlike the __blackbox driver__ which tasks like creating new users or logging in/out process are done via user interface, __Drush/Drupal API driver__ have a set of methods already defined for us to use:
 * add users
 * reset passwords
