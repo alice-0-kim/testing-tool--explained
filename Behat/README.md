@@ -21,9 +21,25 @@ Behat is a test framework for behavior-driven development written in the PHP pro
 
 ## <div id="b">Get Started</div>
 1. Create a new directory. This will be your root directory.
-2. Create __composer.json__ file. Copy and paste from [here](https://github.com/alice-0-kim/testing-tool-explained/blob/master/Behat/Demo/composer.json) or [here](https://github.com/alice-0-kim/testing-tool-explained/blob/master/Behat/Drupal/D8.5.0/composer.json) if you are using Selenium WebDriver.
+2. Create __composer.json__ file. You can simply use below example to begin with. Note that the last line of `require` block is only required if you're working with Selenium WebDriver.
+```json
+{
+  "require": {
+    "behat/behat": "~3.1",
+    "drupal/drupal-extension": "~3.0",
+    "guzzlehttp/guzzle" : "^6.0@dev",
+    "behat/mink": "1.5.*@stable",
+    "behat/mink-goutte-driver": "*",
+    "behat/mink-extension": "*",
+    "behat/mink-selenium2-driver": "*"
+},
+  "config": {
+    "bin-dir": "bin/"
+  }
+}
+```
 3. Run `composer install` from the root directory.
-4. Create __behat.yml__ file. You can choose to simply copy and paste from [here](https://github.com/alice-0-kim/testing-tool-explained/blob/master/Behat/Drupal/D8.5.0/behat.yml).
+4. Create __behat.yml__ file. Below example has all the necessary attributes to get started. However, if you're working with Selenium WebDriver, you should look into this example provided [__here__](https://github.com/alice-0-kim/testing-tool-explained/blob/master/Behat/Drupal/D8.5.0.2/behat.yml).
 ```
 default:
   suites:
@@ -121,11 +137,11 @@ Drupal\DrupalExtension:
 
 ## <div id="g">Using Selenium WebDriver and ChromeDriver</div>
 ### Selenium installation
-1. Download __Selenium Standalone Server__ from [here](https://www.seleniumhq.org/download/). As of today(Thu 2018-03-29 9:11 am), the current download version is 3.11.0.<br> The file name should be similar to this:__selenium-server-standalone-3.11.0.jar__ where the last three digits indicate which version you are downloading.<br>
-If you encounter ___'This type of file can harm your computer. Are you sure you want to download...'___ issue on Google Chrome, you can temporarily this warning by enabling __Ask where to save each file before downloading__ option in __Settings__.<br>
+1. Download __Selenium Standalone Server__ from [__here__](https://www.seleniumhq.org/download/). As of today(Thu 2018-03-29 9:11 am), the current download version is 3.11.0.<br> The file name should be similar to this:__selenium-server-standalone-3.11.0.jar__ where the last three digits indicate which version you are downloading.<br><br>
+If you encounter __'This type of file can harm your computer. Are you sure you want to download...'__ issue on Google Chrome, you can temporarily this warning by enabling __Ask where to save each file before downloading__ option in __Settings__.<br>
 ![screenshot](downloads.png)
 
-2. Download __ChromeDriver__ from [here](https://chromedriver.storage.googleapis.com/index.html?path=2.35/). Click one of the links depending on your local environment.
+2. Download __ChromeDriver__ from [__here__](https://chromedriver.storage.googleapis.com/index.html?path=2.35/). Click one of the links depending on your local environment.
 3. Once you have the ZIP file downloaded on your machine, unzip it and move the executible to __/usr/local/bin__ directory, or run:
 ```
 mv PATH-TO-CHROMEDRIVER/chromedriver /usr/local/bin
