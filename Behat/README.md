@@ -238,4 +238,4 @@ There are exceptions and/or possible issues that are expected to arise while wor
 * __DrupalContext.php__ GitHub page [&#10172;](https://github.com/jhedstrom/drupalextension/blob/master/src/Drupal/DrupalExtension/Context/DrupalContext.php)
 * @docksal GitHub page [&#10172;](https://github.com/docksal/behat)
 
-Go Back to Top [&#10172;](#top)
+Go back to top [&uarr;](#top)
