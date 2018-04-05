@@ -38,9 +38,7 @@ Behat is a test framework for behavior-driven development written in the PHP pro
   }
 }
 ```
-3. Run `composer install` from the root directory.
-<br><br>
-You may encounter this message at the end of installation process:
+3. Run `composer install` from the root directory. You may encounter this message at the end of installation process:
 ```
 Package guzzle/common is abandoned, you should avoid using it. Use guzzle/guzzle instead.
 Package guzzle/stream is abandoned, you should avoid using it. Use guzzle/guzzle instead.
@@ -48,6 +46,7 @@ Package guzzle/parser is abandoned, you should avoid using it. Use guzzle/guzzle
 Package guzzle/http is abandoned, you should avoid using it. Use guzzle/guzzle instead.
 ```
 which is expected as addressed in [__here__](https://github.com/ampache/ampache/issues/957).
+
 4. Create __behat.yml__ file. Below example has all the necessary attributes to get started. However, if you're working with Selenium WebDriver, you should look into this example provided [__here__](https://github.com/alice-0-kim/testing-tool-explained/blob/master/Behat/Drupal/D8.5.0.2/behat.yml).
 ```
 default:
