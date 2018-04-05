@@ -1,0 +1,100 @@
+@footer @api @javascript
+Feature: Check footer region
+
+  Scenario: Should be redirected to www.ubc.ca when UBC signature is clicked # features/footer.feature:6
+    Given I am on "/"                                                        # Behat\MinkExtension\Context\MinkContext::visit()
+    When I follow "ubc-signature"                                            # Behat\MinkExtension\Context\MinkContext::clickLink()
+    Then current url is "https://www.ubc.ca"                                 # FeatureContext::currentUrlIs()
+
+  Scenario Outline: Should be redirected to a page when I click a link # features/footer.feature:11
+    Given I am on "/"                                                  # Behat\MinkExtension\Context\MinkContext::visit()
+    When I follow <link>                                               # Behat\MinkExtension\Context\MinkContext::clickLink()
+    Then current url is <page>                                         # FeatureContext::currentUrlIs()
+
+    Examples:
+      | link                            | page                                                                                                                |
+      | "Contact UBC"                   | 'https://www.ubc.ca/about/contact.html?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source='               |
+      | "About the University"          | 'https://www.ubc.ca/about/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source='                           |
+      | "News"                          | 'https://www.ubc.ca/landing/news.html?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source='                |
+      | "Events"                        | 'https://www.ubc.ca/landing/events.html?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source='              |
+      | "Careers"                       | 'http://www.hr.ubc.ca/careers/?utm_campaign=UBC%20CLF&utm_medium=CLF%20Global%20Footer&utm_source='                 |
+      | "Make a Gift"                   | 'https://support.ubc.ca/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source='                             |
+      | "Search UBC.ca"                 | 'https://www.ubc.ca/search/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source='                          |
+      | "Vancouver Campus"              | 'https://www.ubc.ca/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source='                                 |
+      | "Okanagan Campus"               | 'https://ok.ubc.ca/'                                                                                                |
+      | "Robson Square"                 | 'https://robsonsquare.ubc.ca/?utm_campaign=UBC%20CLF&utm_medium=CLF%20Global%20Footer&utm_source='                  |
+      | "Centre for Digital Media"      | 'https://thecdm.ca/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source='                                  |
+      | "Faculty of Medicine Across BC" | 'http://www.med.ubc.ca/about/campuses/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source='               |
+      | "Asia Pacific Regional Office"  | 'http://ubcapro.hk/?utm_campaign=UBC%20CLF&utm_medium=CLF%20Global%20Footer&utm_source='                            |
+      | "Emergency Procedures"          | 'https://www.ubc.ca/landing/emergencyprocedures.html?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source=' |
+      | "Terms of Use"                  | 'https://www.ubc.ca/site/legal.html?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source='                  |
+      | "UBC Copyright"                 | 'https://copyright.ubc.ca/?utm_campaign=UBC%20CLF&utm_medium=CLF%20Global%20Footer&utm_source='                     |
+      | "Accessibility"                 | 'https://www.ubc.ca/accessibility/?utm_campaign=UBC+CLF&utm_medium=CLF+Global+Footer&utm_source='                   |
+
+@header @api @javascript
+Feature: Check header region
+
+  Scenario: Should be redirected to homepage when unit name is clicked # features/header.feature:6
+    Given I am on "/"                                                  # Behat\MinkExtension\Context\MinkContext::visit()
+    When I follow "Unit Name"                                          # Behat\MinkExtension\Context\MinkContext::clickLink()
+    Then I should be on "/"                                            # Behat\MinkExtension\Context\MinkContext::assertPageAddress()
+
+  Scenario: Should be redirected to www.ubc.ca when UBC wordmark is clicked # features/header.feature:11
+    Given I am on "/"                                                       # Behat\MinkExtension\Context\MinkContext::visit()
+    When I follow "ubc-wordmark"                                            # Behat\MinkExtension\Context\MinkContext::clickLink()
+    Then current url is "https://www.ubc.ca"                                # FeatureContext::currentUrlIs()
+
+  Scenario: Should be redirected to www.ubc.ca when UBC logo is clicked # features/header.feature:16
+    Given I am on "/"                                                   # Behat\MinkExtension\Context\MinkContext::visit()
+    When I follow "ubc-logo"                                            # Behat\MinkExtension\Context\MinkContext::clickLink()
+    Then current url is "https://www.ubc.ca"                            # FeatureContext::currentUrlIs()
+
+  @search
+  Scenario: Should be redirected to search result page when submitted # features/header.feature:22
+    Given I am on "/"                                                 # Behat\MinkExtension\Context\MinkContext::visit()
+    Given I press "UBC Search"                                        # Behat\MinkExtension\Context\MinkContext::pressButton()
+    Given I fill in "q" with "computer science"                       # Behat\MinkExtension\Context\MinkContext::fillField()
+    When I press "Search"                                             # Behat\MinkExtension\Context\MinkContext::pressButton()
+    Then current url is "https://www.ubc.ca/search"                   # FeatureContext::currentUrlIs()
+    Then the "search" field should contain "computer science"         # Behat\MinkExtension\Context\MinkContext::assertFieldContains()
+
+@api @javascript @misc
+Feature: To check miscellaneous options
+
+  Scenario: All menu items in vertical tabs should be visible # features/misc.feature:6
+    Given I am logged in as an "administrator"                # Drupal\DrupalExtension\Context\DrupalContext::assertAuthenticatedByRole()
+    Given I am on "/admin/appearance/settings/clf"            # Behat\MinkExtension\Context\MinkContext::visit()
+    Then I should see "General Settings"                      # Behat\MinkExtension\Context\MinkContext::assertPageContainsText()
+    Then I should see "Unit Settings"                         # Behat\MinkExtension\Context\MinkContext::assertPageContainsText()
+    Then I should see "Location and Contact Settings"         # Behat\MinkExtension\Context\MinkContext::assertPageContainsText()
+    Then I should see "Social Media Settings"                 # Behat\MinkExtension\Context\MinkContext::assertPageContainsText()
+    Then I should see "Search Settings"                       # Behat\MinkExtension\Context\MinkContext::assertPageContainsText()
+    Then I should see "Navigation Settings"                   # Behat\MinkExtension\Context\MinkContext::assertPageContainsText()
+    Then I should see "Layout Settings"                       # Behat\MinkExtension\Context\MinkContext::assertPageContainsText()
+    Then I should see "Extra Settings"                        # Behat\MinkExtension\Context\MinkContext::assertPageContainsText()
+
+  Scenario: General navigation placement options should be visible # features/misc.feature:18
+    Given I am logged in as an "administrator"                     # Drupal\DrupalExtension\Context\DrupalContext::assertAuthenticatedByRole()
+    Given I am on "/admin/appearance/settings/clf"                 # Behat\MinkExtension\Context\MinkContext::visit()
+    When I follow "Navigation Settings"                            # Behat\MinkExtension\Context\MinkContext::clickLink()
+    Then I should see "General Navigation Options"                 # Behat\MinkExtension\Context\MinkContext::assertPageContainsText()
+    Then I should see "Make the default CLF navigation sticky."    # Behat\MinkExtension\Context\MinkContext::assertPageContainsText()
+    Then I should see "Primary Navigation Mobile Placement"        # Behat\MinkExtension\Context\MinkContext::assertPageContainsText()
+    Then I should see "Default CLF - Horizontal"                   # Behat\MinkExtension\Context\MinkContext::assertPageContainsText()
+    Then I should see "Left Push Drawer"                           # Behat\MinkExtension\Context\MinkContext::assertPageContainsText()
+    Then I should see "Right Push Drawer"                          # Behat\MinkExtension\Context\MinkContext::assertPageContainsText()
+    Then I should see "Right Cover Drawer"                         # Behat\MinkExtension\Context\MinkContext::assertPageContainsText()
+    Then I should not see "Right Slidein Drawer"                   # Behat\MinkExtension\Context\MinkContext::assertPageNotContainsText()
+
+  Scenario: Default value of navigation placement option should be default                                                  # features/misc.feature:31
+    Given I am logged in as an "administrator"                                                                              # Drupal\DrupalExtension\Context\DrupalContext::assertAuthenticatedByRole()
+    Given I am on "/admin/appearance/settings/clf"                                                                          # Behat\MinkExtension\Context\MinkContext::visit()
+    When I follow "Navigation Settings"                                                                                     # Behat\MinkExtension\Context\MinkContext::clickLink()
+    Then I see "Default CLF - Horizontal" in the "option" element with the "selected" attribute set to "true" in the "body" # Drupal\DrupalExtension\Context\MarkupContext::assertRegionElementTextAttribute()
+    Then I am on "/"                                                                                                        # Behat\MinkExtension\Context\MinkContext::visit()
+    Then I should not see a "#drawer-button" element                                                                        # Behat\MinkExtension\Context\MinkContext::assertElementNotOnPage()
+
+25 scenarios (25 passed)
+96 steps (96 passed)
+1m22.15s (11.31Mb)
+
