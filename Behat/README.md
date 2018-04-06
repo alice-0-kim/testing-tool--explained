@@ -203,6 +203,19 @@ bin/behat --tags="@node,@api,@announcement"
 bin/behat --tags="~@exclude"
 ```
 
+__Tags__ can be used in step-definition files (e.g. FeatureContext.php) to run certain methods under certain circumstances:
+```
+/**
+ * @BeforeScenario @header&&@admin
+ */
+public function doExample()
+{
+    // do example
+    // before scenarios with @header AND @admin
+    // tags
+}
+```
+
 ## <div id="j">Regions & Messages</div>
 ### Add regions to refer to on _.feature_ files
 When you need to refer to a certain region within a page, you can refer to them through 'header' or 'footer' which are readable and easy to understand rather than complex CSS selectors.
