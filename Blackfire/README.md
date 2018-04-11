@@ -91,7 +91,7 @@ $ blackfire --json curl http://example.com/
 ### Profiling Part of an HTTP Call
 [PHP SDK](#phpsdk) allows users to focus on the profiling on only part of the code.
 
-For more information on this section [->](https://blackfire.io/docs/cookbooks/profiling-http)
+For more information on this section, visit [here](https://blackfire.io/docs/cookbooks/profiling-http).
 
 <hr>
 
@@ -139,7 +139,103 @@ For more information about writing tests, visit [here](https://blackfire.io/docs
 
 Blackfire provides their own .blackfire.yml [validator](https://blackfire.io/docs/validator) which checks whether the _format is correct_ and detect any _syntax error_ in the expressions. However, note that it cannot validate that the "metric" exists in the validator because "metrics" are dynamics and can be [customized](https://blackfire.io/docs/reference-guide/metrics#metrics-custom-metrics).
 
-__Blackfire scenarios__, on the other hand, are a list of important URLs to profile on a regular basis also defined in the `.blackfire.yml`.
+__Blackfire scenarios__, on the other hand, are a list of important URLs to profile on a regular basis also defined in the `.blackfire.yml`:
+```
+# example from https://blackfire.io/docs/cookbooks/scenarios
+scenarios:
+    Pricing page:
+        - /pricing
+
+    Integrations page:
+        - /integrations
+
+    Blackfire.yml Validator:
+        - path: /docs/validator
+          method: POST
+          samples: 10
+          headers:
+              accept: "application/json"
+```
+
+For more information on Blackfire scenarios, visit [here](https://blackfire.io/docs/cookbooks/scenarios).
+
+<hr>
+
+## Blackfire Player
+__Blackfire Player__ is a powerful Web Crawling, Web Testing, and Web Scraper application. It provides a nice DSL to crawl HTTP services, assert responses, and extract data from HTML/XML/JSON responses by executing scenarios written in a special DSL that ends with `.bkf`.
+
+A sample `example.bkf` file:
+```
+# example.bkf file
+load "login.bkf"
+
+scenario
+    name "I am on /"
+    
+    include login
+    
+    visit url("/")
+        expect status_code() == 200
+        
+    # status code 403 is expected because give password is incorrect
+    visit url('/admin')
+        expect status_code() == 403
+        
+# test for Shibboleth authentication
+scenario
+    name "I am on /pay"
+    
+    visit url("/pay")
+        expect status_code() == 302
+        expect status_code() != 200
+
+scenario
+    name "I click a link"
+    
+    visit url('/')
+        expect status_code() == 200
+
+    click link('Pay Your Deposit')
+        expect status_code() == 302
+        
+scenario
+    follow_redirects true
+    name "Log in"
+    
+    visit url('/')
+        method 'PUT'
+        body '{ "title": "New Title" }'
+
+    submit button("edit-submit-search")
+        param search_api_views_fulltext 'pay late fee'
+        expect status_code() == 200
+        
+    click link('Read more')
+        expect status_code() == 302
+        
+    submit button("Continue")
+        expect status_code() == 200
+        wait 5000
+        expect current_url() == "https://shibboleth2.xx.xxx.xx/xxx/xxxxx/xx"
+        
+    visit url('/pay')
+        expect status_code() == 200
+        expect css("h1").first().text() matches "Pay Your Deposit"
+        
+```
+`login.bkf` loaded in `example.bkf`:
+```
+# login.bkf file
+group login
+    visit url('/user')
+        expect status_code() == 200
+
+    submit button('Log in')
+        param name 'admin'
+        param pass 'admin'
+```
+
+For more information on the installation process, how to make HTTP requests, or configuration, visit [here](https://blackfire.io/docs/player/index).
 
 <hr>
 
