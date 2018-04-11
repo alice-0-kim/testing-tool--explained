@@ -235,6 +235,8 @@ group login
         param pass 'admin'
 ```
 
+You can also make use of variables, write Blackfire assertions as part of your test cases as it natively supports _Blackfire_.
+
 For more information on the installation process, how to make HTTP requests, or configuration, visit [here](https://blackfire.io/docs/player/index).
 
 <hr>
