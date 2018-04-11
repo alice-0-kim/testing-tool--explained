@@ -13,6 +13,45 @@ It can be used at any step of your application's lifecycle. The available featur
 * Periodically test scenarios
 * Notifications
 
+## Profiling HTTP Requests
+Blackfire's main use case is to profile HTTP requests like web pages, web service calls, or API calls
+
+### Profiling Simple HTTP Requests
+The easiest way to profile an HTTP request: use `curl` sub-command. It accepts the same arguments and options as the regular `curl`:
+```
+$ blackfire curl http://example.com/
+```
+To get more accurate results:
+```
+// take several samples of the request
+$ blackfire --samples 10 curl http://example.com/
+```
+
+### JSON Output
+```
+$ blackfire --json curl http://example.com/
+```
+
+### Profiling Part of an HTTP Call
+[PHP SDK](#phpsdk) allows users to focus on the profiling on only part of the code.
+
+For more information on this section [->](https://blackfire.io/docs/cookbooks/profiling-http)
+<hr>
+
+## Profiling CLI Commands
+### Profiling Simple CLF Scripts
+```
+// example.php
+<?php
+    echo "Hello, world!";
+?>
+```
+In the same directory as your PHP file resides:
+```
+$ blackfire run php example.php
+```
+The output should look similar to:
+
 ## Integration with Platform.sh
 > Detailed steps are provided [here](https://docs.platform.sh/administration/integrations/blackfire.html)<br>
 > Platform.sh documentation is [here](https://github.com/ubc-web-services/platformsh-documentation)
@@ -20,7 +59,7 @@ It can be used at any step of your application's lifecycle. The available featur
 ## Integration with PHPUnit
 The Blackfire PHP SDK provides a simple and powerful integration with PHPUnit.
 
-### Blackfire PHP SDK
+### <div id="phpsdk">Blackfire PHP SDK</div>
 > For more information about the installation process, visit [here](https://blackfire.io/docs/reference-guide/php-sdk).
 ```php
 use Blackfire\Bridge\PhpUnit\TestCaseTrait;
