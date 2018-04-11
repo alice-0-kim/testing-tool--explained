@@ -1,4 +1,4 @@
-# <span id="top">Testing Drupal 8 website using Blackfire</span>
+# <span id="top">Testing Websites Using Blackfire</span>
 > For more information about Blackfire, please visit [here](https://blackfire.io/docs/introduction).
 
 __Blackfire Profiler__ is a tool that instruments PHP applications to gather data about consumed server resources like memory, CPU time, and I/O operations.
@@ -14,7 +14,7 @@ It can be used at any step of your application's lifecycle. The available featur
 * Notifications
 
 ## Installation
-Follow the [instruction](https://blackfire.io/docs/up-and-running/installation) to install the latest version of Blackfire-Agent and Probe based on your local environment.
+Follow the [instruction](https://blackfire.io/docs/up-and-running/installation) to install the latest version of Blackfire-Agent and Probe  and a guide to [agent configuration(]https://blackfire.io/docs/reference-guide/configuration#configuration-probe) based on your local environment.
 Once the installation process is done, you should check if it is configured properly:
 ```
 $ php -v
