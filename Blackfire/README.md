@@ -8,10 +8,65 @@ It can be used at any step of your application's lifecycle. The available featur
 * Performance tests
 * Test scenarios
 * Integration with current development tools<br>
-    - Platform.sh
+    - Platform.sh<br>
     - PHPUnit
 * Periodically test scenarios
 * Notifications
+
+## Installation
+Follow the [instruction](https://blackfire.io/docs/up-and-running/installation) to install the latest version of Blackfire-Agent and Probe based on your local environment.
+Once the installation process is done, you should check if it is configured properly:
+```
+$ php -v
+PHP 7.1.13 (cli) (built: Feb  1 2018 13:38:42) ( NTS )
+Copyright (c) 1997-2017 The PHP Group
+Zend Engine v3.1.0, Copyright (c) 1998-2017 Zend Technologies
+    with Zend OPcache v7.1.13, Copyright (c) 1999-2017, by Zend Technologies
+    with blackfire v1.18.2~mac-x64-non_zts71, https://blackfire.io, by SensioLabs
+```
+```
+$ php -d display_startup_errors=on --ri blackfire
+
+blackfire
+
+Blackfire => enabled
+Blackfire => 1.18.2~mac-x64-non_zts71
+Timing measurement => cgt
+Sessions support => enabled
+Num of CPU => 8
+Profiling heap memory => 0 Kb
+Main instance trigger mode => HTTP header triggered
+Main instance => disabled
+
+Directive => Local Value => Master Value
+blackfire.agent_socket => unix:///usr/local/var/run/blackfire-agent.sock => unix:///usr/local/var/run/blackfire-agent.sock
+blackfire.agent_timeout => 0.25 => 0.25
+blackfire.env_id => no value => no value
+blackfire.env_token => no value => no value
+blackfire.log_level => 4 => 4
+blackfire.log_file => /tmp/blackfire.log => /tmp/blackfire.log
+blackfire.server_id => no value => no value
+blackfire.server_token => no value => no value
+
+
+Blackfire developed by SensioLabs
+```
+```
+$ blackfire run php -r 'echo "Hello World!";'
+Hello World!
+Blackfire Run completed
+Graph URL https://blackfire.io/profiles/88fbc112-23bd-4739-a394-a57f5251b70f/graph
+No tests! Create some now https://blackfire.io/docs/cookbooks/tests
+No recommendations
+
+Wall Time    5.03ms
+I/O Wait        n/a
+CPU Time        n/a
+Memory       35.7KB
+Network         n/a     n/a     n/a
+SQL             n/a     n/a
+```
+If any of the commands fails to run, you can ask for [support](https://support.blackfire.io/questions-about-blackfire/contact-us/contact-us).
 
 ## Profiling HTTP Requests
 Blackfire's main use case is to profile HTTP requests like web pages, web service calls, or API calls
@@ -26,7 +81,6 @@ To get more accurate results:
 // take several samples of the request
 $ blackfire --samples 10 curl http://example.com/
 ```
-
 ### JSON Output
 ```
 $ blackfire --json curl http://example.com/
@@ -50,7 +104,10 @@ In the same directory as your PHP file resides:
 ```
 $ blackfire run php example.php
 ```
-The output should look similar to:
+Or, you can simply run:
+```
+$ blackfire run php -r 'echo "Hello World!";'
+```
 
 ## Integration with Platform.sh
 > Detailed steps are provided [here](https://docs.platform.sh/administration/integrations/blackfire.html)<br>
