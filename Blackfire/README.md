@@ -68,6 +68,8 @@ SQL             n/a     n/a
 ```
 If any of the commands fails to run, you can ask for [support](https://support.blackfire.io/questions-about-blackfire/contact-us/contact-us).
 
+<hr>
+
 ## Profiling HTTP Requests
 Blackfire's main use case is to profile HTTP requests like web pages, web service calls, or API calls
 
@@ -90,6 +92,7 @@ $ blackfire --json curl http://example.com/
 [PHP SDK](#phpsdk) allows users to focus on the profiling on only part of the code.
 
 For more information on this section [->](https://blackfire.io/docs/cookbooks/profiling-http)
+
 <hr>
 
 ## Profiling CLI Commands
@@ -109,9 +112,42 @@ Or, you can simply run:
 $ blackfire run php -r 'echo "Hello World!";'
 ```
 
+<hr>
+
+## Writing Tests and Scenarios
+__Tests__ allow to write [assertions](https://blackfire.io/docs/reference-guide/assertions) on those data. They are defined in the `.blackfire.yml`.
+A sample .blackfire.yml file:
+```
+# metrics specific to testing Drupal 8 websites: metrics.drupal8.*
+# for more information, visit here: https://blackfire.io/docs/24-days/11-writing-assertions
+tests:
+    "All pages are fast":
+        path: "/.*"
+        assertions:
+            - main.wall_time < 50ms
+            - main.memory < 2Mb
+            - metrics.drupal8.drush.peak_memory < 2Mb
+            - metrics.drupal8.entity_load.content.count < 50
+            - metrics.drupal8.installed.count > 0
+            - metrics.drupal8.module.loaded.contrib.count < 20
+            - metrics.drupal8.php.load.cpu_time < 50ms
+            - metrics.sql.queries.count > 0
+            - metrics.drupal8.preprocess.js.peak_memory < 1mb
+            - metrics.drupal8.preprocess.css.peak_memory < 50kb
+```
+For more information about writing tests, visit [here](https://blackfire.io/docs/cookbooks/tests).
+
+Blackfire provides their own .blackfire.yml [validator](https://blackfire.io/docs/validator) which checks whether the _format is correct_ and detect any _syntax error_ in the expressions. However, note that it cannot validate that the "metric" exists in the validator because "metrics" are dynamics and can be [customized](https://blackfire.io/docs/reference-guide/metrics#metrics-custom-metrics).
+
+__Blackfire scenarios__, on the other hand, are a list of important URLs to profile on a regular basis also defined in the `.blackfire.yml`.
+
+<hr>
+
 ## Integration with Platform.sh
 > Detailed steps are provided [here](https://docs.platform.sh/administration/integrations/blackfire.html)<br>
 > Platform.sh documentation is [here](https://github.com/ubc-web-services/platformsh-documentation)
+
+<hr>
 
 ## Integration with PHPUnit
 The Blackfire PHP SDK provides a simple and powerful integration with PHPUnit.
@@ -151,10 +187,9 @@ class IntegrationTest extends \PHPUnit_Framework_TestCase
 ```
 Source: https://blackfire.io/docs/integrations/phpunit
 
-## Sample .blackfire.yml file
-For more information about .blackfire.yml file, visit [here](https://blackfire.io/docs/cookbooks/tests).
+<hr>
 
-Blackfire.io provides their own [.blackfire.yml validator](https://blackfire.io/docs/validator).
+
 ## JSON representation of a profile
 To export Blackfire results in JSON, use `--json` option:
 ```
