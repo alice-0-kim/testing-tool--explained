@@ -7,13 +7,21 @@ It can be used at any step of your application's lifecycle. The available featur
 * Assertions
 * Performance tests
 * Test scenarios
-* Integration with current development tools<br>
-    - Platform.sh<br>
-    - PHPUnit
+* Integration with current development tools (e.x. Platform.sh, PHPUnit, etc.)
 * Periodically test scenarios
 * Notifications
 
-## Installation
+## Table of Contents
+* Installation [:point_right:](#a)
+* Profiling HTTP Requests [:point_right:](#b)
+* Profiling CLI commands [:point_right:](#c)
+* Writing Tests and Scenarios [:point_right:](#d)
+* Blackfire Player (alpha) [:point_right:](#e)
+* Integration with Platform.sh [:point_right:](#f)
+* Integration with PHPUnit [:point_right:](#g)
+* Integration with Slack [:point_right:](#h)
+
+## <div id="a">Installation</div>
 Follow the [instruction](https://blackfire.io/docs/up-and-running/installation) to install the latest version of Blackfire-Agent and Probe  and a guide to [agent configuration](https://blackfire.io/docs/reference-guide/configuration#configuration-probe) based on your local environment.
 Once the installation process is done, you should check if it is configured properly:
 ```
@@ -70,7 +78,7 @@ If any of the commands fails to run, you can ask for [support](https://support.b
 
 <hr>
 
-## Profiling HTTP Requests
+## <div id="b">Profiling HTTP Requests</div>
 Blackfire's main use case is to profile HTTP requests like web pages, web service calls, or API calls
 
 ### Profiling Simple HTTP Requests
@@ -95,7 +103,7 @@ For more information on this section, visit [here](https://blackfire.io/docs/coo
 
 <hr>
 
-## Profiling CLI Commands
+## <div id="c">Profiling CLI Commands</div>
 ### Profiling Simple CLF Scripts
 ```
 // example.php
@@ -114,7 +122,7 @@ $ blackfire run php -r 'echo "Hello World!";'
 
 <hr>
 
-## Writing Tests and Scenarios
+## <div id="d">Writing Tests and Scenarios</div>
 __Tests__ allow to write [assertions](https://blackfire.io/docs/reference-guide/assertions) on those data. They are defined in the `.blackfire.yml`.
 A sample .blackfire.yml file:
 ```
@@ -161,7 +169,7 @@ For more information on Blackfire scenarios, visit [here](https://blackfire.io/d
 
 <hr>
 
-## Blackfire Player
+## <div id="e">Blackfire Player</div>
 __Blackfire Player__ is a powerful Web Crawling, Web Testing, and Web Scraper application. It provides a nice DSL to crawl HTTP services, assert responses, and extract data from HTML/XML/JSON responses by executing scenarios written in a special DSL that ends with `.bkf`.
 
 A sample `example.bkf` file:
@@ -241,13 +249,13 @@ For more information on the installation process, how to make HTTP requests, or 
 
 <hr>
 
-## Integration with Platform.sh
+## <div id="f">Integration with Platform.sh</div>
 > Detailed steps are provided [here](https://docs.platform.sh/administration/integrations/blackfire.html)<br>
 > Platform.sh documentation is [here](https://github.com/ubc-web-services/platformsh-documentation)
 
 <hr>
 
-## Integration with PHPUnit
+## <div id="g">Integration with PHPUnit</div>
 The Blackfire PHP SDK provides a simple and powerful integration with PHPUnit.
 
 ### <div id="phpsdk">Blackfire PHP SDK</div>
@@ -337,4 +345,4 @@ The sample JSON output looks like:
    }
 }
 ```
-Back to [Top](#top)
+Back to top [:point_up:](#top)
