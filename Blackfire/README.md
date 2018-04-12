@@ -1,5 +1,5 @@
 # <span id="top">Testing Websites Using Blackfire</span>
-> For more information about Blackfire, please visit [here](https://blackfire.io/docs/introduction).
+> For more information about Blackfire Profiler, please visit [here](https://blackfire.io/docs/introduction).
 
 __Blackfire Profiler__ is a tool that instruments PHP applications to gather data about consumed server resources like memory, CPU time, and I/O operations.
 
@@ -295,6 +295,12 @@ Source: https://blackfire.io/docs/integrations/phpunit
 
 <hr>
 
+## <div id="h">Integration with Slack</div>
+> The notification channel is only available for Enterprise users.
+
+For more information on how to set up, visit [here](https://blackfire.io/docs/integrations/slack).
+
+<hr>
 
 ## JSON representation of a profile
 To export Blackfire results in JSON, use `--json` option:
