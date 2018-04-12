@@ -250,11 +250,10 @@ There are exceptions and/or possible issues that are expected to arise while wor
 The exception is thrown when you forget to start webdriver before running test cases that requires JS/AJAX support (marked as @javascript on feature files). Make sure that you have started the webdriver by running `java -jar ~/Downloads/selenium-server-standalone-3.11.0.jar -port 4444`.
 #### Status code is not available from Behat\Mink\Driver\Selenium2Driver (Behat\Mink\Exception\UnsupportedDriverActionException)
 As it is mentioned here, such feature would not be added to the WebDriver API as it falls outside of its scope as a browser emulator.
-An alternative option would be to use [__Restler__](https://github.com/Luracast/Restler), a simple and effective multi-format Web API Server written in PHP, or to use __Blackfire Player__.
+An alternative option would be to remove @javascript tag or to use __Blackfire Player__.
 
-A simple usage example of Restler:
+A simple example:
 ```
-@restler
 Feature: Authentication
   Scenario: HTTP request should have a status code == 200
     Given I am on "/"
@@ -274,7 +273,6 @@ Feature: Authentication
 ```
 And the expected output:
 ```
-@auth @restler
 Feature: Authentication
 
   Scenario: HTTP request should have a status code == 200 # features/auth.feature:4
