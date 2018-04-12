@@ -248,6 +248,47 @@ There are exceptions and/or possible issues that are expected to arise while wor
 ### Possible Issues & How to Resolve
 #### Could not open connection (Behat\Mink\Exception\DriverException)
 The exception is thrown when you forget to start webdriver before running test cases that requires JS/AJAX support (marked as @javascript on feature files). Make sure that you have started the webdriver by running `java -jar ~/Downloads/selenium-server-standalone-3.11.0.jar -port 4444`.
+#### Status code is not available from Behat\Mink\Driver\Selenium2Driver (Behat\Mink\Exception\UnsupportedDriverActionException)
+As it is mentioned here, such feature would not be added to the WebDriver API as it falls outside of its scope as a browser emulator.
+An alternative option would be to use [__Restler__](https://github.com/Luracast/Restler), a simple and effective multi-format Web API Server written in PHP, or to use __Blackfire Player__.
+
+A simple usage example of Restler:
+```
+@restler
+Feature: Authentication
+  Scenario: HTTP request should have a status code == 200
+    Given I am on "/"
+    Then the response status code should be 200
+    When I am on "/node/1"
+    # /node/1 has been created, 200 is expected
+    # test should PASS
+    Then the response status code should be 200
+    When I am on "/node/2"
+    # /node/2 has NOT been created, 404 is expected
+    # test should PASS
+    Then the response status code should be 404
+    When I am on "/node/2"
+    # /node/2 has NOT been created, 404 is expected
+    # test should FAIL
+    Then the response status code should be 302
+```
+And the expected output:
+```
+@auth @restler
+Feature: Authentication
+
+  Scenario: HTTP request should have a status code == 200 # features/auth.feature:4
+    Given I am on "/"                                     # Behat\MinkExtension\Context\MinkContext::visit()
+    Then the response status code should be 200           # Behat\MinkExtension\Context\MinkContext::assertResponseStatus()
+    When I am on "/node/1"                                # Behat\MinkExtension\Context\MinkContext::visit()
+    Then the response status code should be 200           # Behat\MinkExtension\Context\MinkContext::assertResponseStatus()
+    When I am on "/node/2"                                # Behat\MinkExtension\Context\MinkContext::visit()
+    Then the response status code should be 404           # Behat\MinkExtension\Context\MinkContext::assertResponseStatus()
+    When I am on "/node/2"                                # Behat\MinkExtension\Context\MinkContext::visit()
+    Then the response status code should be 302           # Behat\MinkExtension\Context\MinkContext::assertResponseStatus()
+      Current response status code is 404, but 302 expected. (Behat\Mink\Exception\ExpectationException) # test is failed as expected
+```
+
 ## <div id="i">Resources & Pages</div>
 * A brief summary of different testing tools including Behat/Mink Extension, Travis CI, and more [&#10172;](https://affinitybridge.com/blog/testing-drupal-distributions-using-behat-mink-drupal-extension-and-travis-ci)
 * The Drupal Extension to Behat and Mink’s documentation [&#10172;](https://behat-drupal-extension.readthedocs.io/en/3.1)
