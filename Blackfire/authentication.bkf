@@ -1,0 +1,21 @@
+# authentication.bkf
+# requires:
+#   - blackfire-player.phar
+#   - Blackfire Agent
+#   - Probe
+# to run:
+# $ php blackfire-player.phar run authentication.bkf
+
+scenario
+    name "Log in Authentication"
+    endpoint "https://xxx.xxx.ca/user"
+	
+    visit url("/")
+        expect status_code() == 302
+    follow
+        expect status_code() == 200
+        expect current_url() == "https://xxx.xxx.ca/user/login"
+    visit url("/")
+        expect status_code() != 200
+    visit url("/")
+        expect status_code() != 404
