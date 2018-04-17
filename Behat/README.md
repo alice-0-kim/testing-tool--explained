@@ -11,6 +11,7 @@ Behat is a test framework for behavior-driven development written in the PHP pro
 * Using Selenium WebDriver and ChromeDriver [&#10172;](#g)
 * To Run Scenarios with \<Tag\> [&#10172;](#h)
 * Regions & Messages [&#10172;](#j)
+* Drupal 8 Health Check module [&#10172;](#l)
 * Unresolved Issues & Possible Exceptions to encounter [&#10172;](#k)
 * Resources & Pages [&#10172;](#i)
 
@@ -243,6 +244,10 @@ Drupal\DrupalExtension:
     success_message_selector: ".messages.messages--status"
 ```
 Note that selectors might have CSS selectors different from the example provided above.
+
+## <div id="l">Drupal 8 HealthCheck Module</div>
+GitHub repository: [here](https://github.com/alice-0-kim/healthcheck)
+
 ## <div id="k">Unresolved Issues & Possible Exceptions to encounter</div>
 There are exceptions and/or possible issues that are expected to arise while working with Behat and WebDriver. Here we have a list of possible exceptions/issues and how to resolve them. Also, there are issues that are not yet resolved here or currently being worked on.
 ### Possible Issues & How to Resolve
