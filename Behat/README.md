@@ -2,18 +2,18 @@
 Behat is a test framework for behavior-driven development written in the PHP programming language.
 
 ## Table of Contents
-* Requirements [&#10172;](#a)
-* Get Started [&#10172;](#b)
-* Directory Structure of a Simple Project Directory [&#10172;](#c)
-* To Run Tests from the Terminal [&#10172;](#d)
-* Example Output [&#10172;](#e)
-* Drush/Drupal API Driver [&#10172;](#f)
-* Using Selenium WebDriver and ChromeDriver [&#10172;](#g)
-* To Run Scenarios with \<Tag\> [&#10172;](#h)
-* Regions & Messages [&#10172;](#j)
-* Drupal 8 Health Check module [&#10172;](#l)
-* Unresolved Issues & Possible Exceptions to encounter [&#10172;](#k)
-* Resources & Pages [&#10172;](#i)
+* Requirements [:point_right:](#a)
+* Get Started [:point_right:](#b)
+* Directory Structure of a Simple Project Directory [:point_right:](#c)
+* To Run Tests from the Terminal [:point_right:](#d)
+* Example Output [:point_right:](#e)
+* Drush/Drupal API Driver [:point_right:](#f)
+* Using Selenium WebDriver and ChromeDriver [:point_right:](#g)
+* To Run Scenarios with \<Tag\> [:point_right:](#h)
+* Regions & Messages [:point_right:](#j)
+* Drupal 8 Health Check module [:point_right:](#l)
+* Unresolved Issues & Possible Exceptions to encounter [:point_right:](#k)
+* Resources & Pages [:point_right:](#i)
 
 ## <div id="a">Requirements</div>
 * __Composer__
@@ -330,12 +330,12 @@ Feature: Authentication
 ```
 
 ## <div id="i">Resources & Pages</div>
-* A brief summary of different testing tools including Behat/Mink Extension, Travis CI, and more [&#10172;](https://affinitybridge.com/blog/testing-drupal-distributions-using-behat-mink-drupal-extension-and-travis-ci)
-* The Drupal Extension to Behat and Mink’s documentation [&#10172;](https://behat-drupal-extension.readthedocs.io/en/3.1)
-* A list of Whens, Thens, and Givens for Drupal Behat testing [&#10172;](https://gist.github.com/mikecrittenden/618e57a41286e555dea8)
+* A brief summary of different testing tools including Behat/Mink Extension, Travis CI, and more [:point_right:](https://affinitybridge.com/blog/testing-drupal-distributions-using-behat-mink-drupal-extension-and-travis-ci)
+* The Drupal Extension to Behat and Mink’s documentation [:point_right:](https://behat-drupal-extension.readthedocs.io/en/3.1)
+* A list of Whens, Thens, and Givens for Drupal Behat testing [:point_right:](https://gist.github.com/mikecrittenden/618e57a41286e555dea8)
   - Note: 'When the cash has been cleared' is deprecated for Drupal 8 and later.<br>To clear cash, use 'When I run drush "cr"' instead.
-* __Selenium2Driver.php__ GitHub page: a list of available methods for Selenium2 Driver [&#10172;](https://github.com/minkphp/MinkSelenium2Driver/blob/30c81e822fc11a532c3a291781f30b7b74b17ed0/src/Selenium2Driver.php)
-* __DrupalContext.php__ GitHub page [&#10172;](https://github.com/jhedstrom/drupalextension/blob/master/src/Drupal/DrupalExtension/Context/DrupalContext.php)
-* @docksal GitHub page [&#10172;](https://github.com/docksal/behat)
+* __Selenium2Driver.php__ GitHub page: a list of available methods for Selenium2 Driver [:point_right:](https://github.com/minkphp/MinkSelenium2Driver/blob/30c81e822fc11a532c3a291781f30b7b74b17ed0/src/Selenium2Driver.php)
+* __DrupalContext.php__ GitHub page [:point_right:](https://github.com/jhedstrom/drupalextension/blob/master/src/Drupal/DrupalExtension/Context/DrupalContext.php)
+* @docksal GitHub page [:point_right:](https://github.com/docksal/behat)
 
-Go back to top [&uarr;](#top)
+Go back to top [:point_up:](#top)
