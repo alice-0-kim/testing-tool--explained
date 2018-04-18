@@ -12,14 +12,14 @@ default:
         - FeatureContext:
             parameters:
               screenshot_dir: %paths.base%/screenshots
-              base_url: http://drupal-8-5-1-2.dd:8083
+              base_url: http://drupal-8-5-1.dd:8083
   extensions:
     Behat\MinkExtension:
       files_path: '%paths.base%'
-      base_url: 'http://drupal-8-5-1-2.dd:8083'
+      base_url: 'http://drupal-8-5-1.dd:8083'
       goutte: ~
       selenium2:
-        wd_host: http://128.189.69.193:4444/wd/hub
+        wd_host: http://128.189.67.29:4444/wd/hub
         capabilities:
           marionette: null
           browserName: chrome
@@ -31,7 +31,7 @@ default:
       blackbox: ~
       api_driver: 'drush' 
       drush:
-        alias: loc.drupal-8-5-1-2
+        alias: loc.drupal-8-5-1
       region_map:
         header:  "#ubc7-header"
         content: "#unit-content"
