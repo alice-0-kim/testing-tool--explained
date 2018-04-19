@@ -7,6 +7,7 @@ Behat is a test framework for behavior-driven development written in the PHP pro
 * Directory Structure of a Simple Project Directory [:point_right:](#c)
 * To Run Tests from the Terminal [:point_right:](#d)
 * Example Output [:point_right:](#e)
+* Output a report as a file [:point_right:](#user-content-output-a-report-as-a-file)
 * Drush/Drupal API Driver [:point_right:](#f)
 * Using Selenium WebDriver and ChromeDriver [:point_right:](#g)
 * To Run Scenarios with \<Tag\> [:point_right:](#h)
@@ -109,6 +110,12 @@ It will look smiliar to:
 ![screenshot](screenshot005.png)
 
 ![screenshot](test.gif)
+
+## Output a report as a file
+```
+$ bin/behat --no-colors --format pretty --out report.txt
+```
+It tells Behat to write an output of the test result in a pretty format inside report.txt file.
 
 ## <div id="f">Drush/Drupal API Driver</div>
 __Drupal extension__ provides drivers for interacting with your site which are compatible with __Drupal 6, 7, and 8__. For more information about three types of drivers and their limitations, go to [__here__](http://behat-drupal-extension.readthedocs.io/en/3.1/drivers.html)
