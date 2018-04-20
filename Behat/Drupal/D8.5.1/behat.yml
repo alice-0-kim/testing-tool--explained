@@ -1,13 +1,30 @@
 default:
   suites:
+    #this suite runs all scenarios except those tagged with @ajax
     default:
+      filters:
+        tags: ~@ajax
       contexts:
         - Drupal\DrupalExtension\Context\RawDrupalContext
         - Drupal\DrupalExtension\Context\DrupalContext
         - Drupal\DrupalExtension\Context\DrushContext
         - Drupal\DrupalExtension\Context\MarkupContext
         - Drupal\DrupalExtension\Context\MessageContext
-        #- Drupal\DrupalExtension\Context\MinkContext
+        - Drupal\DrupalExtension\Context\MinkContext
+        - FeatureContext:
+            parameters:
+              screenshot_dir: %paths.base%/screenshots
+              base_url: http://drupal-8-5-1.dd:8083
+    #this suite only runs the scenarios tagged with @ajax
+    ajax:
+      filters:
+        tags: "@ajax"
+      contexts:
+        - Drupal\DrupalExtension\Context\RawDrupalContext
+        - Drupal\DrupalExtension\Context\DrupalContext
+        - Drupal\DrupalExtension\Context\DrushContext
+        - Drupal\DrupalExtension\Context\MarkupContext
+        - Drupal\DrupalExtension\Context\MessageContext
         - Behat\MinkExtension\Context\MinkContext
         - FeatureContext:
             parameters:
@@ -19,7 +36,7 @@ default:
       base_url: 'http://drupal-8-5-1.dd:8083'
       goutte: ~
       selenium2:
-        wd_host: http://128.189.67.29:4444/wd/hub
+        wd_host: http://128.189.68.87:4444/wd/hub
         capabilities:
           marionette: null
           browserName: chrome
@@ -37,8 +54,10 @@ default:
         content: "#unit-content"
         footer:  "#ubc7-footer"
         body:    "body"
+        alert: ".alert"
       selectors:
         message_selector: '.messages'
         error_message_selector: '.messages.messages--error'
         success_message_selector: '.messages.messages--status'
+
 
