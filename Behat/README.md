@@ -208,7 +208,16 @@ If you encounter __'This type of file can harm your computer. Are you sure you w
 ```
 mv PATH-TO-CHROMEDRIVER/chromedriver /usr/local/bin
 ```
-4. Edit behat.yml file.&#42; &#42;&#42;
+4. Edit behat.yml file.&#42; Make sure to include wd_host option under the `extension`:
+```
+extensions:
+  Behat\MinkExtension:
+    files_path: '%paths.base%'
+    base_url: 'https://example.it.ubc.ca'
+    goutte: ~
+    selenium2:
+      wd_host: http://127.0.0.1:4444/wd/hub
+```
 5. Edit composer.json file.&#42;
 6. Run `composer update`. This will take a while.
 7. Add @javascript tag in .feature files.
@@ -226,18 +235,11 @@ Feature: Check link functionality of website
 8. Run below lines to start Selenium Server.<br>
 Note that depends on where you downloaded .jar file, the file path should be changed accordingly.
 ```
-java -jar ~/Downloads/selenium-server-standalone-3.11.0.jar -role hub
-java -jar ~/Downloads/selenium-server-standalone-3.11.0.jar -port 4444
+java -jar ~/Downloads/selenium-server-standalone-3.11.0.jar
 ```
 9. Open up a new terminal to run `bin/behat`. You should see that Google Chrome web browser is launched whenever any scenarios with @javascript tag attached.
 
-&#42; The example behat.yml and composer.json files are located in /Drupal.<br>
-&#42;&#42; __wd_host__ in behat.yml file should be adjusted based on the output when you start the Selenium Server. The output can be found in the similar format as:
-```
-09:21:55.237 INFO - Selenium Grid hub is up and running
-09:21:55.237 INFO - Nodes should register to http://128.189.64.164:4444/grid/register/
-09:21:55.237 INFO - Clients should connect to http://128.189.64.164:4444/wd/hub
-```
+&#42; The example behat.yml and composer.json files are located in `/Drupal`.<br>
 
 ## <div id="h">To Run Scenarios with \<Tag\></div>
 ### To Run Scenarios with @admin
