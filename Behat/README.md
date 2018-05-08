@@ -232,8 +232,16 @@ Feature: Check link functionality of website
     Given I am on "/"
     ...
 ```
-8. Run below lines to start Selenium Server.<br>
-Note that depends on where you downloaded .jar file, the file path should be changed accordingly.
+8. Run below lines to start Selenium Server.
+
+The required version of Java in order to run the file:
+```
+$ java -version
+java version "1.8.0_152"
+Java(TM) SE Runtime Environment (build 1.8.0_152-b16)
+Java HotSpot(TM) 64-Bit Server VM (build 25.152-b16, mixed mode)
+```
+Note that the argument specifies where you downloaded .jar file, thus it should be adjusted accordingly.
 ```
 java -jar ~/Downloads/selenium-server-standalone-3.11.0.jar
 ```
