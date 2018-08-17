@@ -121,7 +121,7 @@ It tells Behat to write an output of the test result in a pretty format inside r
 ## Output a Report to a Slack Channel
 ```
 $ OUTPUT="$(bin/behat)"
-$ curl -X POST --data-urlencode "payload={'channel': '#channel', 'username': 'Behat Bot', 'text': '${OUTPUT}', 'icon_emoji': ':postbox:'}" https://hooks.slack.com/services/xxxxxxxxx/xxxxxxxxx/xxxxxxxxxxxxxxxxxxxxxxxx
+$ curl -X POST --data-urlencode "payload={'channel': '#uptime', 'username': 'Behat Bot', 'icon_emoji': ':postbox:', 'attachments':[{'color':'danger', 'text': '*Target Website*: https://test.example.ubc.ca \n *Target Environment*: master-0xxxxxx \n *Target Branch*: master \n *Result*: \n 2 scenarios (2 failed) \n 5 steps (5 failed) \n 0m4.46s (19.02Mb)'}]}" https://hooks.slack.com/services/xxxxxxxxx/xxxxxxxxx/xxxxxxxxxxxxxxxxxxxxxxxx
 ```
 It sends a POST request to Slack server to post an output from the command inside the bracket.
 ![screenshot](behatbot.png)
