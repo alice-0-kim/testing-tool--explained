@@ -351,4 +351,4 @@ The sample JSON output looks like:
    }
 }
 ```
-Back to top [:point_up:](#top)
+Go back to top [:point_up:](#top)
