@@ -5,7 +5,7 @@
 1. Log into [Uptime Robot](https://uptimerobot.com/). You will be redirected to `My dashboard` page.
 2. Click `Add New Monitor` button located at the top left corner.
 
-[!](screenshot.png)
+![screenshot](uptimerobot.png)
 
 3. Enter Monitor information:
   - Monitor Type: HTTP(s)
@@ -15,7 +15,7 @@
     - e.g. https://example.it.ubc.ca
   - Monitoring Interval: every 1 minutes
  
- [!](screenshot.png)
+ ![screenshot](uptimerobot_1.png)
 
   - Leave out Advanced Settings, if not specifically requested.
   - Select Alert Contacts To Notify:
@@ -32,7 +32,7 @@
 ### Adding a New Alert Contact
 1. Go to My Settings page.
 
-[!](screenshot.png)
+![screenshot](uptimerobot_2.png)
 
 2. Click Add Alert Contact at the top right corner.
 3. Select appropriate Alert Contact Type.
@@ -42,7 +42,7 @@ This feature is very useful when updating intervals or alert contacts of monitor
 
 1. Click Bulk Actions at the top left corner under Add New Monitor button.
 
-[!](screenshot.png)
+![screenshot](uptimerobot_3.png)
 
 2. Fill out Action Details based on your needs e.g. I want to change the intervals of monitors for all monitors.
   - Tip: If it is asking for you to write CHANGE INTERVAL as an Approval Text e.g. Please write CHANGE INTERVAL to the field below to approve the action, all you need to do is to enter CHANGE INTERVAL literally and press the Complete Action button to save.
